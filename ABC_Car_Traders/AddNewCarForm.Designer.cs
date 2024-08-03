@@ -40,7 +40,7 @@
             label8 = new Label();
             label9 = new Label();
             panel1 = new Panel();
-            txtModel = new TextBox();
+            textModel = new TextBox();
             panel2 = new Panel();
             txtBrand = new TextBox();
             panel3 = new Panel();
@@ -50,9 +50,14 @@
             panel5 = new Panel();
             txtDescription = new TextBox();
             panel6 = new Panel();
-            textBox6 = new TextBox();
+            txtQuantity = new TextBox();
             cmbTransmission = new ComboBox();
             btnSaveCar = new Button();
+            label10 = new Label();
+            panel7 = new Panel();
+            txtCarName = new TextBox();
+            label11 = new Label();
+            txtStatus = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -60,6 +65,7 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
+            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -77,7 +83,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(36, 125);
+            label2.Location = new Point(36, 205);
             label2.Name = "label2";
             label2.Size = new Size(62, 22);
             label2.TabIndex = 3;
@@ -86,9 +92,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(285, 52);
+            pictureBox1.Location = new Point(256, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(403, 448);
+            pictureBox1.Size = new Size(569, 359);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -97,7 +103,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(36, 211);
+            label3.Location = new Point(36, 293);
             label3.Name = "label3";
             label3.Size = new Size(58, 22);
             label3.TabIndex = 5;
@@ -107,7 +113,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(36, 293);
+            label4.Location = new Point(36, 384);
             label4.Name = "label4";
             label4.Size = new Size(47, 22);
             label4.TabIndex = 6;
@@ -117,7 +123,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(36, 380);
+            label5.Location = new Point(36, 469);
             label5.Name = "label5";
             label5.Size = new Size(52, 22);
             label5.TabIndex = 7;
@@ -127,7 +133,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(36, 464);
+            label6.Location = new Point(36, 564);
             label6.Name = "label6";
             label6.Size = new Size(103, 22);
             label6.TabIndex = 8;
@@ -137,7 +143,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(36, 550);
+            label7.Location = new Point(36, 653);
             label7.Name = "label7";
             label7.Size = new Size(76, 22);
             label7.TabIndex = 9;
@@ -147,7 +153,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(36, 636);
+            label8.Location = new Point(36, 751);
             label8.Name = "label8";
             label8.Size = new Size(115, 22);
             label8.TabIndex = 10;
@@ -157,7 +163,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(36, 719);
+            label9.Location = new Point(422, 396);
             label9.Name = "label9";
             label9.Size = new Size(120, 22);
             label9.TabIndex = 11;
@@ -166,29 +172,29 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(35, 115, 144);
-            panel1.Controls.Add(txtModel);
+            panel1.Controls.Add(textModel);
             panel1.ForeColor = Color.Black;
-            panel1.Location = new Point(36, 150);
+            panel1.Location = new Point(36, 230);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(0, 0, 0, 3);
             panel1.Size = new Size(233, 45);
             panel1.TabIndex = 12;
             // 
-            // txtModel
+            // textModel
             // 
-            txtModel.Dock = DockStyle.Fill;
-            txtModel.Location = new Point(0, 0);
-            txtModel.Multiline = true;
-            txtModel.Name = "txtModel";
-            txtModel.Size = new Size(233, 42);
-            txtModel.TabIndex = 19;
+            textModel.Dock = DockStyle.Fill;
+            textModel.Location = new Point(0, 0);
+            textModel.Multiline = true;
+            textModel.Name = "textModel";
+            textModel.Size = new Size(233, 42);
+            textModel.TabIndex = 24;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(35, 115, 144);
             panel2.Controls.Add(txtBrand);
             panel2.ForeColor = Color.Black;
-            panel2.Location = new Point(36, 236);
+            panel2.Location = new Point(36, 318);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(0, 0, 0, 3);
             panel2.Size = new Size(233, 45);
@@ -201,14 +207,14 @@
             txtBrand.Multiline = true;
             txtBrand.Name = "txtBrand";
             txtBrand.Size = new Size(233, 42);
-            txtBrand.TabIndex = 20;
+            txtBrand.TabIndex = 25;
             // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(35, 115, 144);
             panel3.Controls.Add(txtYear);
             panel3.ForeColor = Color.Black;
-            panel3.Location = new Point(36, 318);
+            panel3.Location = new Point(36, 409);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(0, 0, 0, 3);
             panel3.Size = new Size(233, 45);
@@ -221,14 +227,14 @@
             txtYear.Multiline = true;
             txtYear.Name = "txtYear";
             txtYear.Size = new Size(233, 42);
-            txtYear.TabIndex = 21;
+            txtYear.TabIndex = 26;
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(35, 115, 144);
             panel4.Controls.Add(txtPrice);
             panel4.ForeColor = Color.Black;
-            panel4.Location = new Point(36, 405);
+            panel4.Location = new Point(36, 494);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(0, 0, 0, 3);
             panel4.Size = new Size(233, 45);
@@ -241,14 +247,14 @@
             txtPrice.Multiline = true;
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(233, 42);
-            txtPrice.TabIndex = 22;
+            txtPrice.TabIndex = 27;
             // 
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(35, 115, 144);
             panel5.Controls.Add(txtDescription);
             panel5.ForeColor = Color.Black;
-            panel5.Location = new Point(36, 489);
+            panel5.Location = new Point(36, 589);
             panel5.Name = "panel5";
             panel5.Padding = new Padding(0, 0, 0, 3);
             panel5.Size = new Size(233, 45);
@@ -261,32 +267,32 @@
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(233, 42);
-            txtDescription.TabIndex = 23;
+            txtDescription.TabIndex = 28;
             // 
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(35, 115, 144);
-            panel6.Controls.Add(textBox6);
+            panel6.Controls.Add(txtQuantity);
             panel6.ForeColor = Color.Black;
-            panel6.Location = new Point(36, 575);
+            panel6.Location = new Point(36, 678);
             panel6.Name = "panel6";
             panel6.Padding = new Padding(0, 0, 0, 3);
             panel6.Size = new Size(233, 45);
             panel6.TabIndex = 17;
             // 
-            // textBox6
+            // txtQuantity
             // 
-            textBox6.Dock = DockStyle.Fill;
-            textBox6.Location = new Point(0, 0);
-            textBox6.Multiline = true;
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(233, 42);
-            textBox6.TabIndex = 24;
+            txtQuantity.Dock = DockStyle.Fill;
+            txtQuantity.Location = new Point(0, 0);
+            txtQuantity.Multiline = true;
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(233, 42);
+            txtQuantity.TabIndex = 29;
             // 
             // cmbTransmission
             // 
             cmbTransmission.FormattingEnabled = true;
-            cmbTransmission.Location = new Point(36, 671);
+            cmbTransmission.Location = new Point(36, 776);
             cmbTransmission.Name = "cmbTransmission";
             cmbTransmission.Size = new Size(233, 28);
             cmbTransmission.TabIndex = 18;
@@ -297,19 +303,72 @@
             btnSaveCar.FlatAppearance.BorderSize = 0;
             btnSaveCar.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             btnSaveCar.ForeColor = SystemColors.ControlLightLight;
-            btnSaveCar.Location = new Point(425, 785);
+            btnSaveCar.Location = new Point(555, 818);
             btnSaveCar.Name = "btnSaveCar";
             btnSaveCar.Size = new Size(196, 56);
             btnSaveCar.TabIndex = 19;
             btnSaveCar.Text = "Save";
             btnSaveCar.UseVisualStyleBackColor = false;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(36, 115);
+            label10.Name = "label10";
+            label10.Size = new Size(90, 22);
+            label10.TabIndex = 20;
+            label10.Text = "Car Name";
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(35, 115, 144);
+            panel7.Controls.Add(txtCarName);
+            panel7.ForeColor = Color.Black;
+            panel7.Location = new Point(36, 140);
+            panel7.Name = "panel7";
+            panel7.Padding = new Padding(0, 0, 0, 3);
+            panel7.Size = new Size(233, 45);
+            panel7.TabIndex = 13;
+            // 
+            // txtCarName
+            // 
+            txtCarName.Dock = DockStyle.Fill;
+            txtCarName.Location = new Point(0, 0);
+            txtCarName.Multiline = true;
+            txtCarName.Name = "txtCarName";
+            txtCarName.Size = new Size(233, 42);
+            txtCarName.TabIndex = 23;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(422, 318);
+            label11.Name = "label11";
+            label11.Size = new Size(57, 22);
+            label11.TabIndex = 21;
+            label11.Text = "Status";
+            // 
+            // txtStatus
+            // 
+            txtStatus.FormattingEnabled = true;
+            txtStatus.Items.AddRange(new object[] { "Available", "Not Available" });
+            txtStatus.Location = new Point(422, 343);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(233, 28);
+            txtStatus.TabIndex = 22;
+            // 
             // AddNewCarForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(689, 869);
+            ClientSize = new Size(829, 918);
+            Controls.Add(txtStatus);
+            Controls.Add(label11);
+            Controls.Add(panel7);
+            Controls.Add(label10);
             Controls.Add(btnSaveCar);
             Controls.Add(cmbTransmission);
             Controls.Add(panel6);
@@ -344,6 +403,8 @@
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -367,12 +428,17 @@
         private Panel panel5;
         private Panel panel6;
         private ComboBox cmbTransmission;
-        private TextBox txtModel;
+        private Button btnSaveCar;
+        private Label label10;
+        private Panel panel7;
+        private Label label11;
+        private ComboBox txtStatus;
+        private TextBox textModel;
         private TextBox txtBrand;
         private TextBox txtYear;
         private TextBox txtPrice;
         private TextBox txtDescription;
-        private TextBox textBox6;
-        private Button btnSaveCar;
+        private TextBox txtQuantity;
+        private TextBox txtCarName;
     }
 }
