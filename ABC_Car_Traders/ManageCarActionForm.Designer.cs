@@ -53,6 +53,9 @@
             comboBox1 = new ComboBox();
             btnDelete = new Button();
             btnUpdate = new Button();
+            pictureBox2 = new PictureBox();
+            label9 = new Label();
+            comboBox2 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -60,14 +63,15 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(252, 22);
+            pictureBox1.Location = new Point(164, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(388, 459);
+            pictureBox1.Size = new Size(476, 248);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -136,7 +140,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(30, 542);
+            label7.Location = new Point(30, 558);
             label7.Name = "label7";
             label7.Size = new Size(115, 22);
             label7.TabIndex = 10;
@@ -146,7 +150,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(30, 615);
+            label8.Location = new Point(359, 221);
             label8.Name = "label8";
             label8.Size = new Size(57, 22);
             label8.TabIndex = 11;
@@ -269,7 +273,8 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(30, 567);
+            comboBox1.Items.AddRange(new object[] { "Manual Transmission", "Auto Transmission" });
+            comboBox1.Location = new Point(30, 583);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(231, 28);
             comboBox1.TabIndex = 18;
@@ -298,12 +303,42 @@
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Location = new Point(329, 252);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(311, 191);
+            pictureBox2.TabIndex = 27;
+            pictureBox2.TabStop = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(359, 462);
+            label9.Name = "label9";
+            label9.Size = new Size(57, 22);
+            label9.TabIndex = 28;
+            label9.Text = "Status";
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Available ", "Not Available" });
+            comboBox2.Location = new Point(359, 487);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(218, 28);
+            comboBox2.TabIndex = 29;
+            // 
             // ManageCarActionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(652, 753);
+            Controls.Add(comboBox2);
+            Controls.Add(label9);
+            Controls.Add(pictureBox2);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
             Controls.Add(comboBox1);
@@ -338,6 +373,7 @@
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -368,5 +404,8 @@
         private TextBox textBox4;
         private TextBox textBox5;
         private TextBox textBox6;
+        private PictureBox pictureBox2;
+        private Label label9;
+        private ComboBox comboBox2;
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ABC_Car_Traders.Controllers;
+using ABC_Car_Traders.DBContext;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +14,17 @@ namespace ABC_Car_Traders
 {
     public partial class ManageCarsForm : Form
     {
-        public ManageCarsForm()
+        private readonly CarController _carController;
+        public ManageCarsForm(CarController carController)
         {
             InitializeComponent();
+            _carController = carController;
+            loadCars();
         }
 
         private void btnAddNewCar_Click(object sender, EventArgs e)
         {
-            AddNewCarForm addNewCarForm = new AddNewCarForm();
+            AddNewCarForm addNewCarForm = new AddNewCarForm(_carController);
             addNewCarForm.Show();
         }
 
@@ -31,6 +36,19 @@ namespace ABC_Car_Traders
                 actionForm.Show();
 
             }
+        }
+
+        private void dataGridViewCars_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /* var cars = _carController.GetAllCars();
+             dataGridViewCars.DataSource = cars;*/
+            //loadCars();
+        }
+
+        private void loadCars()
+        {
+            var cars = _carController.GetAllCars();
+            dataGridViewCars.DataSource = cars;
         }
     }
 }
