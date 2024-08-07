@@ -6,12 +6,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ABC_Car_Traders.DBContext
 {
-    internal class ApplicationDBContext : DbContext
+    public class ApplicationDBContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Car> Cars { get; set; }
+
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new ConfigurationBuilder(); // nuget pakage extenstion.configaration use
             builder.SetBasePath(Directory.GetCurrentDirectory()); // user nuget pakage configaraion .json
@@ -21,6 +29,9 @@ namespace ABC_Car_Traders.DBContext
             new MySqlServerVersion(new Version(8, 0, 21))); //  MySQL version here
 
         }
-        public DbSet<abc> abc {get; set;}   
+        public DbSet<Car> Cars {get; set;}   */
+
+
     }
+    
 }

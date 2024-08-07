@@ -1,3 +1,9 @@
+using ABC_Car_Traders.Controllers;
+using ABC_Car_Traders.DBContext;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace ABC_Car_Traders
 {
     internal static class Program
@@ -11,8 +17,23 @@ namespace ABC_Car_Traders
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new AdminDashboard());
-            //AdminDashboard
+
+            var builder = new ConfigurationBuilder()
+           .SetBasePath(Directory.GetCurrentDirectory())
+           .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            var configuration = builder.Build();
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDBContext>();
+            optionsBuilder.UseMySql(configuration.GetConnectionString("DefaultConnection"),
+                                    new MySqlServerVersion(new Version(8, 0, 21)));
+
+            var context = new ApplicationDBContext(optionsBuilder.Options);
+            var carController = new CarController(context);
+
+            Application.Run(new AdminDashboard(carController));
+            //AdminDashboard*/
+            
         }
+       
     }
 }
