@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABC_Car_Traders.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,10 @@ namespace ABC_Car_Traders
     public partial class AdminDashboard : Form
     {
         private Form activeForm = null; // Keep track of the currently active form
-        public AdminDashboard()
+        private readonly CarController _carController;
+        public AdminDashboard(CarController carController)
         {
+            _carController = carController;
             InitializeComponent();
         }
 
@@ -59,7 +62,7 @@ namespace ABC_Car_Traders
 
         private void btnManageCars_Click(object sender, EventArgs e)
         {
-            loadForm(new ManageCarsForm());
+            loadForm(new ManageCarsForm(_carController));
         }
 
         private void btnManageCarParts_Click(object sender, EventArgs e)

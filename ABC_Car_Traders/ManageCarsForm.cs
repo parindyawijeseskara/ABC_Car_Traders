@@ -1,5 +1,6 @@
 ﻿using ABC_Car_Traders.Controllers;
 using ABC_Car_Traders.DBContext;
+using ABC_Car_Traders.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,8 +33,31 @@ namespace ABC_Car_Traders
         {
             if (e.ColumnIndex == 9)
             {
-                ManageCarActionForm actionForm = new ManageCarActionForm();
-                actionForm.Show();
+
+                //int carId = (int)dataGridViewCars.Rows[e.RowIndex].Cells["Column1"].Value;
+                //Car car = _carController.getcarById(carId);
+
+
+                //if (car != null)
+                //{
+                //var carId = (int)dataGridViewCars.Rows[e.RowIndex].Cells["Column1"].Value;
+                //ManageCarActionForm actionForm = new ManageCarActionForm(_carController, carId);
+                //actionForm.Show();
+                //}
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    // Ensure the cell value is not null
+                    if (dataGridViewCars.Rows[e.RowIndex].Cells[1].Value != null)
+                    {
+                        int carId = (int)dataGridViewCars.Rows[e.RowIndex].Cells[1].Value;
+                        ManageCarActionForm actionForm = new ManageCarActionForm(_carController, carId);
+                        actionForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selected car ID is null. Please select a valid car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
 
             }
         }

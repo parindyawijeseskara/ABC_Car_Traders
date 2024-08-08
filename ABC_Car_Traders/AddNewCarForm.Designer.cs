@@ -58,6 +58,8 @@
             txtCarName = new TextBox();
             label11 = new Label();
             txtStatus = new ComboBox();
+            pictureBoxCarImage = new PictureBox();
+            btnUploadImage = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -66,6 +68,7 @@
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCarImage).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -292,6 +295,7 @@
             // cmbTransmission
             // 
             cmbTransmission.FormattingEnabled = true;
+            cmbTransmission.Items.AddRange(new object[] { "Manual Transmission", "Automatic Transmission" });
             cmbTransmission.Location = new Point(36, 776);
             cmbTransmission.Name = "cmbTransmission";
             cmbTransmission.Size = new Size(233, 28);
@@ -309,6 +313,7 @@
             btnSaveCar.TabIndex = 19;
             btnSaveCar.Text = "Save";
             btnSaveCar.UseVisualStyleBackColor = false;
+            btnSaveCar.Click += btnSaveCar_Click;
             // 
             // label10
             // 
@@ -359,12 +364,32 @@
             txtStatus.Size = new Size(233, 28);
             txtStatus.TabIndex = 22;
             // 
+            // pictureBoxCarImage
+            // 
+            pictureBoxCarImage.Location = new Point(422, 460);
+            pictureBoxCarImage.Name = "pictureBoxCarImage";
+            pictureBoxCarImage.Size = new Size(292, 196);
+            pictureBoxCarImage.TabIndex = 23;
+            pictureBoxCarImage.TabStop = false;
+            // 
+            // btnUploadImage
+            // 
+            btnUploadImage.Location = new Point(611, 425);
+            btnUploadImage.Name = "btnUploadImage";
+            btnUploadImage.Size = new Size(94, 29);
+            btnUploadImage.TabIndex = 24;
+            btnUploadImage.Text = "button1";
+            btnUploadImage.UseVisualStyleBackColor = true;
+            btnUploadImage.Click += btnUploadImage_Click;
+            // 
             // AddNewCarForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(829, 918);
+            Controls.Add(btnUploadImage);
+            Controls.Add(pictureBoxCarImage);
             Controls.Add(txtStatus);
             Controls.Add(label11);
             Controls.Add(panel7);
@@ -405,6 +430,7 @@
             panel6.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCarImage).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -440,5 +466,8 @@
         private TextBox txtDescription;
         private TextBox txtQuantity;
         private TextBox txtCarName;
+        private PictureBox pictureBoxCarImage;
+        private Button btnUploadImage;
+        private Panel panel8;
     }
 }

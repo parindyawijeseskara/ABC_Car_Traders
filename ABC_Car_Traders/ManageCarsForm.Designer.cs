@@ -268,7 +268,7 @@
             // Column1
             // 
             Column1.DataPropertyName = "carId";
-            Column1.HeaderText = "Car Id";
+            Column1.HeaderText = "CarId";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
             Column1.Width = 125;
