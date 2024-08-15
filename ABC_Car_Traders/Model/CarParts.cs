@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -9,6 +10,7 @@ namespace ABC_Car_Traders.Model
 {
     public class CarParts
     {
+        [Key]
         public int carPartId { get; set; }
         public string carPartName { get; set;}
         public byte[] image { get; set;}

@@ -56,6 +56,8 @@
             txtWarrantyPeriod = new TextBox();
             cmbStatus = new ComboBox();
             btnSaveCarParts = new Button();
+            pictureBoxCarPartsImage = new PictureBox();
+            btnUploadImage = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -64,6 +66,7 @@
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCarPartsImage).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -90,9 +93,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(295, 12);
+            pictureBox1.Location = new Point(231, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(395, 461);
+            pictureBox1.Size = new Size(459, 315);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -161,7 +164,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(389, 476);
+            label9.Location = new Point(389, 284);
             label9.Name = "label9";
             label9.Size = new Size(57, 22);
             label9.TabIndex = 13;
@@ -171,7 +174,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(389, 554);
+            label10.Location = new Point(389, 368);
             label10.Name = "label10";
             label10.Size = new Size(120, 22);
             label10.TabIndex = 14;
@@ -313,7 +316,8 @@
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(389, 501);
+            cmbStatus.Items.AddRange(new object[] { "Available", "Not Available" });
+            cmbStatus.Location = new Point(389, 309);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(230, 28);
             cmbStatus.TabIndex = 22;
@@ -330,6 +334,25 @@
             btnSaveCarParts.TabIndex = 23;
             btnSaveCarParts.Text = "Save";
             btnSaveCarParts.UseVisualStyleBackColor = false;
+            btnSaveCarParts.Click += btnSaveCarParts_Click;
+            // 
+            // pictureBoxCarPartsImage
+            // 
+            pictureBoxCarPartsImage.Location = new Point(366, 438);
+            pictureBoxCarPartsImage.Name = "pictureBoxCarPartsImage";
+            pictureBoxCarPartsImage.Size = new Size(288, 262);
+            pictureBoxCarPartsImage.TabIndex = 24;
+            pictureBoxCarPartsImage.TabStop = false;
+            // 
+            // btnUploadImage
+            // 
+            btnUploadImage.Location = new Point(560, 403);
+            btnUploadImage.Name = "btnUploadImage";
+            btnUploadImage.Size = new Size(94, 29);
+            btnUploadImage.TabIndex = 25;
+            btnUploadImage.Text = "upload";
+            btnUploadImage.UseVisualStyleBackColor = true;
+            btnUploadImage.Click += btnUploadImage_Click;
             // 
             // AddNewCarPartsForm
             // 
@@ -337,6 +360,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(689, 869);
+            Controls.Add(btnUploadImage);
+            Controls.Add(pictureBoxCarPartsImage);
             Controls.Add(btnSaveCarParts);
             Controls.Add(cmbStatus);
             Controls.Add(panel7);
@@ -375,6 +400,7 @@
             panel6.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCarPartsImage).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -408,5 +434,7 @@
         private TextBox txtDescription;
         private TextBox txtManufacturer;
         private TextBox txtWarrantyPeriod;
+        private PictureBox pictureBoxCarPartsImage;
+        private Button btnUploadImage;
     }
 }

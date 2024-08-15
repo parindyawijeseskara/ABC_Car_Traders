@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABC_Car_Traders.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,18 @@ namespace ABC_Car_Traders
 {
     public partial class ManageCarPartsForm : Form
     {
-        public ManageCarPartsForm()
+        private readonly CarPartsController _controller;
+
+        public ManageCarPartsForm(CarPartsController carPartsController)
         {
+            _controller = carPartsController;
             InitializeComponent();
+            loadCarParts();
         }
 
         private void btnAddNewCarPart_Click(object sender, EventArgs e)
         {
-            AddNewCarPartsForm addNewCarPartsForm = new AddNewCarPartsForm();
+            AddNewCarPartsForm addNewCarPartsForm = new AddNewCarPartsForm(_controller);
             addNewCarPartsForm.Show();
         }
 
@@ -27,10 +32,27 @@ namespace ABC_Car_Traders
         {
             if (e.ColumnIndex == 10)
             {
-                ManageCarPartsActionForm actionForm = new ManageCarPartsActionForm();
-                actionForm.Show();
-
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    // Ensure the cell value is not null
+                    if (dataGridViewCarParts.Rows[e.RowIndex].Cells[1].Value != null)
+                    {
+                        int carPartId = (int)dataGridViewCarParts.Rows[e.RowIndex].Cells[1].Value;
+                        ManageCarPartsActionForm actionForm = new ManageCarPartsActionForm(_controller, carPartId);
+                        actionForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selected carPart ID is null. Please select a valid car part Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
+        }
+
+        private void loadCarParts()
+        {
+            var carParts = _controller.GetAllCarParts();
+            dataGridViewCarParts.DataSource = carParts;
         }
     }
 }

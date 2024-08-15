@@ -54,6 +54,14 @@
             txtNic = new TextBox();
             btnSave = new Button();
             cmbStatus = new ComboBox();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            panel7 = new Panel();
+            panel8 = new Panel();
+            txtUserName = new TextBox();
+            cmbRole = new ComboBox();
+            txtPassword = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -61,6 +69,8 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
+            panel7.SuspendLayout();
+            panel8.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -188,7 +198,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(293, 39);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(394, 419);
+            pictureBox1.Size = new Size(394, 270);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
@@ -310,12 +320,95 @@
             cmbStatus.Size = new Size(226, 28);
             cmbStatus.TabIndex = 19;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(401, 334);
+            label9.Name = "label9";
+            label9.Size = new Size(93, 22);
+            label9.TabIndex = 20;
+            label9.Text = "UserName";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(401, 424);
+            label10.Name = "label10";
+            label10.Size = new Size(88, 22);
+            label10.TabIndex = 21;
+            label10.Text = "Password";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(401, 512);
+            label11.Name = "label11";
+            label11.Size = new Size(48, 22);
+            label11.TabIndex = 22;
+            label11.Text = "Role";
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(35, 115, 144);
+            panel7.Controls.Add(txtUserName);
+            panel7.Location = new Point(401, 362);
+            panel7.Name = "panel7";
+            panel7.Padding = new Padding(0, 0, 0, 3);
+            panel7.Size = new Size(217, 42);
+            panel7.TabIndex = 23;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(35, 115, 144);
+            panel8.Controls.Add(txtPassword);
+            panel8.Location = new Point(401, 449);
+            panel8.Name = "panel8";
+            panel8.Padding = new Padding(0, 0, 0, 3);
+            panel8.Size = new Size(217, 42);
+            panel8.TabIndex = 24;
+            // 
+            // txtUserName
+            // 
+            txtUserName.Dock = DockStyle.Fill;
+            txtUserName.Location = new Point(0, 0);
+            txtUserName.Multiline = true;
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(217, 39);
+            txtUserName.TabIndex = 25;
+            // 
+            // cmbRole
+            // 
+            cmbRole.FormattingEnabled = true;
+            cmbRole.Items.AddRange(new object[] { "Admin", "Customer" });
+            cmbRole.Location = new Point(401, 537);
+            cmbRole.Name = "cmbRole";
+            cmbRole.Size = new Size(173, 28);
+            cmbRole.TabIndex = 26;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Dock = DockStyle.Fill;
+            txtPassword.Location = new Point(0, 0);
+            txtPassword.Multiline = true;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(217, 39);
+            txtPassword.TabIndex = 26;
+            // 
             // AddNewCustomerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(698, 856);
+            Controls.Add(cmbRole);
+            Controls.Add(panel8);
+            Controls.Add(panel7);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label9);
             Controls.Add(cmbStatus);
             Controls.Add(btnSave);
             Controls.Add(panel6);
@@ -349,6 +442,10 @@
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -380,5 +477,13 @@
         private TextBox txtNic;
         private Button btnSave;
         private ComboBox cmbStatus;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Panel panel7;
+        private TextBox txtUserName;
+        private Panel panel8;
+        private TextBox txtPassword;
+        private ComboBox cmbRole;
     }
 }

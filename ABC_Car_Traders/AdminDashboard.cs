@@ -15,10 +15,12 @@ namespace ABC_Car_Traders
     {
         private Form activeForm = null; // Keep track of the currently active form
         private readonly CarController _carController;
-        public AdminDashboard(CarController carController)
+        private readonly CarPartsController _carPartsController;
+        public AdminDashboard(CarController carController, CarPartsController carPartsController)
         {
             _carController = carController;
             InitializeComponent();
+            _carPartsController = carPartsController;
         }
 
         public void loadForm(Form newForm)
@@ -67,7 +69,7 @@ namespace ABC_Car_Traders
 
         private void btnManageCarParts_Click(object sender, EventArgs e)
         {
-            loadForm(new ManageCarPartsForm());
+            loadForm(new ManageCarPartsForm(_carPartsController));
         }
 
         private void ManageCustomerOrders_Click(object sender, EventArgs e)
