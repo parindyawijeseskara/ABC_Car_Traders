@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCustomer));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             btnAddNewCustomer = new Button();
@@ -43,7 +45,7 @@
             txtSearchCustomer = new TextBox();
             btnSearch = new Button();
             btnRefresh = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewCustomers = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -55,7 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCustomers).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -172,39 +174,47 @@
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dataGridViewCustomers
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Action });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.Location = new Point(73, 456);
-            dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCustomers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCustomers.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Action });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
             dataGridViewCellStyle4.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1279, 188);
-            dataGridView1.TabIndex = 9;
-            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridViewCustomers.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCustomers.Location = new Point(73, 456);
+            dataGridViewCustomers.Name = "dataGridViewCustomers";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCustomers.RowHeadersWidth = 51;
+            dataGridViewCellStyle6.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCustomers.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCustomers.Size = new Size(1279, 188);
+            dataGridViewCustomers.TabIndex = 9;
+            dataGridViewCustomers.CellClick += dataGridView1_CellClick;
+            dataGridViewCustomers.CellContentClick += dataGridViewCustomers_CellContentClick;
             // 
             // Column1
             // 
-            dataGridViewCellStyle1.BackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            Column1.DataPropertyName = "userId";
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            Column1.DefaultCellStyle = dataGridViewCellStyle2;
             Column1.HeaderText = "Customer Id";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
@@ -212,6 +222,7 @@
             // 
             // Column2
             // 
+            Column2.DataPropertyName = "firstName";
             Column2.HeaderText = "Name";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
@@ -219,6 +230,7 @@
             // 
             // Column3
             // 
+            Column3.DataPropertyName = "email";
             Column3.HeaderText = "Email";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
@@ -226,6 +238,7 @@
             // 
             // Column4
             // 
+            Column4.DataPropertyName = "address";
             Column4.HeaderText = "Address";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
@@ -233,6 +246,7 @@
             // 
             // Column5
             // 
+            Column5.DataPropertyName = "contactNo";
             Column5.HeaderText = "Contact No";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
@@ -240,6 +254,7 @@
             // 
             // Column6
             // 
+            Column6.DataPropertyName = "nic";
             Column6.HeaderText = "Nic";
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
@@ -247,6 +262,7 @@
             // 
             // Column7
             // 
+            Column7.DataPropertyName = "status";
             Column7.HeaderText = "Status";
             Column7.MinimumWidth = 6;
             Column7.Name = "Column7";
@@ -254,11 +270,11 @@
             // 
             // Action
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(0, 192, 192);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Teal;
-            Action.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 192, 192);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Teal;
+            Action.DefaultCellStyle = dataGridViewCellStyle3;
             Action.HeaderText = "Action";
             Action.MinimumWidth = 6;
             Action.Name = "Action";
@@ -274,7 +290,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1375, 783);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewCustomers);
             Controls.Add(btnRefresh);
             Controls.Add(btnSearch);
             Controls.Add(panel1);
@@ -291,7 +307,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCustomers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -308,7 +324,7 @@
         private TextBox txtSearchCustomer;
         private Button btnSearch;
         private Button btnRefresh;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewCustomers;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;

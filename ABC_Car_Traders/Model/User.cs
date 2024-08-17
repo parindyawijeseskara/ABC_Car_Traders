@@ -24,5 +24,7 @@ namespace ABC_Car_Traders.Model
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         public DateTime? deletedAt { get; set; }
+
+        public Role Role { get; set; }
     }
 }

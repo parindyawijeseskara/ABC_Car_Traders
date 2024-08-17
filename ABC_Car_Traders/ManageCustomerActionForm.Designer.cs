@@ -56,10 +56,10 @@
             label9 = new Label();
             label10 = new Label();
             panel7 = new Panel();
-            panel8 = new Panel();
-            cmbRole = new ComboBox();
             txtUserName = new TextBox();
+            panel8 = new Panel();
             txtPassword = new TextBox();
+            cmbRole = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -276,6 +276,7 @@
             btnUpdate.TabIndex = 23;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnDelete
             // 
@@ -288,6 +289,7 @@
             btnDelete.TabIndex = 24;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // cmbStatus
             // 
@@ -338,6 +340,15 @@
             panel7.Size = new Size(222, 39);
             panel7.TabIndex = 29;
             // 
+            // txtUserName
+            // 
+            txtUserName.Dock = DockStyle.Fill;
+            txtUserName.Location = new Point(0, 0);
+            txtUserName.Multiline = true;
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(222, 36);
+            txtUserName.TabIndex = 32;
+            // 
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(35, 115, 144);
@@ -348,24 +359,6 @@
             panel8.Size = new Size(222, 39);
             panel8.TabIndex = 30;
             // 
-            // cmbRole
-            // 
-            cmbRole.FormattingEnabled = true;
-            cmbRole.Items.AddRange(new object[] { "Admin", "Customer" });
-            cmbRole.Location = new Point(386, 515);
-            cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(158, 28);
-            cmbRole.TabIndex = 31;
-            // 
-            // txtUserName
-            // 
-            txtUserName.Dock = DockStyle.Fill;
-            txtUserName.Location = new Point(0, 0);
-            txtUserName.Multiline = true;
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(222, 36);
-            txtUserName.TabIndex = 32;
-            // 
             // txtPassword
             // 
             txtPassword.Dock = DockStyle.Fill;
@@ -374,6 +367,15 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(222, 36);
             txtPassword.TabIndex = 33;
+            // 
+            // cmbRole
+            // 
+            cmbRole.FormattingEnabled = true;
+            cmbRole.Items.AddRange(new object[] { "Admin", "Customer" });
+            cmbRole.Location = new Point(386, 515);
+            cmbRole.Name = "cmbRole";
+            cmbRole.Size = new Size(158, 28);
+            cmbRole.TabIndex = 31;
             // 
             // ManageCustomerActionForm
             // 

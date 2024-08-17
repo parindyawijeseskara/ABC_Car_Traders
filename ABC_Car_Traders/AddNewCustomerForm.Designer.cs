@@ -58,10 +58,10 @@
             label10 = new Label();
             label11 = new Label();
             panel7 = new Panel();
-            panel8 = new Panel();
             txtUserName = new TextBox();
-            cmbRole = new ComboBox();
+            panel8 = new Panel();
             txtPassword = new TextBox();
+            cmbRole = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -310,6 +310,7 @@
             btnSave.TabIndex = 17;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // cmbStatus
             // 
@@ -360,6 +361,15 @@
             panel7.Size = new Size(217, 42);
             panel7.TabIndex = 23;
             // 
+            // txtUserName
+            // 
+            txtUserName.Dock = DockStyle.Fill;
+            txtUserName.Location = new Point(0, 0);
+            txtUserName.Multiline = true;
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(217, 39);
+            txtUserName.TabIndex = 25;
+            // 
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(35, 115, 144);
@@ -370,24 +380,6 @@
             panel8.Size = new Size(217, 42);
             panel8.TabIndex = 24;
             // 
-            // txtUserName
-            // 
-            txtUserName.Dock = DockStyle.Fill;
-            txtUserName.Location = new Point(0, 0);
-            txtUserName.Multiline = true;
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(217, 39);
-            txtUserName.TabIndex = 25;
-            // 
-            // cmbRole
-            // 
-            cmbRole.FormattingEnabled = true;
-            cmbRole.Items.AddRange(new object[] { "Admin", "Customer" });
-            cmbRole.Location = new Point(401, 537);
-            cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(173, 28);
-            cmbRole.TabIndex = 26;
-            // 
             // txtPassword
             // 
             txtPassword.Dock = DockStyle.Fill;
@@ -396,6 +388,14 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(217, 39);
             txtPassword.TabIndex = 26;
+            // 
+            // cmbRole
+            // 
+            cmbRole.FormattingEnabled = true;
+            cmbRole.Location = new Point(401, 537);
+            cmbRole.Name = "cmbRole";
+            cmbRole.Size = new Size(173, 28);
+            cmbRole.TabIndex = 26;
             // 
             // AddNewCustomerForm
             // 

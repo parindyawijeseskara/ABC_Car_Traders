@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABC_Car_Traders.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace ABC_Car_Traders
 {
     public partial class ManageUsers : Form
     {
-        public ManageUsers()
+        private readonly UserController _userController;
+        public ManageUsers(UserController userController)
         {
             InitializeComponent();
+            _userController = userController;
+            loadUsers();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -25,6 +29,17 @@ namespace ABC_Car_Traders
                 actionForm.Show();
 
             }
+        }
+
+        public void loadUsers()
+        {
+            var users = _userController.GetUsers();
+            dataGridViewUsers.DataSource = users;
+        }
+
+        private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
