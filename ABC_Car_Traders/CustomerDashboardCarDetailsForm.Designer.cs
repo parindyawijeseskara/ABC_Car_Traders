@@ -43,7 +43,10 @@
             btnSearchYear = new Button();
             btnSearchPriceRange = new Button();
             btnReset = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewCars = new DataGridView();
+            label5 = new Label();
+            panel3 = new Panel();
+            textBox3 = new TextBox();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -56,13 +59,10 @@
             Column10 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewButtonColumn();
             Column12 = new DataGridViewButtonColumn();
-            label5 = new Label();
-            panel3 = new Panel();
-            textBox3 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCars).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -212,100 +212,16 @@
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dataGridViewCars
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11, Column12 });
-            dataGridView1.Location = new Point(44, 420);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1269, 288);
-            dataGridView1.TabIndex = 39;
-            dataGridView1.CellClick += dataGridView1_CellClick;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Car Id";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Image";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Model";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Brand";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 125;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Year";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 125;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Price";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Width = 125;
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Description";
-            Column7.MinimumWidth = 6;
-            Column7.Name = "Column7";
-            Column7.Width = 125;
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "Stock Quantity";
-            Column8.MinimumWidth = 6;
-            Column8.Name = "Column8";
-            Column8.Width = 125;
-            // 
-            // Column9
-            // 
-            Column9.HeaderText = "Transmission";
-            Column9.MinimumWidth = 6;
-            Column9.Name = "Column9";
-            Column9.Width = 125;
-            // 
-            // Column10
-            // 
-            Column10.HeaderText = "Status";
-            Column10.MinimumWidth = 6;
-            Column10.Name = "Column10";
-            Column10.Width = 125;
-            // 
-            // Column11
-            // 
-            Column11.HeaderText = "View Details";
-            Column11.MinimumWidth = 6;
-            Column11.Name = "Column11";
-            Column11.Width = 125;
-            // 
-            // Column12
-            // 
-            Column12.HeaderText = "Place Order";
-            Column12.MinimumWidth = 6;
-            Column12.Name = "Column12";
-            Column12.Width = 125;
+            dataGridViewCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCars.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11, Column12 });
+            dataGridViewCars.Location = new Point(44, 420);
+            dataGridViewCars.Name = "dataGridViewCars";
+            dataGridViewCars.RowHeadersWidth = 51;
+            dataGridViewCars.Size = new Size(1269, 288);
+            dataGridViewCars.TabIndex = 39;
+            dataGridViewCars.CellClick += dataGridView1_CellClick;
             // 
             // label5
             // 
@@ -336,6 +252,100 @@
             textBox3.Size = new Size(219, 36);
             textBox3.TabIndex = 2;
             // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "carId";
+            Column1.HeaderText = "Car Id";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "image";
+            Column2.HeaderText = "Image";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            Column3.DataPropertyName = "model";
+            Column3.HeaderText = "Model";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            Column4.DataPropertyName = "brand";
+            Column4.HeaderText = "Brand";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            Column5.DataPropertyName = "year";
+            Column5.HeaderText = "Year";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            Column6.DataPropertyName = "price";
+            Column6.HeaderText = "Price";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
+            Column6.Width = 125;
+            // 
+            // Column7
+            // 
+            Column7.DataPropertyName = "description";
+            Column7.HeaderText = "Description";
+            Column7.MinimumWidth = 6;
+            Column7.Name = "Column7";
+            Column7.Width = 125;
+            // 
+            // Column8
+            // 
+            Column8.DataPropertyName = "quantity";
+            Column8.HeaderText = "Stock Quantity";
+            Column8.MinimumWidth = 6;
+            Column8.Name = "Column8";
+            Column8.Width = 125;
+            // 
+            // Column9
+            // 
+            Column9.DataPropertyName = "transmission";
+            Column9.HeaderText = "Transmission";
+            Column9.MinimumWidth = 6;
+            Column9.Name = "Column9";
+            Column9.Width = 125;
+            // 
+            // Column10
+            // 
+            Column10.DataPropertyName = "status";
+            Column10.HeaderText = "Status";
+            Column10.MinimumWidth = 6;
+            Column10.Name = "Column10";
+            Column10.Width = 125;
+            // 
+            // Column11
+            // 
+            Column11.HeaderText = "View Details";
+            Column11.MinimumWidth = 6;
+            Column11.Name = "Column11";
+            Column11.Width = 125;
+            // 
+            // Column12
+            // 
+            Column12.HeaderText = "Place Order";
+            Column12.MinimumWidth = 6;
+            Column12.Name = "Column12";
+            Column12.Width = 125;
+            // 
             // CustomerDashboardCarDetailsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -344,7 +354,7 @@
             ClientSize = new Size(1357, 736);
             Controls.Add(panel3);
             Controls.Add(label5);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewCars);
             Controls.Add(btnReset);
             Controls.Add(btnSearchPriceRange);
             Controls.Add(btnSearchYear);
@@ -365,7 +375,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCars).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
@@ -385,7 +395,12 @@
         private Button btnSearchYear;
         private Button btnSearchPriceRange;
         private Button btnReset;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewCars;
+        private Label label5;
+        private Panel panel3;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
@@ -398,10 +413,5 @@
         private DataGridViewTextBoxColumn Column10;
         private DataGridViewButtonColumn Column11;
         private DataGridViewButtonColumn Column12;
-        private Label label5;
-        private Panel panel3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
     }
 }

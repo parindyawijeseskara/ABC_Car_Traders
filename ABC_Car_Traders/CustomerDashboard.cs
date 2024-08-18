@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABC_Car_Traders.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,12 @@ namespace ABC_Car_Traders
 {
     public partial class CustomerDashboard : Form
     {
+        private readonly CarController _carController;
         private Form activeForm = null;
-        public CustomerDashboard()
+        public CustomerDashboard(CarController carController)
         {
             InitializeComponent();
+            _carController = carController;
         }
 
         public void loadForm(Form newForm)
@@ -45,7 +48,7 @@ namespace ABC_Car_Traders
 
         private void btnCarDetails_Click(object sender, EventArgs e)
         {
-            loadForm(new CustomerDashboardCarDetailsForm());
+            loadForm(new CustomerDashboardCarDetailsForm(_carController));
         }
 
         private void button1_Click(object sender, EventArgs e)

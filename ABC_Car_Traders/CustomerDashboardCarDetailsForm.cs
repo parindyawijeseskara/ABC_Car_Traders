@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABC_Car_Traders.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,24 +13,27 @@ namespace ABC_Car_Traders
 {
     public partial class CustomerDashboardCarDetailsForm : Form
     {
-        public CustomerDashboardCarDetailsForm()
+        private readonly CarController _carController;
+        public CustomerDashboardCarDetailsForm(CarController carController)
         {
             InitializeComponent();
+            _carController = carController;
+            loadCarDetails();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-             if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridView1.Columns["Column11"].Index || e.ColumnIndex == dataGridView1.Columns["Column12"].Index))
-             {
-                if (e.ColumnIndex == dataGridView1.Columns["Column11"].Index)
+            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridViewCars.Columns["Column11"].Index || e.ColumnIndex == dataGridViewCars.Columns["Column12"].Index))
+            {
+                if (e.ColumnIndex == dataGridViewCars.Columns["Column11"].Index)
                 {
                     OpenForm1();
                 }
-                else if (e.ColumnIndex == dataGridView1.Columns["Column12"].Index)
+                else if (e.ColumnIndex == dataGridViewCars.Columns["Column12"].Index)
                 {
                     OpenForm2();
                 }
-             }
+            }
 
         }
 
@@ -43,6 +47,12 @@ namespace ABC_Car_Traders
         {
             CustomerCarPlaceOrderForm form2 = new CustomerCarPlaceOrderForm();
             form2.Show();
+        }
+
+        private void loadCarDetails()
+        {
+            var cars = _carController.GetAllCars();
+            dataGridViewCars.DataSource = cars;
         }
     }
 }
