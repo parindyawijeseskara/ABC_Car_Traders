@@ -33,9 +33,10 @@ namespace ABC_Car_Traders
             var userController = new UserController(context);
             //var loginController = new LoginController(context);
 
-            Application.Run(new AdminDashboard(carController, carPartController, userController));
+            //Application.Run(new AdminDashboard(carController, carPartController, userController));
+            Application.Run(new CustomerDashboard());
             //Application.Run(new LoginForm());
-            //AdminDashboard
+
 
         }
 

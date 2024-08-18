@@ -35,7 +35,7 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            cmbUpdateRole = new ComboBox();
+            cmbStatus = new ComboBox();
             btnDelete = new Button();
             btnUpdate = new Button();
             panel1 = new Panel();
@@ -43,14 +43,12 @@
             panel2 = new Panel();
             txtEmail = new TextBox();
             panel3 = new Panel();
-            txtRole = new TextBox();
-            panel4 = new Panel();
             txtRegistrationDate = new TextBox();
+            cmbRole = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -89,9 +87,9 @@
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(38, 265);
             label3.Name = "label3";
-            label3.Size = new Size(48, 22);
+            label3.Size = new Size(148, 22);
             label3.TabIndex = 13;
-            label3.Text = "Role";
+            label3.Text = "Registration Date";
             // 
             // label4
             // 
@@ -99,28 +97,28 @@
             label4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.Location = new Point(38, 370);
             label4.Name = "label4";
-            label4.Size = new Size(148, 22);
+            label4.Size = new Size(48, 22);
             label4.TabIndex = 14;
-            label4.Text = "Registration Date";
+            label4.Text = "Role";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(38, 470);
+            label5.Location = new Point(38, 452);
             label5.Name = "label5";
-            label5.Size = new Size(109, 22);
+            label5.Size = new Size(57, 22);
             label5.TabIndex = 15;
-            label5.Text = "Update Role";
+            label5.Text = "Status";
             // 
-            // cmbUpdateRole
+            // cmbStatus
             // 
-            cmbUpdateRole.FormattingEnabled = true;
-            cmbUpdateRole.Items.AddRange(new object[] { "Admin", "Customer" });
-            cmbUpdateRole.Location = new Point(38, 495);
-            cmbUpdateRole.Name = "cmbUpdateRole";
-            cmbUpdateRole.Size = new Size(182, 28);
-            cmbUpdateRole.TabIndex = 20;
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Items.AddRange(new object[] { "Available", "Not Available" });
+            cmbStatus.Location = new Point(38, 478);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(182, 28);
+            cmbStatus.TabIndex = 20;
             // 
             // btnDelete
             // 
@@ -133,6 +131,7 @@
             btnDelete.TabIndex = 28;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -145,6 +144,7 @@
             btnUpdate.TabIndex = 27;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // panel1
             // 
@@ -187,31 +187,12 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(35, 115, 144);
-            panel3.Controls.Add(txtRole);
+            panel3.Controls.Add(txtRegistrationDate);
             panel3.Location = new Point(38, 290);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(0, 0, 0, 3);
             panel3.Size = new Size(250, 51);
             panel3.TabIndex = 32;
-            // 
-            // txtRole
-            // 
-            txtRole.Dock = DockStyle.Fill;
-            txtRole.Location = new Point(0, 0);
-            txtRole.Multiline = true;
-            txtRole.Name = "txtRole";
-            txtRole.Size = new Size(250, 48);
-            txtRole.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.FromArgb(35, 115, 144);
-            panel4.Controls.Add(txtRegistrationDate);
-            panel4.Location = new Point(38, 395);
-            panel4.Name = "panel4";
-            panel4.Padding = new Padding(0, 0, 0, 3);
-            panel4.Size = new Size(250, 51);
-            panel4.TabIndex = 33;
             // 
             // txtRegistrationDate
             // 
@@ -220,7 +201,16 @@
             txtRegistrationDate.Multiline = true;
             txtRegistrationDate.Name = "txtRegistrationDate";
             txtRegistrationDate.Size = new Size(250, 48);
-            txtRegistrationDate.TabIndex = 3;
+            txtRegistrationDate.TabIndex = 2;
+            // 
+            // cmbRole
+            // 
+            cmbRole.FormattingEnabled = true;
+            cmbRole.Items.AddRange(new object[] { "Admin", "Customer" });
+            cmbRole.Location = new Point(38, 395);
+            cmbRole.Name = "cmbRole";
+            cmbRole.Size = new Size(182, 28);
+            cmbRole.TabIndex = 33;
             // 
             // ManageUsersActionForm
             // 
@@ -228,13 +218,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(652, 753);
-            Controls.Add(panel4);
+            Controls.Add(cmbRole);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
-            Controls.Add(cmbUpdateRole);
+            Controls.Add(cmbStatus);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -251,8 +241,6 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -265,16 +253,15 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private ComboBox cmbUpdateRole;
+        private ComboBox cmbStatus;
         private Button btnDelete;
         private Button btnUpdate;
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private Panel panel4;
         private TextBox txtCustomerName;
         private TextBox txtEmail;
-        private TextBox txtRole;
         private TextBox txtRegistrationDate;
+        private ComboBox cmbRole;
     }
 }

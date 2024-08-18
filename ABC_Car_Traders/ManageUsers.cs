@@ -23,10 +23,22 @@ namespace ABC_Car_Traders
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 6)
             {
-                ManageUsersActionForm actionForm = new ManageUsersActionForm();
-                actionForm.Show();
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    // Ensure the cell value is not null
+                    if (dataGridViewUsers.Rows[e.RowIndex].Cells[1].Value != null)
+                    {
+                        int userId = (int)dataGridViewUsers.Rows[e.RowIndex].Cells[1].Value;
+                        ManageUsersActionForm actionForm = new ManageUsersActionForm(_userController,userId);
+                        actionForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selected car ID is null. Please select a valid car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
 
             }
         }

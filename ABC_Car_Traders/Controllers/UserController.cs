@@ -51,11 +51,14 @@ namespace ABC_Car_Traders.Controllers
                     user.userId,
                     user.firstName,
                     user.email,
-                    user.Role.role,
-                    user.createdAt.Date,
+                    //user.roleId,
+                    role = user.Role.role,
+                    //user.createdAt,
+                    createdAt = user.createdAt.ToString("yyyy-MM-dd"),
                     user.status
                 })
                 .ToList<dynamic>();
+
         }
 
         public User getUserById(int userId)

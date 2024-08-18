@@ -38,8 +38,8 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewButtonColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
             SuspendLayout();
@@ -68,7 +68,7 @@
             // dataGridViewUsers
             // 
             dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUsers.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column7, Column6 });
+            dataGridViewUsers.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
             dataGridViewUsers.Location = new Point(103, 474);
             dataGridViewUsers.Name = "dataGridViewUsers";
             dataGridViewUsers.RowHeadersWidth = 51;
@@ -103,7 +103,7 @@
             // 
             // Column4
             // 
-            Column4.DataPropertyName = "roleId";
+            Column4.DataPropertyName = "role";
             Column4.HeaderText = "Role";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
@@ -117,26 +117,26 @@
             Column5.Name = "Column5";
             Column5.Width = 200;
             // 
-            // Column7
-            // 
-            Column7.DataPropertyName = "status";
-            Column7.HeaderText = "Status";
-            Column7.MinimumWidth = 6;
-            Column7.Name = "Column7";
-            Column7.Width = 125;
-            // 
             // Column6
+            // 
+            Column6.DataPropertyName = "status";
+            Column6.HeaderText = "Status";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
+            Column6.Width = 125;
+            // 
+            // Column7
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.Teal;
-            Column6.DefaultCellStyle = dataGridViewCellStyle1;
-            Column6.HeaderText = "Action";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Resizable = DataGridViewTriState.True;
-            Column6.SortMode = DataGridViewColumnSortMode.Automatic;
-            Column6.Text = "Action";
-            Column6.Width = 125;
+            Column7.DefaultCellStyle = dataGridViewCellStyle1;
+            Column7.HeaderText = "Action";
+            Column7.MinimumWidth = 6;
+            Column7.Name = "Column7";
+            Column7.Resizable = DataGridViewTriState.True;
+            Column7.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column7.Text = "Action";
+            Column7.Width = 125;
             // 
             // ManageUsers
             // 
@@ -166,7 +166,7 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column7;
-        private DataGridViewButtonColumn Column6;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewButtonColumn Column7;
     }
 }
