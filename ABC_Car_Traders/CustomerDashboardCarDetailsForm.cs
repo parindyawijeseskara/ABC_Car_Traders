@@ -14,6 +14,7 @@ namespace ABC_Car_Traders
     public partial class CustomerDashboardCarDetailsForm : Form
     {
         private readonly CarController _carController;
+
         public CustomerDashboardCarDetailsForm(CarController carController)
         {
             InitializeComponent();
@@ -27,7 +28,20 @@ namespace ABC_Car_Traders
             {
                 if (e.ColumnIndex == dataGridViewCars.Columns["Column11"].Index)
                 {
-                    OpenForm1();
+                    if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                    {
+                        // Ensure the cell value is not null
+                        if (dataGridViewCars.Rows[e.RowIndex].Cells[3].Value != null)
+                        {
+                            int carId = (int)dataGridViewCars.Rows[e.RowIndex].Cells[3].Value;
+                            CustomerCarDetailsViewForm form1 = new CustomerCarDetailsViewForm(_carController, carId);
+                            form1.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Selected car ID is null. Please select a valid car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
                 else if (e.ColumnIndex == dataGridViewCars.Columns["Column12"].Index)
                 {
@@ -35,12 +49,6 @@ namespace ABC_Car_Traders
                 }
             }
 
-        }
-
-        private void OpenForm1()
-        {
-            CustomerCarDetailsViewForm form1 = new CustomerCarDetailsViewForm();
-            form1.Show();
         }
 
         private void OpenForm2()
