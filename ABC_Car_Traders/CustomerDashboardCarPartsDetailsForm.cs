@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABC_Car_Traders.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,20 +13,22 @@ namespace ABC_Car_Traders
 {
     public partial class CustomerDashboardCarPartsDetailsForm : Form
     {
-        public CustomerDashboardCarPartsDetailsForm()
+        private readonly CarPartsController _carPartsController;
+        public CustomerDashboardCarPartsDetailsForm(CarPartsController carPartsController)
         {
             InitializeComponent();
+            _carPartsController = carPartsController;
+            loadCarPartDetails();
         }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewCarParts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridView1.Columns["Column10"].Index || e.ColumnIndex == dataGridView1.Columns["Column11"].Index))
+            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridViewCarParts.Columns["Column11"].Index || e.ColumnIndex == dataGridViewCarParts.Columns["Column12"].Index))
             {
-                if (e.ColumnIndex == dataGridView1.Columns["Column10"].Index)
+                if (e.ColumnIndex == dataGridViewCarParts.Columns["Column11"].Index)
                 {
                     OpenForm1();
                 }
-                else if (e.ColumnIndex == dataGridView1.Columns["Column11"].Index)
+                else if (e.ColumnIndex == dataGridViewCarParts.Columns["Column12"].Index)
                 {
                     OpenForm2();
                 }
@@ -44,5 +47,18 @@ namespace ABC_Car_Traders
             CustomerCarPartsPlaceOrderForm form2 = new CustomerCarPartsPlaceOrderForm();
             form2.Show();
         }
+
+        private void loadCarPartDetails()
+        {
+            var carParts = _carPartsController.GetAllCarParts();
+            dataGridViewCarParts.DataSource = carParts;
+
+        }
+
+        private void btnSearchByCartPartName_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

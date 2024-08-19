@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerDashboardCarPartsDetailsForm));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
@@ -49,9 +52,9 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            button4 = new Button();
+            btnSearchByCartPartName = new Button();
             button5 = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewCarParts = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -61,15 +64,16 @@
             Column7 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
             Column9 = new DataGridViewTextBoxColumn();
-            Column10 = new DataGridViewButtonColumn();
+            Column10 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewButtonColumn();
+            Column12 = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCarParts).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -277,18 +281,19 @@
             button3.Text = "Search";
             button3.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnSearchByCartPartName
             // 
-            button4.BackColor = Color.FromArgb(35, 115, 144);
-            button4.FlatAppearance.BorderSize = 0;
-            button4.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.ForeColor = SystemColors.ControlLightLight;
-            button4.Location = new Point(584, 139);
-            button4.Name = "button4";
-            button4.Size = new Size(184, 42);
-            button4.TabIndex = 43;
-            button4.Text = "Search";
-            button4.UseVisualStyleBackColor = false;
+            btnSearchByCartPartName.BackColor = Color.FromArgb(35, 115, 144);
+            btnSearchByCartPartName.FlatAppearance.BorderSize = 0;
+            btnSearchByCartPartName.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchByCartPartName.ForeColor = SystemColors.ControlLightLight;
+            btnSearchByCartPartName.Location = new Point(584, 139);
+            btnSearchByCartPartName.Name = "btnSearchByCartPartName";
+            btnSearchByCartPartName.Size = new Size(184, 42);
+            btnSearchByCartPartName.TabIndex = 43;
+            btnSearchByCartPartName.Text = "Search";
+            btnSearchByCartPartName.UseVisualStyleBackColor = false;
+            btnSearchByCartPartName.Click += btnSearchByCartPartName_Click;
             // 
             // button5
             // 
@@ -303,40 +308,63 @@
             button5.Text = "Reset";
             button5.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dataGridViewCarParts
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
-            dataGridView1.Location = new Point(76, 442);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1204, 235);
-            dataGridView1.TabIndex = 45;
-            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCarParts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCarParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCarParts.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11, Column12 });
+            dataGridViewCarParts.Location = new Point(76, 464);
+            dataGridViewCarParts.Name = "dataGridViewCarParts";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewCarParts.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCarParts.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCarParts.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCarParts.Size = new Size(1188, 188);
+            dataGridViewCarParts.TabIndex = 45;
+            dataGridViewCarParts.CellClick += dataGridViewCarParts_CellClick;
             // 
             // Column1
             // 
-            Column1.HeaderText = "Part Id";
+            Column1.DataPropertyName = "carPartId";
+            Column1.HeaderText = "Car Part Id";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
             Column1.Width = 125;
             // 
             // Column2
             // 
-            Column2.HeaderText = "Image";
+            Column2.DataPropertyName = "carPartName";
+            Column2.HeaderText = "Car Part Name";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
             Column2.Width = 125;
             // 
             // Column3
             // 
-            Column3.HeaderText = "Part Name";
+            Column3.DataPropertyName = "image";
+            Column3.HeaderText = "Image";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
             Column3.Width = 125;
             // 
             // Column4
             // 
+            Column4.DataPropertyName = "model";
             Column4.HeaderText = "Model";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
@@ -344,6 +372,7 @@
             // 
             // Column5
             // 
+            Column5.DataPropertyName = "price";
             Column5.HeaderText = "Price";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
@@ -351,6 +380,7 @@
             // 
             // Column6
             // 
+            Column6.DataPropertyName = "quantity";
             Column6.HeaderText = "Quantity";
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
@@ -358,6 +388,7 @@
             // 
             // Column7
             // 
+            Column7.DataPropertyName = "description";
             Column7.HeaderText = "Description";
             Column7.MinimumWidth = 6;
             Column7.Name = "Column7";
@@ -365,31 +396,41 @@
             // 
             // Column8
             // 
-            Column8.HeaderText = "Warranty Period";
+            Column8.DataPropertyName = "manufacturer";
+            Column8.HeaderText = "Manufacturer";
             Column8.MinimumWidth = 6;
             Column8.Name = "Column8";
             Column8.Width = 125;
             // 
             // Column9
             // 
-            Column9.HeaderText = "Status";
+            Column9.DataPropertyName = "warrantyPeriod";
+            Column9.HeaderText = "Warranty Period";
             Column9.MinimumWidth = 6;
             Column9.Name = "Column9";
             Column9.Width = 125;
             // 
             // Column10
             // 
-            Column10.HeaderText = "View Details";
+            Column10.DataPropertyName = "status";
+            Column10.HeaderText = "Status";
             Column10.MinimumWidth = 6;
             Column10.Name = "Column10";
             Column10.Width = 125;
             // 
             // Column11
             // 
-            Column11.HeaderText = "Place Order";
+            Column11.HeaderText = "View Details";
             Column11.MinimumWidth = 6;
             Column11.Name = "Column11";
             Column11.Width = 125;
+            // 
+            // Column12
+            // 
+            Column12.HeaderText = "Place Order";
+            Column12.MinimumWidth = 6;
+            Column12.Name = "Column12";
+            Column12.Width = 125;
             // 
             // CustomerDashboardCarPartsDetailsForm
             // 
@@ -397,9 +438,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1339, 689);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewCarParts);
             Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(btnSearchByCartPartName);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -429,7 +470,7 @@
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCarParts).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -450,9 +491,14 @@
         private Button button1;
         private Button button2;
         private Button button3;
-        private Button button4;
+        private Button btnSearchByCartPartName;
         private Button button5;
-        private DataGridView dataGridView1;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private DataGridView dataGridViewCarParts;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
@@ -462,12 +508,8 @@
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column9;
-        private DataGridViewButtonColumn Column10;
+        private DataGridViewTextBoxColumn Column10;
         private DataGridViewButtonColumn Column11;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private DataGridViewButtonColumn Column12;
     }
 }

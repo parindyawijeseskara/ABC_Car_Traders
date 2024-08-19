@@ -14,11 +14,13 @@ namespace ABC_Car_Traders
     public partial class CustomerDashboard : Form
     {
         private readonly CarController _carController;
+        private readonly CarPartsController _carPartsController;
         private Form activeForm = null;
-        public CustomerDashboard(CarController carController)
+        public CustomerDashboard(CarController carController, CarPartsController carPartsController)
         {
             InitializeComponent();
             _carController = carController;
+            _carPartsController = carPartsController;
         }
 
         public void loadForm(Form newForm)
@@ -53,7 +55,7 @@ namespace ABC_Car_Traders
 
         private void button1_Click(object sender, EventArgs e)
         {
-            loadForm(new CustomerDashboardCarPartsDetailsForm());
+            loadForm(new CustomerDashboardCarPartsDetailsForm(_carPartsController));
         }
 
         private void ManageCustomerOrders_Click(object sender, EventArgs e)
