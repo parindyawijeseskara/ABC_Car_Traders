@@ -26,7 +26,20 @@ namespace ABC_Car_Traders
             {
                 if (e.ColumnIndex == dataGridViewCarParts.Columns["Column11"].Index)
                 {
-                    OpenForm1();
+                    if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                    {
+                        // Ensure the cell value is not null
+                        if (dataGridViewCarParts.Rows[e.RowIndex].Cells[2].Value != null)
+                        {
+                            int carPartId = (int)dataGridViewCarParts.Rows[e.RowIndex].Cells[2].Value;
+                            CustomerCarPartsDetailViewForm form1 = new CustomerCarPartsDetailViewForm(_carPartsController,carPartId);
+                            form1.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Selected car ID is null. Please select a valid car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
                 else if (e.ColumnIndex == dataGridViewCarParts.Columns["Column12"].Index)
                 {
@@ -37,8 +50,8 @@ namespace ABC_Car_Traders
 
         private void OpenForm1()
         {
-            CustomerCarPartsDetailViewForm form1 = new CustomerCarPartsDetailViewForm();
-            form1.Show();
+            //CustomerCarPartsDetailViewForm form1 = new CustomerCarPartsDetailViewForm();
+            //form1.Show();
 
         }
 
