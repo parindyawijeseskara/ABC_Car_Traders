@@ -19,7 +19,14 @@ namespace ABC_Car_Traders
         {
             InitializeComponent();
             _carController = carController;
+            dataGridViewCars.AutoGenerateColumns = false; // Ensures columns are not auto-generated
             loadCarDetails();
+
+        }
+        private void CustomerDashboardCarDetailsForm_Load(object sender, EventArgs e)
+        {
+            loadCarDetails();
+            loadCarModels();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -61,6 +68,82 @@ namespace ABC_Car_Traders
         {
             var cars = _carController.GetAllCars();
             dataGridViewCars.DataSource = cars;
+        }
+
+        //Load car models to the combo box
+        public void loadCarModels()
+        {
+            var carModels = _carController.GetAllCars();
+            cmbModel.DataSource = carModels;
+            cmbModel.DisplayMember = "model";
+            cmbModel.SelectedIndex = -1;
+        }
+
+        private void btnSearchModel_Click(object sender, EventArgs e)
+        {
+            if (cmbModel.SelectedItem != null)
+            {
+                string selectedModel = cmbModel.Text;
+                var filteredCars = _carController.GetCarsByModel(selectedModel);
+                dataGridViewCars.DataSource = filteredCars;
+            }
+            else
+            {
+                MessageBox.Show("Please select a valid car model.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void btnSearchYear_Click(object sender, EventArgs e)
+        {
+            string year = txtYear.Text;
+            var filteredYear = _carController.GetAllCarsByYear(year);
+            if (filteredYear == null || filteredYear.Count == 0)
+            {
+                MessageBox.Show($"No cars found for the year {year}.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                dataGridViewCars.DataSource = filteredYear;
+            }
+
+        }
+
+        private void btnSearchPriceRange_Click(object sender, EventArgs e)
+        {
+            string priceFromText = txtFromPriceRange.Text;
+            string priceToText = txtToPriceRange.Text;
+
+            if (decimal.TryParse(priceFromText,out decimal priceFrom) && decimal.TryParse(priceToText,out decimal priceTo))
+            {
+                if (priceFrom > priceTo)
+                {
+                    MessageBox.Show("The starting price should be less than or equal to the ending price.", "Invalid Price Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var filteredCars = _carController.GetAllCarsByPrice(priceFrom,priceTo);
+                // Check if the result is empty
+                if (filteredCars == null || filteredCars.Count == 0)
+                {
+                    MessageBox.Show($"No cars found within the price range Rs {priceFrom:N2} to Rs {priceTo:N2}.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Bind the filtered result to the DataGridView
+                    dataGridViewCars.DataSource = filteredCars;
+                }
+
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            cmbModel.SelectedIndex = -1;
+            txtYear.Text = string.Empty;
+            txtFromPriceRange.Text = string.Empty;
+            txtToPriceRange.Text = string.Empty;
+            loadCarDetails();
         }
     }
 }

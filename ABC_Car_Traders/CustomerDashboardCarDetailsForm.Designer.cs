@@ -37,16 +37,13 @@
             label4 = new Label();
             cmbModel = new ComboBox();
             panel1 = new Panel();
-            textBox1 = new TextBox();
+            txtYear = new TextBox();
             panel2 = new Panel();
-            textBox2 = new TextBox();
+            txtFromPriceRange = new TextBox();
             btnSearchYear = new Button();
             btnSearchPriceRange = new Button();
             btnReset = new Button();
             dataGridViewCars = new DataGridView();
-            label5 = new Label();
-            panel3 = new Panel();
-            textBox3 = new TextBox();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -59,6 +56,9 @@
             Column10 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewButtonColumn();
             Column12 = new DataGridViewButtonColumn();
+            label5 = new Label();
+            panel3 = new Panel();
+            txtToPriceRange = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -78,6 +78,7 @@
             btnSearchModel.TabIndex = 27;
             btnSearchModel.Text = "Search";
             btnSearchModel.UseVisualStyleBackColor = false;
+            btnSearchModel.Click += btnSearchModel_Click;
             // 
             // label2
             // 
@@ -141,40 +142,40 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(35, 115, 144);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtYear);
             panel1.Location = new Point(235, 228);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(0, 0, 0, 3);
             panel1.Size = new Size(219, 39);
             panel1.TabIndex = 34;
             // 
-            // textBox1
+            // txtYear
             // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(0, 0);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(219, 36);
-            textBox1.TabIndex = 0;
+            txtYear.Dock = DockStyle.Fill;
+            txtYear.Location = new Point(0, 0);
+            txtYear.Multiline = true;
+            txtYear.Name = "txtYear";
+            txtYear.Size = new Size(219, 36);
+            txtYear.TabIndex = 0;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(35, 115, 144);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(txtFromPriceRange);
             panel2.Location = new Point(235, 299);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(0, 0, 0, 3);
             panel2.Size = new Size(219, 39);
             panel2.TabIndex = 35;
             // 
-            // textBox2
+            // txtFromPriceRange
             // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(0, 0);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(219, 36);
-            textBox2.TabIndex = 1;
+            txtFromPriceRange.Dock = DockStyle.Fill;
+            txtFromPriceRange.Location = new Point(0, 0);
+            txtFromPriceRange.Multiline = true;
+            txtFromPriceRange.Name = "txtFromPriceRange";
+            txtFromPriceRange.Size = new Size(219, 36);
+            txtFromPriceRange.TabIndex = 1;
             // 
             // btnSearchYear
             // 
@@ -187,6 +188,7 @@
             btnSearchYear.TabIndex = 36;
             btnSearchYear.Text = "Search";
             btnSearchYear.UseVisualStyleBackColor = false;
+            btnSearchYear.Click += btnSearchYear_Click;
             // 
             // btnSearchPriceRange
             // 
@@ -199,6 +201,7 @@
             btnSearchPriceRange.TabIndex = 37;
             btnSearchPriceRange.Text = "Search";
             btnSearchPriceRange.UseVisualStyleBackColor = false;
+            btnSearchPriceRange.Click += btnSearchPriceRange_Click;
             // 
             // btnReset
             // 
@@ -211,6 +214,7 @@
             btnReset.TabIndex = 38;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // dataGridViewCars
             // 
@@ -222,35 +226,6 @@
             dataGridViewCars.Size = new Size(1269, 288);
             dataGridViewCars.TabIndex = 39;
             dataGridViewCars.CellClick += dataGridView1_CellClick;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(475, 315);
-            label5.Name = "label5";
-            label5.Size = new Size(31, 23);
-            label5.TabIndex = 40;
-            label5.Text = "To";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.FromArgb(35, 115, 144);
-            panel3.Controls.Add(textBox3);
-            panel3.Location = new Point(512, 299);
-            panel3.Name = "panel3";
-            panel3.Padding = new Padding(0, 0, 0, 3);
-            panel3.Size = new Size(219, 39);
-            panel3.TabIndex = 36;
-            // 
-            // textBox3
-            // 
-            textBox3.Dock = DockStyle.Fill;
-            textBox3.Location = new Point(0, 0);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(219, 36);
-            textBox3.TabIndex = 2;
             // 
             // Column1
             // 
@@ -346,6 +321,35 @@
             Column12.Name = "Column12";
             Column12.Width = 125;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(475, 315);
+            label5.Name = "label5";
+            label5.Size = new Size(31, 23);
+            label5.TabIndex = 40;
+            label5.Text = "To";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(35, 115, 144);
+            panel3.Controls.Add(txtToPriceRange);
+            panel3.Location = new Point(512, 299);
+            panel3.Name = "panel3";
+            panel3.Padding = new Padding(0, 0, 0, 3);
+            panel3.Size = new Size(219, 39);
+            panel3.TabIndex = 36;
+            // 
+            // txtToPriceRange
+            // 
+            txtToPriceRange.Dock = DockStyle.Fill;
+            txtToPriceRange.Location = new Point(0, 0);
+            txtToPriceRange.Multiline = true;
+            txtToPriceRange.Name = "txtToPriceRange";
+            txtToPriceRange.Size = new Size(219, 36);
+            txtToPriceRange.TabIndex = 2;
+            // 
             // CustomerDashboardCarDetailsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -370,6 +374,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "CustomerDashboardCarDetailsForm";
             Text = "CustomerDashboardCarDetailsForm";
+            Load += CustomerDashboardCarDetailsForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -398,9 +403,9 @@
         private DataGridView dataGridViewCars;
         private Label label5;
         private Panel panel3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox txtYear;
+        private TextBox txtFromPriceRange;
+        private TextBox txtToPriceRange;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;

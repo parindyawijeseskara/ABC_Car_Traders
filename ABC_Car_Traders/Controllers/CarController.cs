@@ -77,5 +77,64 @@ namespace ABC_Car_Traders.Controllers
                 _context.SaveChanges();
             }
         }
+
+        //Get all car models 
+        public List<dynamic> GetCarsByModel(string model)
+        {
+            return _context.Cars
+            .Where(car => car.deletedAt == null && car.model == model)
+            .Select(car => new {
+                car.carId,
+                car.model,
+                car.brand,
+                car.year,
+                car.price,
+                car.description,
+                car.quantity,
+                car.transmission,
+                car.status
+            })
+            .ToList<dynamic>();
+        }
+
+        //Get all cars by year
+        public List<dynamic> GetAllCarsByYear(string year)
+        {
+            return _context.Cars
+            .Where(car => car.deletedAt == null && car.year == year)
+            .Select(car => new
+            {
+                car.carId,
+                car.model,
+                car.brand,
+                car.year,
+                car.price,
+                car.description,
+                car.quantity,
+                car.transmission,
+                car.status
+            })
+            .ToList<dynamic>();
+        }
+
+        //Get all cars by prices
+        public List<dynamic> GetAllCarsByPrice(decimal priceFrom, decimal priceTo)
+        {
+            return _context.Cars
+            .Where(car => car.deletedAt == null && car.price >= priceFrom && car.price <= priceTo) 
+            .Select(car => new
+            {
+                car.carId,
+                car.model,
+                car.brand,
+                car.year,
+                car.price,
+                car.description,
+                car.quantity,
+                car.transmission,
+                car.status
+            })
+            .ToList<dynamic>();
+        }
     }
 }
