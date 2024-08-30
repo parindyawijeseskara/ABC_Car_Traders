@@ -13,7 +13,7 @@ namespace ABC_Car_Traders.Model
         [Key]
         public int carPartId { get; set; }
         public string carPartName { get; set;}
-        public byte[] image { get; set;}
+        public byte[]? image { get; set;}
         public Models Model { get; set; }
         public int modelId { get; set; }
         public decimal price { get; set;}
