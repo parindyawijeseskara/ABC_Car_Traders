@@ -88,6 +88,7 @@
             btnLogOut.Text = "Log Out";
             btnLogOut.TextAlign = ContentAlignment.MiddleLeft;
             btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
             // 
             // pictureBox9
             // 

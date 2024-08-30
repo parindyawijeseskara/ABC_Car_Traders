@@ -21,23 +21,56 @@ namespace ABC_Car_Traders
         {
             _carPartsController = carPartsController;
             InitializeComponent();
+            lblNameError.Visible = false;
+            lblBrandError.Visible = false;
+            lblModelError.Visible = false;
+            lblPriceError.Visible = false;
+            lblQuantityError.Visible = false;
+            lblDescriptionError.Visible = false;
+            lblManufacturerError.Visible = false;
+            lblWarrantyError.Visible = false;
+            lblImageError.Visible = false;
         }
 
         private void btnSaveCarParts_Click(object sender, EventArgs e)
         {
             try
             {
+                //Validate the form
+                if (!IsFormValid())
+                {
+                    MessageBox.Show("Please correct the highlighted errors.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var brandName = txtBrand.Text;
+                var brand = _carPartsController.GetBrandByName(brandName);
+                if (brand == null)
+                {
+                    brand = new Brand { brandName = brandName };
+                    _carPartsController.AddBrand(brand);
+                }
+
+                var modelName = txtModel.Text;
+                var model = _carPartsController.GetModelByName(modelName, brand.brandId);
+
+                if (model == null)
+                {
+                    model = new Models { modelName = modelName, brandId = brand.brandId };
+                    _carPartsController.AddModel(model);
+                }
+
                 var carParts = new CarParts()
                 {
                     carPartName = txtName.Text,
-                    model = txtModel.Text,
+                    image = _carPartsImage,
+                    modelId = model.modelId,
                     price = decimal.Parse(txtPrice.Text),
                     quantity = int.Parse(txtQuantity.Text),
                     description = txtDescription.Text,
                     manufacturer = txtManufacturer.Text,
                     warrantyPeriod = txtWarrantyPeriod.Text,
-                    status = cmbStatus.Text,
-                    image = _carPartsImage
+                    status = "Available"
                 };
                 _carPartsController.AddCarParts(carParts);
                 MessageBox.Show("Car Parts saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -93,5 +126,126 @@ namespace ABC_Car_Traders
                 return ms.ToArray();
             }
         }
+
+        private bool IsFormValid()
+        {
+            bool isValid = true;
+
+            // Validate Registration Number
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                lblNameError.Text = "** Please enter the registration number.";
+                lblNameError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblNameError.Visible = false;
+            }
+
+            // Validate Brand Name
+            if (string.IsNullOrWhiteSpace(txtBrand.Text))
+            {
+                lblBrandError.Text = "Please enter the brand name.";
+                lblBrandError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblBrandError.Visible = false;
+            }
+
+            // Validate Model Name
+            if (string.IsNullOrWhiteSpace(txtModel.Text))
+            {
+                lblModelError.Text = "Please enter the model name.";
+                lblModelError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblModelError.Visible = false;
+            }
+
+            // Validate Price
+            if (!decimal.TryParse(txtPrice.Text, out decimal price) || price <= 0)
+            {
+                lblPriceError.Text = "Please enter a valid price.";
+                lblPriceError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblPriceError.Visible = false;
+            }
+
+            // Validate Quantity
+            if (!int.TryParse(txtQuantity.Text, out int quantity) || quantity <= 0)
+            {
+                lblQuantityError.Text = "Please enter a valid quantity.";
+                lblQuantityError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblQuantityError.Visible = false;
+            }
+
+            // Validate Description
+            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+            {
+                lblDescriptionError.Text = "Please enter the description.";
+                lblDescriptionError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblDescriptionError.Visible = false;
+            }
+
+            // Validate Manufacturer
+            if (string.IsNullOrWhiteSpace(txtManufacturer.Text))
+            {
+                lblManufacturerError.Text = "Please select a transmission type.";
+                lblManufacturerError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblManufacturerError.Visible = false;
+            }
+
+
+            // Validate Warranty Period
+            if (string.IsNullOrWhiteSpace(txtWarrantyPeriod.Text))
+            {
+                lblWarrantyError.Text = "Please select a warranty period.";
+                lblWarrantyError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblWarrantyError.Visible = false;
+            }
+
+            // Validate Image
+            if (_carPartsImage == null || _carPartsImage.Length == 0)
+            {
+                lblImageError.Text = "Please upload an image.";
+                lblImageError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblImageError.Visible = false;
+            }
+            return isValid;
+        }
+
+
+
+
+
+
     }
 }

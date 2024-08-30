@@ -37,7 +37,6 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            label8 = new Label();
             label9 = new Label();
             panel1 = new Panel();
             txtCarPartName = new TextBox();
@@ -53,10 +52,11 @@
             txtManufacturer = new TextBox();
             panel7 = new Panel();
             txtWarrantyPeriod = new TextBox();
-            cmbStatus = new ComboBox();
             btnDelete = new Button();
             btnUpdate = new Button();
             pictureBoxImage = new PictureBox();
+            label8 = new Label();
+            txtBrand = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -147,16 +147,6 @@
             label7.Size = new Size(139, 22);
             label7.TabIndex = 12;
             label7.Text = "Warranty Period";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(364, 300);
-            label8.Name = "label8";
-            label8.Size = new Size(57, 22);
-            label8.TabIndex = 13;
-            label8.Text = "Status";
             // 
             // label9
             // 
@@ -301,15 +291,6 @@
             txtWarrantyPeriod.Size = new Size(250, 48);
             txtWarrantyPeriod.TabIndex = 35;
             // 
-            // cmbStatus
-            // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "Available ", "Not Available" });
-            cmbStatus.Location = new Point(364, 325);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(236, 28);
-            cmbStatus.TabIndex = 22;
-            // 
             // btnDelete
             // 
             btnDelete.BackColor = Color.FromArgb(35, 115, 144);
@@ -344,16 +325,34 @@
             pictureBoxImage.TabIndex = 29;
             pictureBoxImage.TabStop = false;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(346, 257);
+            label8.Name = "label8";
+            label8.Size = new Size(58, 22);
+            label8.TabIndex = 30;
+            label8.Text = "Brand";
+            // 
+            // txtBrand
+            // 
+            txtBrand.Location = new Point(346, 292);
+            txtBrand.Name = "txtBrand";
+            txtBrand.Size = new Size(218, 27);
+            txtBrand.TabIndex = 31;
+            // 
             // ManageCarPartsActionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(652, 798);
+            Controls.Add(txtBrand);
+            Controls.Add(label8);
             Controls.Add(pictureBoxImage);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
-            Controls.Add(cmbStatus);
             Controls.Add(panel7);
             Controls.Add(panel6);
             Controls.Add(panel5);
@@ -362,7 +361,6 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(label9);
-            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -404,7 +402,6 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label label8;
         private Label label9;
         private Panel panel1;
         private Panel panel2;
@@ -413,7 +410,6 @@
         private Panel panel5;
         private Panel panel6;
         private Panel panel7;
-        private ComboBox cmbStatus;
         private Button btnDelete;
         private Button btnUpdate;
         private TextBox txtCarPartName;
@@ -424,5 +420,7 @@
         private TextBox txtManufacturer;
         private TextBox txtWarrantyPeriod;
         private PictureBox pictureBoxImage;
+        private Label label8;
+        private TextBox txtBrand;
     }
 }

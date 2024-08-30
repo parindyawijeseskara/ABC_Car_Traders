@@ -209,6 +209,7 @@
             txtCarName.Name = "txtCarName";
             txtCarName.Size = new Size(200, 27);
             txtCarName.TabIndex = 26;
+            txtCarName.TextChanged += txtCarName_TextChanged;
             // 
             // CustomerCarDetailsViewForm
             // 

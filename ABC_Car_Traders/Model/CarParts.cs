@@ -14,7 +14,8 @@ namespace ABC_Car_Traders.Model
         public int carPartId { get; set; }
         public string carPartName { get; set;}
         public byte[] image { get; set;}
-        public string model {  get; set;}
+        public Models Model { get; set; }
+        public int modelId { get; set; }
         public decimal price { get; set;}
         public int quantity { get; set;}
         public string description { get; set;}

@@ -27,10 +27,10 @@ namespace ABC_Car_Traders
 
         private void LoadRoles()
         {
-            var roles = _userController.GetAllRoles();
-            cmbRole.DataSource = roles;
-            cmbRole.DisplayMember = "role"; // Display the role description
-            cmbRole.ValueMember = "roleId"; // The role ID is used as the value
+            //var roles = _userController.GetAllRoles();
+            //cmbRole.DataSource = roles;
+            //cmbRole.DisplayMember = "role"; // Display the role description
+            //cmbRole.ValueMember = "roleId"; // The role ID is used as the value
 
         }
 
@@ -51,9 +51,9 @@ namespace ABC_Car_Traders
             txtNic.Text = _user.nic;
             txtUserName.Text = _user.userName;
             txtPassword.Text = _user.password;
-            cmbStatus.SelectedItem = _user.status;
-            LoadRoles();
-            cmbRole.SelectedValue = _user.roleId;
+            //cmbStatus.SelectedItem = _user.status;
+           // LoadRoles();
+           // cmbRole.SelectedValue = _user.roleId;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -66,9 +66,10 @@ namespace ABC_Car_Traders
                 _user.address = txtAddress.Text;
                 _user.contactNo = txtContactNo.Text;
                 _user.nic = txtNic.Text;
-                _user.status = cmbStatus.Text;
+                _user.status = "ACT";
                 _user.userName = txtUserName.Text;
                 _user.password = txtPassword.Text;
+                _user.userId = _userId;
                 //_user.roleId = cmbRole.SelectedIndex;
                 _userController.updateUser(_user);
                 this.Close();

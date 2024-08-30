@@ -23,24 +23,58 @@ namespace ABC_Car_Traders
         {
             _carController = carController;
             InitializeComponent();
+            lblRegNoError.Visible = false;
+            lblBrandError.Visible = false;
+            lblModelError.Visible = false;
+            lblYearError.Visible = false;
+            lblPriceError.Visible = false;
+            lblDescriptionError.Visible = false;
+            lblQuantityError.Visible = false;
+            lblTransmissionError.Visible = false;
+            lblImageError.Visible = false;
         }
 
         private void btnSaveCar_Click(object sender, EventArgs e)
         {
             try
             {
+                // Validate the form
+                if (!IsFormValid())
+                {
+                    MessageBox.Show("Please correct the highlighted errors.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var brandName = txtBrand.Text;
+                var brand = _carController.GetBrandByName(brandName);
+                if (brand == null)
+                {
+                    brand = new Brand { brandName = brandName };
+                    _carController.AddBrand(brand);
+                }
+
+                var modelName = txtModel.Text;
+                var model = _carController.GetModelByName(modelName, brand.brandId);
+
+                if (model == null)
+                {
+                    model = new Models { modelName = modelName, brandId = brand.brandId };
+                    _carController.AddModel(model);
+                }
+
+
                 var car = new Car()
                 {
-                    carName = txtCarName.Text,
+
+                    regNo = txtCarName.Text,
                     image = _carImage,
-                    model = textModel.Text,
-                    brand = txtBrand.Text,
+                    modelId = model.modelId,
                     year = txtYear.Text,
                     price = decimal.Parse(txtPrice.Text),
                     description = txtDescription.Text,
                     quantity = int.Parse(txtQuantity.Text),
                     transmission = cmbTransmission.Text,
-                    status = txtStatus.Text
+                    status = "AVAILABLE"
                 };
                 _carController.AddCar(car);
                 //Show successfull saved message
@@ -101,5 +135,111 @@ namespace ABC_Car_Traders
             }
         }
 
+        private bool IsFormValid()
+        {
+            bool isValid = true;
+
+            // Validate Registration Number
+            if (string.IsNullOrWhiteSpace(txtCarName.Text))
+            {
+                lblRegNoError.Text = "** Please enter the registration number.";
+                lblRegNoError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblRegNoError.Visible = false;
+            }
+
+            // Validate Brand Name
+            if (string.IsNullOrWhiteSpace(txtBrand.Text))
+            {
+                lblBrandError.Text = "Please enter the brand name.";
+                lblBrandError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblBrandError.Visible = false;
+            }
+
+            // Validate Model Name
+            if (string.IsNullOrWhiteSpace(txtModel.Text))
+            {
+                lblModelError.Text = "Please enter the model name.";
+                lblModelError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblModelError.Visible = false;
+            }
+
+            // Validate Year
+            if (!int.TryParse(txtYear.Text, out int year) || txtYear.Text.Length != 4)
+            {
+                lblYearError.Text = "Please enter a valid 4-digit year.";
+                lblYearError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblYearError.Visible = false;
+            }
+
+            // Validate Price
+            if (!decimal.TryParse(txtPrice.Text, out decimal price) || price <= 0)
+            {
+                lblPriceError.Text = "Please enter a valid price.";
+                lblPriceError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblPriceError.Visible = false;
+            }
+
+            // Validate Quantity
+            if (!int.TryParse(txtQuantity.Text, out int quantity) || quantity <= 0)
+            {
+                lblQuantityError.Text = "Please enter a valid quantity.";
+                lblQuantityError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblQuantityError.Visible = false;
+            }
+
+            // Validate Transmission
+            if (string.IsNullOrWhiteSpace(cmbTransmission.Text))
+            {
+                lblTransmissionError.Text = "Please select a transmission type.";
+                lblTransmissionError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblTransmissionError.Visible = false;
+            }
+
+            // Validate Image
+            if (_carImage == null || _carImage.Length == 0)
+            {
+                lblImageError.Text = "Please upload an image.";
+                lblImageError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblImageError.Visible = false;
+            }
+
+
+
+            return isValid;
+        }
+
+        
     }
 }

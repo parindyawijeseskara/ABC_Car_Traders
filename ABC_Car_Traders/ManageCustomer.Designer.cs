@@ -40,10 +40,10 @@
             btnAddNewCustomer = new Button();
             pictureBox2 = new PictureBox();
             label2 = new Label();
-            comboBox1 = new ComboBox();
+            cmbStatus = new ComboBox();
             panel1 = new Panel();
-            txtSearchCustomer = new TextBox();
-            btnSearch = new Button();
+            txtEmail = new TextBox();
+            btnSearchEmail = new Button();
             btnRefresh = new Button();
             dataGridViewCustomers = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
@@ -54,6 +54,8 @@
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Action = new DataGridViewButtonColumn();
+            label3 = new Label();
+            btnSearchStatus = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
@@ -112,53 +114,55 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(516, 193);
+            label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(689, 192);
             label2.Name = "label2";
-            label2.Size = new Size(187, 25);
+            label2.Size = new Size(146, 23);
             label2.TabIndex = 4;
-            label2.Text = "Search Customer";
+            label2.Text = "Search by Email";
             // 
-            // comboBox1
+            // cmbStatus
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(709, 187);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(160, 28);
-            comboBox1.TabIndex = 5;
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Items.AddRange(new object[] { "ACT", "INACT" });
+            cmbStatus.Location = new Point(859, 265);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(219, 28);
+            cmbStatus.TabIndex = 5;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(35, 115, 144);
-            panel1.Controls.Add(txtSearchCustomer);
-            panel1.Location = new Point(936, 177);
+            panel1.Controls.Add(txtEmail);
+            panel1.Location = new Point(859, 177);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(0, 0, 0, 3);
-            panel1.Size = new Size(221, 41);
+            panel1.Size = new Size(237, 41);
             panel1.TabIndex = 6;
             // 
-            // txtSearchCustomer
+            // txtEmail
             // 
-            txtSearchCustomer.Dock = DockStyle.Fill;
-            txtSearchCustomer.Location = new Point(0, 0);
-            txtSearchCustomer.Multiline = true;
-            txtSearchCustomer.Name = "txtSearchCustomer";
-            txtSearchCustomer.Size = new Size(221, 38);
-            txtSearchCustomer.TabIndex = 0;
+            txtEmail.Dock = DockStyle.Fill;
+            txtEmail.Location = new Point(0, 0);
+            txtEmail.Multiline = true;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(237, 38);
+            txtEmail.TabIndex = 11;
             // 
-            // btnSearch
+            // btnSearchEmail
             // 
-            btnSearch.BackColor = Color.FromArgb(35, 115, 144);
-            btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSearch.ForeColor = SystemColors.ControlLightLight;
-            btnSearch.Location = new Point(1178, 177);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(174, 42);
-            btnSearch.TabIndex = 7;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = false;
+            btnSearchEmail.BackColor = Color.FromArgb(35, 115, 144);
+            btnSearchEmail.FlatAppearance.BorderSize = 0;
+            btnSearchEmail.FlatStyle = FlatStyle.Flat;
+            btnSearchEmail.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchEmail.ForeColor = SystemColors.ControlLightLight;
+            btnSearchEmail.Location = new Point(1151, 176);
+            btnSearchEmail.Name = "btnSearchEmail";
+            btnSearchEmail.Size = new Size(174, 42);
+            btnSearchEmail.TabIndex = 7;
+            btnSearchEmail.Text = "Search";
+            btnSearchEmail.UseVisualStyleBackColor = false;
+            btnSearchEmail.Click += btnSearchEmail_Click;
             // 
             // btnRefresh
             // 
@@ -167,12 +171,13 @@
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = SystemColors.ControlLightLight;
-            btnRefresh.Location = new Point(1178, 251);
+            btnRefresh.Location = new Point(1151, 328);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(174, 42);
             btnRefresh.TabIndex = 8;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // dataGridViewCustomers
             // 
@@ -284,17 +289,44 @@
             Action.UseColumnTextForButtonValue = true;
             Action.Width = 150;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(689, 270);
+            label3.Name = "label3";
+            label3.Size = new Size(151, 23);
+            label3.TabIndex = 10;
+            label3.Text = "Search by Status";
+            // 
+            // btnSearchStatus
+            // 
+            btnSearchStatus.BackColor = Color.FromArgb(35, 115, 144);
+            btnSearchStatus.FlatAppearance.BorderSize = 0;
+            btnSearchStatus.FlatStyle = FlatStyle.Flat;
+            btnSearchStatus.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchStatus.ForeColor = SystemColors.ControlLightLight;
+            btnSearchStatus.Location = new Point(1151, 251);
+            btnSearchStatus.Name = "btnSearchStatus";
+            btnSearchStatus.Size = new Size(174, 42);
+            btnSearchStatus.TabIndex = 11;
+            btnSearchStatus.Text = "Search";
+            btnSearchStatus.UseVisualStyleBackColor = false;
+            btnSearchStatus.Click += btnSearchStatus_Click;
+            // 
             // ManageCustomer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1375, 783);
+            Controls.Add(btnSearchStatus);
+            Controls.Add(label3);
             Controls.Add(dataGridViewCustomers);
             Controls.Add(btnRefresh);
-            Controls.Add(btnSearch);
+            Controls.Add(btnSearchEmail);
             Controls.Add(panel1);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbStatus);
             Controls.Add(label2);
             Controls.Add(pictureBox2);
             Controls.Add(btnAddNewCustomer);
@@ -319,10 +351,9 @@
         private Button btnAddNewCustomer;
         private PictureBox pictureBox2;
         private Label label2;
-        private ComboBox comboBox1;
+        private ComboBox cmbStatus;
         private Panel panel1;
-        private TextBox txtSearchCustomer;
-        private Button btnSearch;
+        private Button btnSearchEmail;
         private Button btnRefresh;
         private DataGridView dataGridViewCustomers;
         private DataGridViewTextBoxColumn Column1;
@@ -333,5 +364,8 @@
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewButtonColumn Action;
+        private Label label3;
+        private TextBox txtEmail;
+        private Button btnSearchStatus;
     }
 }

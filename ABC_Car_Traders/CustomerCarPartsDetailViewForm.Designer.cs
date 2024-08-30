@@ -80,6 +80,7 @@
             txtModel.Name = "txtModel";
             txtModel.Size = new Size(200, 27);
             txtModel.TabIndex = 25;
+            txtModel.TextChanged += txtModel_TextChanged;
             // 
             // label2
             // 

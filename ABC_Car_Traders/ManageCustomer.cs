@@ -19,6 +19,8 @@ namespace ABC_Car_Traders
             InitializeComponent();
             _userController = userController;
             loadUsers();
+            loadStatus();
+            dataGridViewCustomers.AutoGenerateColumns = false;
 
         }
 
@@ -32,15 +34,9 @@ namespace ABC_Car_Traders
         {
             if (e.ColumnIndex == 7)
             {
-                /* DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                 btn.Name = "Action";
-                 btn.HeaderText = "Action";
-                 btn.Text = "Action";
-                 btn.UseColumnTextForButtonValue = true;*/
 
                 if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
-                    // Ensure the cell value is not null
                     if (dataGridViewCustomers.Rows[e.RowIndex].Cells[1].Value != null)
                     {
                         int userId = (int)dataGridViewCustomers.Rows[e.RowIndex].Cells[1].Value;
@@ -67,6 +63,59 @@ namespace ABC_Car_Traders
         private void dataGridViewCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnSearchEmail_Click(object sender, EventArgs e)
+        {
+            string email = txtEmail.Text.Trim();
+            if (string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Please enter an email address to search.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var filteredCustomers = _userController.GetCustomersByEmail(email);
+
+            if (filteredCustomers.Count == 0)
+            {
+                MessageBox.Show("No customers found with the specified email.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                dataGridViewCustomers.DataSource = filteredCustomers;
+            }
+
+        }
+
+        public void loadStatus()
+        {
+            //var customerStatus = _userController.GetCustomersByStatus();
+            //cmbStatus.DataSource = customerStatus;
+            //cmbStatus.DisplayMember = "status";
+            //cmbStatus.SelectedIndex = -1;
+        }
+
+        private void btnSearchStatus_Click(object sender, EventArgs e)
+        {
+            if (cmbStatus.SelectedItem != null)
+            {
+                string selectedModel = cmbStatus.Text;
+                var filteredCars = _userController.GetCustomersByStatus(selectedModel);
+                dataGridViewCustomers.DataSource = filteredCars;
+            }
+            else
+            {
+                MessageBox.Show("Please select a status to search.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            cmbStatus.SelectedIndex = -1;
+            txtEmail.Text = string.Empty;
+            loadUsers();
         }
     }
 }

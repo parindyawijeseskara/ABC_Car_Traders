@@ -21,6 +21,10 @@ namespace ABC_Car_Traders.DBContext
         public DbSet<CarParts> CarParts { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<User > User { get; set; }
+        public DbSet<Brand> Brand { get; set; }
+        public DbSet<Models> Model { get; set; }
+
+
         //public DbSet<Login> Logins { get; set; }
 
         /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

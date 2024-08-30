@@ -37,13 +37,14 @@ namespace ABC_Car_Traders
                 return;
             }
             txtCarPartName.Text = carParts.carPartName;
-            txtModel.Text = carParts.model;
+            txtBrand.Text = carParts.Model.Brand.brandName;
+            txtModel.Text = carParts.Model.modelName.ToString();
             txtPrice.Text = carParts.price.ToString();
             txtQuantity.Text = carParts.quantity.ToString();
             txtDescription.Text = carParts.description;
             txtManufacturer.Text = carParts.manufacturer;
             txtWarrantyPeriod.Text = carParts.warrantyPeriod;
-            cmbStatus.SelectedItem = carParts.status;
+            
 
             if (carParts.image != null && carParts.image.Length > 0)
             {
@@ -54,7 +55,7 @@ namespace ABC_Car_Traders
             }
             else
             {
-                pictureBoxImage.Image = null; // Or set a default image
+                pictureBoxImage.Image = null;
             }
 
         }
@@ -65,13 +66,13 @@ namespace ABC_Car_Traders
             try
             {
                 carParts.carPartName = txtCarPartName.Text;
-                carParts.model = txtModel.Text;
+                carParts.Model.Brand.brandName = txtBrand.Text;
+                carParts.Model.modelName = txtModel.Text;
                 carParts.price = decimal.Parse(txtPrice.Text);
                 carParts.quantity = int.Parse(txtQuantity.Text);
                 carParts.description = txtDescription.Text;
                 carParts.manufacturer = txtManufacturer.Text;
                 carParts.warrantyPeriod = txtWarrantyPeriod.Text;
-                carParts.status = cmbStatus.Text;
                 _carPartsController.UpdateCarParts(carParts);
                 this.Close();
                 MessageBox.Show("Car Parts updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

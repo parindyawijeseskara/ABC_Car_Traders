@@ -39,7 +39,7 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label3 = new Label();
-            comboBox1 = new ComboBox();
+            cmbModel = new ComboBox();
             dataGridViewCarParts = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -52,15 +52,18 @@
             Column9 = new DataGridViewTextBoxColumn();
             Column10 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewButtonColumn();
-            panel1 = new Panel();
-            textBox1 = new TextBox();
             btnRefresh = new Button();
-            btnSearch = new Button();
-            button1 = new Button();
+            btnSearchModel = new Button();
+            txtSearchName = new Button();
             pictureBox2 = new PictureBox();
+            label4 = new Label();
+            cmbBrand = new ComboBox();
+            txtSearchStatus = new Button();
+            txtName = new TextBox();
+            label5 = new Label();
+            txtStatus = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCarParts).BeginInit();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -105,7 +108,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(597, 223);
+            label2.Location = new Point(593, 277);
             label2.Name = "label2";
             label2.Size = new Size(150, 23);
             label2.TabIndex = 15;
@@ -115,19 +118,19 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(597, 283);
+            label3.Location = new Point(593, 223);
             label3.Name = "label3";
             label3.Size = new Size(154, 23);
             label3.TabIndex = 16;
             label3.Text = "Search By Model";
             // 
-            // comboBox1
+            // cmbModel
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(784, 278);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(244, 28);
-            comboBox1.TabIndex = 17;
+            cmbModel.FormattingEnabled = true;
+            cmbModel.Location = new Point(789, 218);
+            cmbModel.Name = "cmbModel";
+            cmbModel.Size = new Size(239, 28);
+            cmbModel.TabIndex = 17;
             // 
             // dataGridViewCarParts
             // 
@@ -192,7 +195,7 @@
             // 
             // Column4
             // 
-            Column4.DataPropertyName = "model";
+            Column4.DataPropertyName = "modelName";
             Column4.HeaderText = "Model";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
@@ -256,64 +259,46 @@
             Column11.Name = "Column11";
             Column11.Width = 125;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(35, 115, 144);
-            panel1.Controls.Add(textBox1);
-            panel1.ForeColor = Color.Black;
-            panel1.Location = new Point(784, 195);
-            panel1.Name = "panel1";
-            panel1.Padding = new Padding(0, 0, 0, 3);
-            panel1.Size = new Size(244, 51);
-            panel1.TabIndex = 21;
-            // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(0, 0);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(244, 48);
-            textBox1.TabIndex = 0;
-            // 
             // btnRefresh
             // 
             btnRefresh.BackColor = Color.FromArgb(35, 115, 144);
             btnRefresh.FlatAppearance.BorderSize = 0;
             btnRefresh.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = SystemColors.ControlLightLight;
-            btnRefresh.Location = new Point(1071, 328);
+            btnRefresh.Location = new Point(1071, 376);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(184, 42);
             btnRefresh.TabIndex = 23;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
             // 
-            // btnSearch
+            // btnSearchModel
             // 
-            btnSearch.BackColor = Color.FromArgb(35, 115, 144);
-            btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSearch.ForeColor = SystemColors.ControlLightLight;
-            btnSearch.Location = new Point(1071, 204);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(184, 42);
-            btnSearch.TabIndex = 22;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = false;
+            btnSearchModel.BackColor = Color.FromArgb(35, 115, 144);
+            btnSearchModel.FlatAppearance.BorderSize = 0;
+            btnSearchModel.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchModel.ForeColor = SystemColors.ControlLightLight;
+            btnSearchModel.Location = new Point(1071, 204);
+            btnSearchModel.Name = "btnSearchModel";
+            btnSearchModel.Size = new Size(184, 42);
+            btnSearchModel.TabIndex = 22;
+            btnSearchModel.Text = "Search";
+            btnSearchModel.UseVisualStyleBackColor = false;
+            btnSearchModel.Click += btnSearchModel_Click;
             // 
-            // button1
+            // txtSearchName
             // 
-            button1.BackColor = Color.FromArgb(35, 115, 144);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(1071, 264);
-            button1.Name = "button1";
-            button1.Size = new Size(184, 42);
-            button1.TabIndex = 24;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = false;
+            txtSearchName.BackColor = Color.FromArgb(35, 115, 144);
+            txtSearchName.FlatAppearance.BorderSize = 0;
+            txtSearchName.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearchName.ForeColor = SystemColors.ControlLightLight;
+            txtSearchName.Location = new Point(1071, 264);
+            txtSearchName.Name = "txtSearchName";
+            txtSearchName.Size = new Size(184, 42);
+            txtSearchName.TabIndex = 24;
+            txtSearchName.Text = "Search";
+            txtSearchName.UseVisualStyleBackColor = false;
+            txtSearchName.Click += txtSearchName_Click;
             // 
             // pictureBox2
             // 
@@ -326,19 +311,80 @@
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label4.Location = new Point(593, 172);
+            label4.Name = "label4";
+            label4.Size = new Size(186, 23);
+            label4.TabIndex = 26;
+            label4.Text = "Search Car by Brand";
+            // 
+            // cmbBrand
+            // 
+            cmbBrand.FormattingEnabled = true;
+            cmbBrand.Location = new Point(789, 167);
+            cmbBrand.Name = "cmbBrand";
+            cmbBrand.Size = new Size(239, 28);
+            cmbBrand.TabIndex = 27;
+            cmbBrand.SelectedIndexChanged += cmbBrand_SelectedIndexChanged;
+            // 
+            // txtSearchStatus
+            // 
+            txtSearchStatus.BackColor = Color.FromArgb(35, 115, 144);
+            txtSearchStatus.FlatAppearance.BorderSize = 0;
+            txtSearchStatus.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearchStatus.ForeColor = SystemColors.ControlLightLight;
+            txtSearchStatus.Location = new Point(1071, 319);
+            txtSearchStatus.Name = "txtSearchStatus";
+            txtSearchStatus.Size = new Size(184, 42);
+            txtSearchStatus.TabIndex = 28;
+            txtSearchStatus.Text = "Search";
+            txtSearchStatus.UseVisualStyleBackColor = false;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(789, 277);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(219, 27);
+            txtName.TabIndex = 29;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(593, 338);
+            label5.Name = "label5";
+            label5.Size = new Size(154, 23);
+            label5.TabIndex = 30;
+            label5.Text = "Search By Status";
+            // 
+            // txtStatus
+            // 
+            txtStatus.Location = new Point(784, 334);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(224, 27);
+            txtStatus.TabIndex = 31;
+            // 
             // ManageCarPartsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1357, 736);
+            Controls.Add(txtStatus);
+            Controls.Add(label5);
+            Controls.Add(txtName);
+            Controls.Add(txtSearchStatus);
+            Controls.Add(cmbBrand);
+            Controls.Add(label4);
             Controls.Add(pictureBox2);
-            Controls.Add(button1);
+            Controls.Add(txtSearchName);
             Controls.Add(btnRefresh);
-            Controls.Add(btnSearch);
-            Controls.Add(panel1);
+            Controls.Add(btnSearchModel);
             Controls.Add(dataGridViewCarParts);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbModel);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
@@ -349,8 +395,6 @@
             Text = "ManageCarPartsForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCarParts).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -363,13 +407,11 @@
         private PictureBox pictureBox1;
         private Label label2;
         private Label label3;
-        private ComboBox comboBox1;
+        private ComboBox cmbModel;
         private DataGridView dataGridViewCarParts;
-        private Panel panel1;
-        private TextBox textBox1;
         private Button btnRefresh;
-        private Button btnSearch;
-        private Button button1;
+        private Button btnSearchModel;
+        private Button txtSearchName;
         private PictureBox pictureBox2;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
@@ -382,5 +424,11 @@
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
         private DataGridViewButtonColumn Column11;
+        private Label label4;
+        private ComboBox cmbBrand;
+        private Button txtSearchStatus;
+        private TextBox txtName;
+        private Label label5;
+        private TextBox txtStatus;
     }
 }

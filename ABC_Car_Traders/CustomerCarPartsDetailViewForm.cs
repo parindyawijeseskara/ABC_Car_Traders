@@ -34,7 +34,7 @@ namespace ABC_Car_Traders
                 this.Close();
                 return;
             }
-            txtModel.Text = _carParts.model;
+            txtModel.Text = _carParts.modelId.ToString();
             txtCarPartName.Text = _carParts.carPartName;
             txtPrice.Text = _carParts.price.ToString();
             txtQuantity.Text = _carParts.quantity.ToString();
@@ -57,6 +57,11 @@ namespace ABC_Car_Traders
         }
 
         private void pictureBoxImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtModel_TextChanged(object sender, EventArgs e)
         {
 
         }

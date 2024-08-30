@@ -29,6 +29,7 @@ namespace ABC_Car_Traders
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
             dashboard_sidepanel1 = new Panel();
             btnLogOut = new Button();
@@ -49,24 +50,26 @@ namespace ABC_Car_Traders
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             adminDashboard_panel2 = new Panel();
+            labelDateTime = new Label();
             adminDashboard_panel3 = new Panel();
             panel5 = new Panel();
             label15 = new Label();
             pictureBox14 = new PictureBox();
             panel4 = new Panel();
+            pictureBox11 = new PictureBox();
             label14 = new Label();
             panel3 = new Panel();
+            pictureBox12 = new PictureBox();
             label13 = new Label();
             panel2 = new Panel();
+            pictureBox13 = new PictureBox();
             label12 = new Label();
             panel1 = new Panel();
             label11 = new Label();
             pictureBox10 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
-            pictureBox11 = new PictureBox();
-            pictureBox12 = new PictureBox();
-            pictureBox13 = new PictureBox();
+            timerDateTime = new System.Windows.Forms.Timer(components);
             dashboard_sidepanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -82,13 +85,13 @@ namespace ABC_Car_Traders
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             SuspendLayout();
             // 
             // dashboard_sidepanel1
@@ -131,6 +134,7 @@ namespace ABC_Car_Traders
             btnLogOut.Text = "Log Out";
             btnLogOut.TextAlign = ContentAlignment.MiddleLeft;
             btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
             // 
             // btnManageReports
             // 
@@ -338,6 +342,7 @@ namespace ABC_Car_Traders
             // adminDashboard_panel2
             // 
             adminDashboard_panel2.BackColor = Color.FromArgb(9, 29, 37);
+            adminDashboard_panel2.Controls.Add(labelDateTime);
             adminDashboard_panel2.Controls.Add(adminDashboard_panel3);
             adminDashboard_panel2.Controls.Add(label2);
             adminDashboard_panel2.Controls.Add(label1);
@@ -345,6 +350,18 @@ namespace ABC_Car_Traders
             adminDashboard_panel2.Name = "adminDashboard_panel2";
             adminDashboard_panel2.Size = new Size(1527, 1032);
             adminDashboard_panel2.TabIndex = 1;
+            adminDashboard_panel2.Paint += adminDashboard_panel2_Paint;
+            // 
+            // labelDateTime
+            // 
+            labelDateTime.AutoSize = true;
+            labelDateTime.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelDateTime.ForeColor = SystemColors.ControlLightLight;
+            labelDateTime.Location = new Point(1207, 24);
+            labelDateTime.Name = "labelDateTime";
+            labelDateTime.Size = new Size(114, 23);
+            labelDateTime.TabIndex = 3;
+            labelDateTime.Text = "lblDateTime";
             // 
             // adminDashboard_panel3
             // 
@@ -400,6 +417,16 @@ namespace ABC_Car_Traders
             panel4.Size = new Size(389, 101);
             panel4.TabIndex = 3;
             // 
+            // pictureBox11
+            // 
+            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
+            pictureBox11.Location = new Point(52, 26);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(59, 51);
+            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox11.TabIndex = 2;
+            pictureBox11.TabStop = false;
+            // 
             // label14
             // 
             label14.AutoSize = true;
@@ -421,6 +448,16 @@ namespace ABC_Car_Traders
             panel3.Size = new Size(402, 101);
             panel3.TabIndex = 2;
             // 
+            // pictureBox12
+            // 
+            pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
+            pictureBox12.Location = new Point(44, 25);
+            pictureBox12.Name = "pictureBox12";
+            pictureBox12.Size = new Size(59, 51);
+            pictureBox12.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox12.TabIndex = 3;
+            pictureBox12.TabStop = false;
+            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -441,6 +478,16 @@ namespace ABC_Car_Traders
             panel2.Name = "panel2";
             panel2.Size = new Size(389, 101);
             panel2.TabIndex = 2;
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
+            pictureBox13.Location = new Point(52, 25);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(59, 51);
+            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox13.TabIndex = 4;
+            pictureBox13.TabStop = false;
             // 
             // label12
             // 
@@ -506,35 +553,9 @@ namespace ABC_Car_Traders
             label1.TabIndex = 0;
             label1.Text = "ABC Car Traders";
             // 
-            // pictureBox11
+            // timerDateTime
             // 
-            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(52, 26);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(59, 51);
-            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox11.TabIndex = 2;
-            pictureBox11.TabStop = false;
-            // 
-            // pictureBox12
-            // 
-            pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
-            pictureBox12.Location = new Point(44, 25);
-            pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(59, 51);
-            pictureBox12.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox12.TabIndex = 3;
-            pictureBox12.TabStop = false;
-            // 
-            // pictureBox13
-            // 
-            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(52, 25);
-            pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(59, 51);
-            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox13.TabIndex = 4;
-            pictureBox13.TabStop = false;
+            timerDateTime.Tick += timerDateTime_Tick;
             // 
             // AdminDashboard
             // 
@@ -565,16 +586,16 @@ namespace ABC_Car_Traders
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ResumeLayout(false);
         }
 
@@ -617,5 +638,7 @@ namespace ABC_Car_Traders
         private PictureBox pictureBox11;
         private PictureBox pictureBox12;
         private PictureBox pictureBox13;
+        private Label labelDateTime;
+        private System.Windows.Forms.Timer timerDateTime;
     }
 }

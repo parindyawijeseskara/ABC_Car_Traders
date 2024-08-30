@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ABC_Car_Traders.Controllers
 {
@@ -28,7 +29,7 @@ namespace ABC_Car_Traders.Controllers
         public List<dynamic> GetAllUsers()
         {
             return _context.User
-                .Where(user => user.deletedAt == null)
+                //.Where(user => user.deletedAt == null)
                 .Select(user => new
                 {
                     user.userId,
@@ -83,10 +84,10 @@ namespace ABC_Car_Traders.Controllers
                 existingUser.address = user.address;
                 existingUser.contactNo = user.contactNo;
                 existingUser.nic = user.nic;
-                existingUser.status = user.status;
+                existingUser.status = "ACT";
                 existingUser.userName = user.userName;
                 existingUser.password = user.password;
-                existingUser.roleId = user.roleId;
+              //  existingUser.roleId = user.roleId;
                 _context.SaveChanges();
             }
 
@@ -98,8 +99,29 @@ namespace ABC_Car_Traders.Controllers
             if (user != null)
             {
                 user.deletedAt = DateTime.Now;
+                user.status = "INACT";
                 _context.SaveChanges();
             }
+        }
+
+        //get all customers by email
+        public List<User> GetCustomersByEmail(string email)
+        {
+            return _context.User
+                .Where(user => user.email.Contains(email))
+                .ToList();
+        }
+
+        //get all customers by status
+        public List<dynamic> GetCustomersByStatus(string status)
+        {
+            return _context.User
+             .Where(user => user.deletedAt == null && user.status == status)
+             .Select(car => new {
+                 
+                 car.status
+             })
+             .ToList<dynamic>();
         }
         
     }

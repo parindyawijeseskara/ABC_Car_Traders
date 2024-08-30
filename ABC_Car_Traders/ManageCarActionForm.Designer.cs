@@ -39,9 +39,9 @@
             label7 = new Label();
             label8 = new Label();
             panel1 = new Panel();
-            txtModel = new TextBox();
-            panel2 = new Panel();
             txtBrand = new TextBox();
+            panel2 = new Panel();
+            txtModel = new TextBox();
             panel3 = new Panel();
             txtYear = new TextBox();
             panel4 = new Panel();
@@ -54,11 +54,17 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             pictureBoxImage = new PictureBox();
-            label9 = new Label();
-            cmbStatus = new ComboBox();
             panel7 = new Panel();
             txtCarName = new TextBox();
             label10 = new Label();
+            lblRegNoError = new Label();
+            lblBrandError = new Label();
+            lblModelError = new Label();
+            lblYearError = new Label();
+            lblPriceError = new Label();
+            lblDescriptionError = new Label();
+            lblQuantityError = new Label();
+            lblTransmissionError = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -84,7 +90,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(30, 167);
+            label2.Location = new Point(33, 252);
             label2.Name = "label2";
             label2.Size = new Size(62, 22);
             label2.TabIndex = 4;
@@ -94,7 +100,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(30, 252);
+            label1.Location = new Point(30, 167);
             label1.Name = "label1";
             label1.Size = new Size(58, 22);
             label1.TabIndex = 5;
@@ -163,31 +169,12 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(35, 115, 144);
-            panel1.Controls.Add(txtModel);
+            panel1.Controls.Add(txtBrand);
             panel1.Location = new Point(30, 192);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(0, 0, 0, 3);
             panel1.Size = new Size(231, 42);
             panel1.TabIndex = 12;
-            // 
-            // txtModel
-            // 
-            txtModel.Dock = DockStyle.Fill;
-            txtModel.Location = new Point(0, 0);
-            txtModel.Multiline = true;
-            txtModel.Name = "txtModel";
-            txtModel.Size = new Size(231, 39);
-            txtModel.TabIndex = 32;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(35, 115, 144);
-            panel2.Controls.Add(txtBrand);
-            panel2.Location = new Point(30, 275);
-            panel2.Name = "panel2";
-            panel2.Padding = new Padding(0, 0, 0, 3);
-            panel2.Size = new Size(231, 42);
-            panel2.TabIndex = 13;
             // 
             // txtBrand
             // 
@@ -196,7 +183,26 @@
             txtBrand.Multiline = true;
             txtBrand.Name = "txtBrand";
             txtBrand.Size = new Size(231, 39);
-            txtBrand.TabIndex = 33;
+            txtBrand.TabIndex = 32;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(35, 115, 144);
+            panel2.Controls.Add(txtModel);
+            panel2.Location = new Point(30, 275);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(0, 0, 0, 3);
+            panel2.Size = new Size(231, 42);
+            panel2.TabIndex = 13;
+            // 
+            // txtModel
+            // 
+            txtModel.Dock = DockStyle.Fill;
+            txtModel.Location = new Point(0, 0);
+            txtModel.Multiline = true;
+            txtModel.Name = "txtModel";
+            txtModel.Size = new Size(231, 39);
+            txtModel.TabIndex = 33;
             // 
             // panel3
             // 
@@ -277,7 +283,7 @@
             // cmbTransmission
             // 
             cmbTransmission.FormattingEnabled = true;
-            cmbTransmission.Items.AddRange(new object[] { "Manual Transmission", "Auto Transmission" });
+            cmbTransmission.Items.AddRange(new object[] { "Manual Transmission", "Automatic Transmission" });
             cmbTransmission.Location = new Point(359, 520);
             cmbTransmission.Name = "cmbTransmission";
             cmbTransmission.Size = new Size(231, 28);
@@ -317,25 +323,6 @@
             pictureBoxImage.TabIndex = 27;
             pictureBoxImage.TabStop = false;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(359, 581);
-            label9.Name = "label9";
-            label9.Size = new Size(57, 22);
-            label9.TabIndex = 28;
-            label9.Text = "Status";
-            // 
-            // cmbStatus
-            // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "Available ", "Not Available" });
-            cmbStatus.Location = new Point(359, 606);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(218, 28);
-            cmbStatus.TabIndex = 29;
-            // 
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(35, 115, 144);
@@ -361,9 +348,89 @@
             label10.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.Location = new Point(30, 81);
             label10.Name = "label10";
-            label10.Size = new Size(90, 22);
+            label10.Size = new Size(70, 22);
             label10.TabIndex = 30;
-            label10.Text = "Car Name";
+            label10.Text = "Reg No";
+            // 
+            // lblRegNoError
+            // 
+            lblRegNoError.AutoSize = true;
+            lblRegNoError.ForeColor = Color.Red;
+            lblRegNoError.Location = new Point(33, 147);
+            lblRegNoError.Name = "lblRegNoError";
+            lblRegNoError.Size = new Size(58, 20);
+            lblRegNoError.TabIndex = 31;
+            lblRegNoError.Text = "label11";
+            // 
+            // lblBrandError
+            // 
+            lblBrandError.AutoSize = true;
+            lblBrandError.ForeColor = Color.Red;
+            lblBrandError.Location = new Point(30, 232);
+            lblBrandError.Name = "lblBrandError";
+            lblBrandError.Size = new Size(58, 20);
+            lblBrandError.TabIndex = 32;
+            lblBrandError.Text = "label11";
+            // 
+            // lblModelError
+            // 
+            lblModelError.AutoSize = true;
+            lblModelError.ForeColor = Color.Red;
+            lblModelError.Location = new Point(30, 317);
+            lblModelError.Name = "lblModelError";
+            lblModelError.Size = new Size(58, 20);
+            lblModelError.TabIndex = 33;
+            lblModelError.Text = "label11";
+            // 
+            // lblYearError
+            // 
+            lblYearError.AutoSize = true;
+            lblYearError.ForeColor = Color.Red;
+            lblYearError.Location = new Point(30, 401);
+            lblYearError.Name = "lblYearError";
+            lblYearError.Size = new Size(58, 20);
+            lblYearError.TabIndex = 34;
+            lblYearError.Text = "label11";
+            // 
+            // lblPriceError
+            // 
+            lblPriceError.AutoSize = true;
+            lblPriceError.ForeColor = Color.Red;
+            lblPriceError.Location = new Point(30, 487);
+            lblPriceError.Name = "lblPriceError";
+            lblPriceError.Size = new Size(58, 20);
+            lblPriceError.TabIndex = 35;
+            lblPriceError.Text = "label11";
+            // 
+            // lblDescriptionError
+            // 
+            lblDescriptionError.AutoSize = true;
+            lblDescriptionError.ForeColor = Color.Red;
+            lblDescriptionError.Location = new Point(30, 575);
+            lblDescriptionError.Name = "lblDescriptionError";
+            lblDescriptionError.Size = new Size(58, 20);
+            lblDescriptionError.TabIndex = 36;
+            lblDescriptionError.Text = "label11";
+            // 
+            // lblQuantityError
+            // 
+            lblQuantityError.AutoSize = true;
+            lblQuantityError.ForeColor = Color.Red;
+            lblQuantityError.Location = new Point(30, 664);
+            lblQuantityError.Name = "lblQuantityError";
+            lblQuantityError.Size = new Size(58, 20);
+            lblQuantityError.TabIndex = 37;
+            lblQuantityError.Text = "label11";
+            // 
+            // lblTransmissionError
+            // 
+            lblTransmissionError.AutoSize = true;
+            lblTransmissionError.ForeColor = Color.Red;
+            lblTransmissionError.Location = new Point(359, 551);
+            lblTransmissionError.Name = "lblTransmissionError";
+            lblTransmissionError.Size = new Size(58, 20);
+            lblTransmissionError.TabIndex = 38;
+            lblTransmissionError.Text = "label11";
             // 
             // ManageCarActionForm
             // 
@@ -371,10 +438,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(652, 822);
+            Controls.Add(lblTransmissionError);
+            Controls.Add(lblQuantityError);
+            Controls.Add(lblDescriptionError);
+            Controls.Add(lblPriceError);
+            Controls.Add(lblYearError);
+            Controls.Add(lblModelError);
+            Controls.Add(lblBrandError);
+            Controls.Add(lblRegNoError);
             Controls.Add(label10);
             Controls.Add(panel7);
-            Controls.Add(cmbStatus);
-            Controls.Add(label9);
             Controls.Add(pictureBoxImage);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
@@ -438,16 +511,22 @@
         private Button btnDelete;
         private Button btnUpdate;
         private PictureBox pictureBoxImage;
-        private Label label9;
-        private ComboBox cmbStatus;
         private Panel panel7;
         private Label label10;
-        private TextBox txtModel;
         private TextBox txtBrand;
+        private TextBox txtModel;
         private TextBox txtYear;
         private TextBox txtPrice;
         private TextBox txtCarName;
         private TextBox txtDescription;
         private TextBox txtQuantity;
+        private Label lblRegNoError;
+        private Label lblBrandError;
+        private Label lblModelError;
+        private Label lblYearError;
+        private Label lblPriceError;
+        private Label lblDescriptionError;
+        private Label lblQuantityError;
+        private Label lblTransmissionError;
     }
 }

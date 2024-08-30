@@ -19,14 +19,14 @@ namespace ABC_Car_Traders
         {
             InitializeComponent();
             _carController = carController;
-            dataGridViewCars.AutoGenerateColumns = false; // Ensures columns are not auto-generated
+            dataGridViewCars.AutoGenerateColumns = false;
             loadCarDetails();
 
         }
         private void CustomerDashboardCarDetailsForm_Load(object sender, EventArgs e)
         {
             loadCarDetails();
-            loadCarModels();
+            loadBrands();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -70,26 +70,58 @@ namespace ABC_Car_Traders
             dataGridViewCars.DataSource = cars;
         }
 
-        //Load car models to the combo box
-        public void loadCarModels()
+        private void loadBrands()
         {
-            var carModels = _carController.GetAllCars();
-            cmbModel.DataSource = carModels;
-            cmbModel.DisplayMember = "model";
-            cmbModel.SelectedIndex = -1;
+            var carBrands = _carController.GetAllBrands();
+            cmbBrand.DataSource = carBrands;
+            cmbBrand.DisplayMember = "brandName";
+            cmbBrand.ValueMember = "brandId";
+            cmbBrand.SelectedIndex = -1;
         }
+
+        public void loadModels(int brandId)
+        {
+            var carModels = _carController.GetModelsByBrand(brandId);
+
+            if (carModels.Count == 0)
+            {
+                MessageBox.Show("No models found for the selected brand.");
+            }
+            else
+            {
+                cmbModel.DataSource = carModels;
+                cmbModel.DisplayMember = "modelName";
+                cmbModel.ValueMember = "modelId";
+                cmbModel.SelectedIndex = -1;
+            }
+        }
+
 
         private void btnSearchModel_Click(object sender, EventArgs e)
         {
-            if (cmbModel.SelectedItem != null)
+            // Check if the brand and model are selected
+            if (cmbBrand.SelectedIndex == -1 || cmbModel.SelectedIndex == -1)
             {
-                string selectedModel = cmbModel.Text;
-                var filteredCars = _carController.GetCarsByModel(selectedModel);
+                MessageBox.Show("Please select both a brand and a model.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Retrieve the selected brand and model IDs
+            int selectedBrandId = Convert.ToInt32(cmbBrand.SelectedValue);
+            int selectedModelId = Convert.ToInt32(cmbModel.SelectedValue);
+
+            // Search cars based on the selected brand and model
+            var filteredCars = _carController.SearchCarsByBrandAndModel(selectedBrandId, selectedModelId);
+
+            // Check if any cars were found
+            if (filteredCars.Count > 0)
+            {
+                MessageBox.Show($"{filteredCars.Count} car(s) found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridViewCars.DataSource = filteredCars;
             }
             else
             {
-                MessageBox.Show("Please select a valid car model.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No cars found for the selected brand and model.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -114,7 +146,7 @@ namespace ABC_Car_Traders
             string priceFromText = txtFromPriceRange.Text;
             string priceToText = txtToPriceRange.Text;
 
-            if (decimal.TryParse(priceFromText,out decimal priceFrom) && decimal.TryParse(priceToText,out decimal priceTo))
+            if (decimal.TryParse(priceFromText, out decimal priceFrom) && decimal.TryParse(priceToText, out decimal priceTo))
             {
                 if (priceFrom > priceTo)
                 {
@@ -122,15 +154,14 @@ namespace ABC_Car_Traders
                     return;
                 }
 
-                var filteredCars = _carController.GetAllCarsByPrice(priceFrom,priceTo);
-                // Check if the result is empty
+                var filteredCars = _carController.GetAllCarsByPrice(priceFrom, priceTo);
+               
                 if (filteredCars == null || filteredCars.Count == 0)
                 {
                     MessageBox.Show($"No cars found within the price range Rs {priceFrom:N2} to Rs {priceTo:N2}.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    // Bind the filtered result to the DataGridView
                     dataGridViewCars.DataSource = filteredCars;
                 }
 
@@ -140,10 +171,27 @@ namespace ABC_Car_Traders
         private void btnReset_Click(object sender, EventArgs e)
         {
             cmbModel.SelectedIndex = -1;
+            cmbBrand.SelectedIndex = -1;
             txtYear.Text = string.Empty;
             txtFromPriceRange.Text = string.Empty;
             txtToPriceRange.Text = string.Empty;
             loadCarDetails();
+        }
+
+        private void cmbBrand_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbBrand.SelectedIndex != -1)
+            {
+                var selectedValue = cmbBrand.SelectedValue;
+                if (selectedValue is int selectedBrandId)
+                {
+                    loadModels(selectedBrandId);
+                }
+                //else
+                //{
+                //    MessageBox.Show("Invalid brand selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+            }
         }
     }
 }

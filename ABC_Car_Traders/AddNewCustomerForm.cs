@@ -27,7 +27,7 @@ namespace ABC_Car_Traders
         {
             try
             {
-                var selectedRoleId = (int)cmbRole.SelectedValue;
+                //var selectedRoleId = (int)cmbRole.SelectedValue;
 
                 var user = new User()
                 {
@@ -37,10 +37,10 @@ namespace ABC_Car_Traders
                     address = txtAddress.Text,
                     contactNo = txtContactNo.Text,
                     nic = txtNic.Text,
-                    status = cmbStatus.Text,
+                    status = "ACT",
                     userName = txtUserName.Text,    
                     password = txtPassword.Text,
-                    roleId = selectedRoleId,
+                    roleId = 2,
 
                 };
                 _userController.AddUser(user);
@@ -64,10 +64,10 @@ namespace ABC_Car_Traders
 
         public void LoadRoles()
         {
-            var roles = _userController.GetAllRoles();
-            cmbRole.DisplayMember = "role";
-            cmbRole.ValueMember = "roleId";
-            cmbRole.DataSource = roles;
+            //var roles = _userController.GetAllRoles();
+            //cmbRole.DisplayMember = "role";
+            //cmbRole.ValueMember = "roleId";
+            //cmbRole.DataSource = roles;
         }
     }
 }

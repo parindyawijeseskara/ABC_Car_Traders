@@ -36,7 +36,6 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            label8 = new Label();
             panel1 = new Panel();
             txtFirstName = new TextBox();
             textBox2 = new TextBox();
@@ -53,15 +52,12 @@
             panel6 = new Panel();
             txtNic = new TextBox();
             btnSave = new Button();
-            cmbStatus = new ComboBox();
             label9 = new Label();
             label10 = new Label();
-            label11 = new Label();
             panel7 = new Panel();
             txtUserName = new TextBox();
             panel8 = new Panel();
             txtPassword = new TextBox();
-            cmbRole = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -143,16 +139,6 @@
             label7.Size = new Size(99, 22);
             label7.TabIndex = 7;
             label7.Text = "Contact No";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(44, 691);
-            label8.Name = "label8";
-            label8.Size = new Size(57, 22);
-            label8.TabIndex = 8;
-            label8.Text = "Status";
             // 
             // panel1
             // 
@@ -312,15 +298,6 @@
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
-            // cmbStatus
-            // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "Active ", "Inactive" });
-            cmbStatus.Location = new Point(44, 716);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(226, 28);
-            cmbStatus.TabIndex = 19;
-            // 
             // label9
             // 
             label9.AutoSize = true;
@@ -340,16 +317,6 @@
             label10.Size = new Size(88, 22);
             label10.TabIndex = 21;
             label10.Text = "Password";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(401, 512);
-            label11.Name = "label11";
-            label11.Size = new Size(48, 22);
-            label11.TabIndex = 22;
-            label11.Text = "Role";
             // 
             // panel7
             // 
@@ -389,27 +356,16 @@
             txtPassword.Size = new Size(217, 39);
             txtPassword.TabIndex = 26;
             // 
-            // cmbRole
-            // 
-            cmbRole.FormattingEnabled = true;
-            cmbRole.Location = new Point(401, 537);
-            cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(173, 28);
-            cmbRole.TabIndex = 26;
-            // 
             // AddNewCustomerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(698, 856);
-            Controls.Add(cmbRole);
             Controls.Add(panel8);
             Controls.Add(panel7);
-            Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label9);
-            Controls.Add(cmbStatus);
             Controls.Add(btnSave);
             Controls.Add(panel6);
             Controls.Add(panel5);
@@ -418,7 +374,6 @@
             Controls.Add(panel2);
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
-            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);

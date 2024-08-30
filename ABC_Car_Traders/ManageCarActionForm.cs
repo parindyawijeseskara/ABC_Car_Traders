@@ -25,6 +25,17 @@ namespace ABC_Car_Traders
             _carController = carController;
             _carId = carId;
             loadCarDetails();
+            lblRegNoError.Visible = false;
+            lblBrandError.Visible = false;
+            lblModelError.Visible = false;
+            lblYearError.Visible = false;
+            lblPriceError.Visible = false;
+            lblDescriptionError.Visible = false;
+            lblQuantityError.Visible = false;
+            lblTransmissionError.Visible = false;
+            
+
+
         }
 
         public void loadCarDetails()
@@ -38,15 +49,15 @@ namespace ABC_Car_Traders
                 return;
             }
 
-            txtCarName.Text = _car.carName;
-            txtModel.Text = _car.model;
-            txtBrand.Text = _car.brand;
+            txtCarName.Text = _car.regNo;
+            txtBrand.Text = _car.Model.Brand.brandName;
+            txtModel.Text = _car.Model.modelName.ToString();
             txtYear.Text = _car.year;
             txtPrice.Text = _car.price.ToString();
             txtDescription.Text = _car.description;
             txtQuantity.Text = _car.quantity.ToString();
-            cmbTransmission.SelectedItem = _car.transmission;
-            cmbStatus.SelectedItem = _car.status;
+            cmbTransmission.Text = _car.transmission;
+            
 
 
             if (_car.image != null && _car.image.Length > 0)
@@ -58,7 +69,7 @@ namespace ABC_Car_Traders
             }
             else
             {
-                pictureBoxImage.Image = null; // Or set a default image
+                pictureBoxImage.Image = null;
             }
 
         }
@@ -67,15 +78,21 @@ namespace ABC_Car_Traders
         {
             try
             {
-                _car.carName = txtCarName.Text;
-                _car.model = txtModel.Text;
-                _car.brand = txtBrand.Text;
+                //Validate the form
+                if (!IsFormValid())
+                {
+                    MessageBox.Show("Please correct the highlighted errors.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                _car.regNo = txtCarName.Text;
+                _car.Model.Brand.brandName = txtBrand.Text;
+                _car.Model.modelName = txtModel.Text;
                 _car.year = txtYear.Text;
                 _car.price = decimal.Parse(txtPrice.Text);
                 _car.description = txtDescription.Text;
                 _car.quantity = int.Parse(txtQuantity.Text);
                 _car.transmission = cmbTransmission.Text;
-                _car.status = cmbStatus.Text;
                 _carController.UpdateCar(_car);
                 this.Close();
                 MessageBox.Show("Car Updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -101,6 +118,102 @@ namespace ABC_Car_Traders
             {
                 MessageBox.Show($"An error occured:{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtModel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool IsFormValid()
+        {
+            bool isValid = true;
+
+            // Validate Registration Number
+            if (string.IsNullOrWhiteSpace(txtCarName.Text))
+            {
+                lblRegNoError.Text = "** Please enter the registration number.";
+                lblRegNoError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblRegNoError.Visible = false;
+            }
+
+            // Validate Brand Name
+            if (string.IsNullOrWhiteSpace(txtBrand.Text))
+            {
+                lblBrandError.Text = "Please enter the brand name.";
+                lblBrandError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblBrandError.Visible = false;
+            }
+
+            // Validate Model Name
+            if (string.IsNullOrWhiteSpace(txtModel.Text))
+            {
+                lblModelError.Text = "Please enter the model name.";
+                lblModelError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblModelError.Visible = false;
+            }
+
+            // Validate Year
+            if (!int.TryParse(txtYear.Text, out int year) || txtYear.Text.Length != 4)
+            {
+                lblYearError.Text = "Please enter a valid 4-digit year.";
+                lblYearError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblYearError.Visible = false;
+            }
+
+            // Validate Price
+            if (!decimal.TryParse(txtPrice.Text, out decimal price) || price <= 0)
+            {
+                lblPriceError.Text = "Please enter a valid price.";
+                lblPriceError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblPriceError.Visible = false;
+            }
+
+            // Validate Quantity
+            if (!int.TryParse(txtQuantity.Text, out int quantity) || quantity <= 0)
+            {
+                lblQuantityError.Text = "Please enter a valid quantity.";
+                lblQuantityError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblQuantityError.Visible = false;
+            }
+
+            // Validate Transmission
+            if (string.IsNullOrWhiteSpace(cmbTransmission.Text))
+            {
+                lblTransmissionError.Text = "Please select a transmission type.";
+                lblTransmissionError.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblTransmissionError.Visible = false;
+            }
+
+            return isValid;
         }
     }
 }

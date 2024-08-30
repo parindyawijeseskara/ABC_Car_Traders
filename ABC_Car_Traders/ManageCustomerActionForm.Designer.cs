@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCustomerActionForm));
             pictureBox1 = new PictureBox();
-            label8 = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -51,15 +50,12 @@
             txtNic = new TextBox();
             btnUpdate = new Button();
             btnDelete = new Button();
-            cmbStatus = new ComboBox();
             label1 = new Label();
             label9 = new Label();
-            label10 = new Label();
             panel7 = new Panel();
             txtUserName = new TextBox();
             panel8 = new Panel();
             txtPassword = new TextBox();
-            cmbRole = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -80,16 +76,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(39, 554);
-            label8.Name = "label8";
-            label8.Size = new Size(57, 22);
-            label8.TabIndex = 15;
-            label8.Text = "Status";
             // 
             // label7
             // 
@@ -291,15 +277,6 @@
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
-            // cmbStatus
-            // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "Active", "Inactive" });
-            cmbStatus.Location = new Point(38, 579);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(149, 28);
-            cmbStatus.TabIndex = 25;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -319,16 +296,6 @@
             label9.Size = new Size(88, 22);
             label9.TabIndex = 27;
             label9.Text = "Password";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(386, 490);
-            label10.Name = "label10";
-            label10.Size = new Size(48, 22);
-            label10.TabIndex = 28;
-            label10.Text = "Role";
             // 
             // panel7
             // 
@@ -368,28 +335,16 @@
             txtPassword.Size = new Size(222, 36);
             txtPassword.TabIndex = 33;
             // 
-            // cmbRole
-            // 
-            cmbRole.FormattingEnabled = true;
-            cmbRole.Items.AddRange(new object[] { "Admin", "Customer" });
-            cmbRole.Location = new Point(386, 515);
-            cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(158, 28);
-            cmbRole.TabIndex = 31;
-            // 
             // ManageCustomerActionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(652, 753);
-            Controls.Add(cmbRole);
             Controls.Add(panel8);
             Controls.Add(panel7);
-            Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label1);
-            Controls.Add(cmbStatus);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
             Controls.Add(panel6);
@@ -398,7 +353,6 @@
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);

@@ -15,12 +15,18 @@ namespace ABC_Car_Traders
     {
         private readonly CarController _carController;
         private readonly CarPartsController _carPartsController;
+        private readonly UserController _userController;
+        public readonly RegistrationController _controller;
         private Form activeForm = null;
-        public CustomerDashboard(CarController carController, CarPartsController carPartsController)
+        public int _userId;
+        public CustomerDashboard(CarController carController, CarPartsController carPartsController,UserController userController,RegistrationController registrationController,int userId)
         {
             InitializeComponent();
             _carController = carController;
             _carPartsController = carPartsController;
+            _userController = userController;
+            _controller = registrationController;
+            _userId = userId;
         }
 
         public void loadForm(Form newForm)
@@ -60,7 +66,16 @@ namespace ABC_Car_Traders
 
         private void ManageCustomerOrders_Click(object sender, EventArgs e)
         {
-            loadForm(new CustomerDashboardMyOrdersForm());
+            loadForm(new CustomerDashboardMyOrdersForm(_carController));
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            // Show the LoginForm
+            LoginForm loginForm = new LoginForm(_userController, _controller, _carController, _carPartsController);
+            loginForm.Show();
         }
     }
 }

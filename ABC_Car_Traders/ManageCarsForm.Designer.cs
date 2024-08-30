@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCarsForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             btnAddNewCar = new Button();
@@ -41,16 +36,19 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
+            cmbBrand = new ComboBox();
             btnRefresh = new Button();
-            btnSearch = new Button();
-            button1 = new Button();
-            button2 = new Button();
-            dataGridViewCars = new DataGridView();
+            btnSearchModel = new Button();
+            searchRegNo = new Button();
             panel1 = new Panel();
-            textBox1 = new TextBox();
+            txtRegNo = new TextBox();
+            label5 = new Label();
+            cmbStatus = new ComboBox();
+            btnSearchStatus = new Button();
+            cmbModel = new ComboBox();
+            dataGridViewCars = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
@@ -58,12 +56,11 @@
             Column7 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
             Column9 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
             Column10 = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewCars).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCars).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -117,21 +114,21 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(561, 190);
+            label2.Location = new Point(559, 253);
             label2.Name = "label2";
-            label2.Size = new Size(238, 23);
+            label2.Size = new Size(188, 23);
             label2.TabIndex = 5;
-            label2.Text = "Search Customer by Model";
+            label2.Text = "Search Car by Model";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label3.Location = new Point(561, 253);
+            label3.Location = new Point(561, 194);
             label3.Name = "label3";
-            label3.Size = new Size(236, 23);
+            label3.Size = new Size(186, 23);
             label3.TabIndex = 6;
-            label3.Text = "Search Customer by Brand";
+            label3.Text = "Search Car by Brand";
             // 
             // label4
             // 
@@ -139,25 +136,18 @@
             label4.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             label4.Location = new Point(561, 317);
             label4.Name = "label4";
-            label4.Size = new Size(223, 23);
+            label4.Size = new Size(198, 23);
             label4.TabIndex = 7;
-            label4.Text = "Search Customer by Year";
+            label4.Text = "Search Car by Reg.No";
             // 
-            // comboBox1
+            // cmbBrand
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(823, 189);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(215, 28);
-            comboBox1.TabIndex = 8;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(823, 248);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(215, 28);
-            comboBox2.TabIndex = 9;
+            cmbBrand.FormattingEnabled = true;
+            cmbBrand.Location = new Point(823, 189);
+            cmbBrand.Name = "cmbBrand";
+            cmbBrand.Size = new Size(215, 28);
+            cmbBrand.TabIndex = 9;
+            cmbBrand.SelectedIndexChanged += cmbBrand_SelectedIndexChanged;
             // 
             // btnRefresh
             // 
@@ -165,183 +155,186 @@
             btnRefresh.FlatAppearance.BorderSize = 0;
             btnRefresh.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = SystemColors.ControlLightLight;
-            btnRefresh.Location = new Point(1090, 367);
+            btnRefresh.Location = new Point(1090, 411);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(184, 42);
             btnRefresh.TabIndex = 11;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
-            // btnSearch
+            // btnSearchModel
             // 
-            btnSearch.BackColor = Color.FromArgb(35, 115, 144);
-            btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSearch.ForeColor = SystemColors.ControlLightLight;
-            btnSearch.Location = new Point(1090, 175);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(184, 42);
-            btnSearch.TabIndex = 10;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = false;
+            btnSearchModel.BackColor = Color.FromArgb(35, 115, 144);
+            btnSearchModel.FlatAppearance.BorderSize = 0;
+            btnSearchModel.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchModel.ForeColor = SystemColors.ControlLightLight;
+            btnSearchModel.Location = new Point(1090, 239);
+            btnSearchModel.Name = "btnSearchModel";
+            btnSearchModel.Size = new Size(184, 42);
+            btnSearchModel.TabIndex = 12;
+            btnSearchModel.Text = "Search";
+            btnSearchModel.UseVisualStyleBackColor = false;
+            btnSearchModel.Click += btnSearchModel_Click;
             // 
-            // button1
+            // searchRegNo
             // 
-            button1.BackColor = Color.FromArgb(35, 115, 144);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(1090, 239);
-            button1.Name = "button1";
-            button1.Size = new Size(184, 42);
-            button1.TabIndex = 12;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(35, 115, 144);
-            button2.FlatAppearance.BorderSize = 0;
-            button2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(1090, 298);
-            button2.Name = "button2";
-            button2.Size = new Size(184, 42);
-            button2.TabIndex = 13;
-            button2.Text = "Search";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // dataGridViewCars
-            // 
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCars.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewCars.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCars.Columns.AddRange(new DataGridViewColumn[] { Column1, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column2, Column10 });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dataGridViewCars.DefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCars.Location = new Point(28, 472);
-            dataGridViewCars.Name = "dataGridViewCars";
-            dataGridViewCars.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCars.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCars.RowTemplate.DefaultCellStyle.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCars.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridViewCars.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dataGridViewCars.Size = new Size(1303, 240);
-            dataGridViewCars.TabIndex = 14;
-            dataGridViewCars.CellClick += dataGridView1_CellClick;
-            dataGridViewCars.CellContentClick += dataGridViewCars_CellContentClick;
+            searchRegNo.BackColor = Color.FromArgb(35, 115, 144);
+            searchRegNo.FlatAppearance.BorderSize = 0;
+            searchRegNo.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            searchRegNo.ForeColor = SystemColors.ControlLightLight;
+            searchRegNo.Location = new Point(1090, 298);
+            searchRegNo.Name = "searchRegNo";
+            searchRegNo.Size = new Size(184, 42);
+            searchRegNo.TabIndex = 13;
+            searchRegNo.Text = "Search";
+            searchRegNo.UseVisualStyleBackColor = false;
+            searchRegNo.Click += searchRegNo_Click;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(35, 115, 144);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtRegNo);
             panel1.Location = new Point(823, 299);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(0, 0, 0, 3);
             panel1.Size = new Size(215, 41);
             panel1.TabIndex = 15;
             // 
-            // textBox1
+            // txtRegNo
             // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(0, 0);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(215, 38);
-            textBox1.TabIndex = 0;
+            txtRegNo.Dock = DockStyle.Fill;
+            txtRegNo.Location = new Point(0, 0);
+            txtRegNo.Multiline = true;
+            txtRegNo.Name = "txtRegNo";
+            txtRegNo.Size = new Size(215, 38);
+            txtRegNo.TabIndex = 0;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label5.Location = new Point(561, 377);
+            label5.Name = "label5";
+            label5.Size = new Size(188, 23);
+            label5.TabIndex = 16;
+            label5.Text = "Search Car by Status";
+            // 
+            // cmbStatus
+            // 
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(823, 372);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(215, 28);
+            cmbStatus.TabIndex = 17;
+            // 
+            // btnSearchStatus
+            // 
+            btnSearchStatus.BackColor = Color.FromArgb(35, 115, 144);
+            btnSearchStatus.FlatAppearance.BorderSize = 0;
+            btnSearchStatus.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchStatus.ForeColor = SystemColors.ControlLightLight;
+            btnSearchStatus.Location = new Point(1090, 358);
+            btnSearchStatus.Name = "btnSearchStatus";
+            btnSearchStatus.Size = new Size(184, 42);
+            btnSearchStatus.TabIndex = 18;
+            btnSearchStatus.Text = "Search";
+            btnSearchStatus.UseVisualStyleBackColor = false;
+            btnSearchStatus.Click += btnSearchStatus_Click;
+            // 
+            // cmbModel
+            // 
+            cmbModel.FormattingEnabled = true;
+            cmbModel.Location = new Point(823, 248);
+            cmbModel.Name = "cmbModel";
+            cmbModel.Size = new Size(215, 28);
+            cmbModel.TabIndex = 19;
+            // 
+            // dataGridViewCars
+            // 
+            dataGridViewCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCars.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10 });
+            dataGridViewCars.Location = new Point(60, 506);
+            dataGridViewCars.Name = "dataGridViewCars";
+            dataGridViewCars.RowHeadersWidth = 51;
+            dataGridViewCars.Size = new Size(1228, 188);
+            dataGridViewCars.TabIndex = 20;
+            dataGridViewCars.CellClick += dataGridViewCars_CellClick;
             // 
             // Column1
             // 
             Column1.DataPropertyName = "carId";
-            Column1.HeaderText = "CarId";
+            Column1.HeaderText = "Car Id";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
             Column1.Width = 125;
             // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "modelName";
+            Column2.HeaderText = "Model";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Width = 125;
+            // 
             // Column3
             // 
-            Column3.DataPropertyName = "model";
-            Column3.HeaderText = "Model";
+            Column3.DataPropertyName = "regNo";
+            Column3.HeaderText = "RegNo";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
             Column3.Width = 125;
             // 
             // Column4
             // 
-            Column4.DataPropertyName = "brand";
-            Column4.HeaderText = "Brand";
+            Column4.DataPropertyName = "year";
+            Column4.HeaderText = "Year";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
             Column4.Width = 125;
             // 
             // Column5
             // 
-            Column5.DataPropertyName = "year";
-            Column5.HeaderText = "Year";
+            Column5.DataPropertyName = "price";
+            Column5.HeaderText = "Price";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
             Column5.Width = 125;
             // 
             // Column6
             // 
-            Column6.DataPropertyName = "price";
-            Column6.HeaderText = "Price";
+            Column6.DataPropertyName = "description";
+            Column6.HeaderText = "Description";
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
             Column6.Width = 125;
             // 
             // Column7
             // 
-            Column7.DataPropertyName = "description";
-            Column7.HeaderText = "Description";
+            Column7.DataPropertyName = "quantity";
+            Column7.HeaderText = "Quantity";
             Column7.MinimumWidth = 6;
             Column7.Name = "Column7";
             Column7.Width = 125;
             // 
             // Column8
             // 
-            Column8.DataPropertyName = "quantity";
-            Column8.HeaderText = "Quantity";
+            Column8.DataPropertyName = "transmission";
+            Column8.HeaderText = "Transmission";
             Column8.MinimumWidth = 6;
             Column8.Name = "Column8";
             Column8.Width = 125;
             // 
             // Column9
             // 
-            Column9.DataPropertyName = "transmission";
-            Column9.HeaderText = "Transmission";
+            Column9.DataPropertyName = "status";
+            Column9.HeaderText = "Status";
             Column9.MinimumWidth = 6;
             Column9.Name = "Column9";
             Column9.Width = 125;
             // 
-            // Column2
-            // 
-            Column2.DataPropertyName = "status";
-            Column2.HeaderText = "Status";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 125;
-            // 
             // Column10
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.Teal;
-            Column10.DefaultCellStyle = dataGridViewCellStyle3;
             Column10.HeaderText = "Action";
             Column10.MinimumWidth = 6;
             Column10.Name = "Column10";
@@ -353,14 +346,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1357, 736);
-            Controls.Add(panel1);
             Controls.Add(dataGridViewCars);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(cmbModel);
+            Controls.Add(btnSearchStatus);
+            Controls.Add(cmbStatus);
+            Controls.Add(label5);
+            Controls.Add(panel1);
+            Controls.Add(searchRegNo);
+            Controls.Add(btnSearchModel);
             Controls.Add(btnRefresh);
-            Controls.Add(btnSearch);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbBrand);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -373,9 +368,9 @@
             Text = "ManageCarsForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewCars).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCars).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -389,16 +384,19 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
+        private ComboBox cmbBrand;
         private Button btnRefresh;
-        private Button btnSearch;
-        private Button button1;
-        private Button button2;
-        private DataGridView dataGridViewCars;
+        private Button btnSearchModel;
+        private Button searchRegNo;
         private Panel panel1;
-        private TextBox textBox1;
+        private TextBox txtRegNo;
+        private Label label5;
+        private ComboBox cmbStatus;
+        private Button btnSearchStatus;
+        private ComboBox cmbModel;
+        private DataGridView dataGridViewCars;
         private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
@@ -406,7 +404,6 @@
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column9;
-        private DataGridViewTextBoxColumn Column2;
         private DataGridViewButtonColumn Column10;
     }
 }

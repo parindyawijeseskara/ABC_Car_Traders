@@ -1,8 +1,10 @@
 ﻿using ABC_Car_Traders.Controllers;
+using ABC_Car_Traders.DBContext;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,12 +19,14 @@ namespace ABC_Car_Traders
         private readonly CarController _carController;
         private readonly CarPartsController _carPartsController;
         private readonly UserController _userController;
-        public AdminDashboard(CarController carController, CarPartsController carPartsController, UserController userController)
+        public readonly RegistrationController _controller;
+        public AdminDashboard(CarController carController, CarPartsController carPartsController, UserController userController, RegistrationController controller)
         {
             _carController = carController;
             InitializeComponent();
             _carPartsController = carPartsController;
             _userController = userController;
+            _controller = controller;
         }
 
         public void loadForm(Form newForm)
@@ -47,10 +51,7 @@ namespace ABC_Car_Traders
 
         private void adminDashboard_load(object sender, EventArgs e)
         {
-            //int width = Screen.PrimaryScreen.Bounds.Width;
-            //int height = Screen.PrimaryScreen.Bounds.Height;
-            //this.Location = new Point(0, 0);
-            //this.Size = new Size(width, height);
+            timerDateTime.Start();
         }
 
         private void btnManageCustomers_Click(object sender, EventArgs e)
@@ -87,6 +88,26 @@ namespace ABC_Car_Traders
         private void btnManageReports_Click(object sender, EventArgs e)
         {
             loadForm(new ManageReports());
+        }
+
+        private void adminDashboard_panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void timerDateTime_Tick(object sender, EventArgs e)
+        {
+            labelDateTime.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy, HH:mm:ss");
+
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Close(); 
+
+            // Show the LoginForm
+            LoginForm loginForm = new LoginForm(_userController,_controller,_carController,_carPartsController);
+            loginForm.Show();
         }
     }
 }
