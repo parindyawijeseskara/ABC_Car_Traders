@@ -160,5 +160,10 @@ namespace ABC_Car_Traders
         {
 
         }
+
+        private void customerDashboard_sidepanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

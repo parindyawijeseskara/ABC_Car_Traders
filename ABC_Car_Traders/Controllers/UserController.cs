@@ -134,7 +134,9 @@ namespace ABC_Car_Traders.Controllers
         {
             try
             {
-                return _context.User.Count();  // Get the total number of users
+                // Get the total number of customers
+                return _context.User.
+                    Where(user=>user.roleId==2).Count();
             }
             catch (Exception ex)
             {

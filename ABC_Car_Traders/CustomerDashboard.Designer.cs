@@ -49,6 +49,7 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             customerDashboard_sidepanel2 = new Panel();
+            pictureBox14 = new PictureBox();
             labelLoggedInAs = new Label();
             labelDateTime = new Label();
             customerDashboard_sidepanel3 = new Panel();
@@ -82,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             customerDashboard_sidepanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             customerDashboard_sidepanel3.SuspendLayout();
             panelData3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
@@ -340,6 +342,7 @@
             // customerDashboard_sidepanel2
             // 
             customerDashboard_sidepanel2.BackColor = Color.FromArgb(9, 29, 37);
+            customerDashboard_sidepanel2.Controls.Add(pictureBox14);
             customerDashboard_sidepanel2.Controls.Add(labelLoggedInAs);
             customerDashboard_sidepanel2.Controls.Add(labelDateTime);
             customerDashboard_sidepanel2.Controls.Add(customerDashboard_sidepanel3);
@@ -349,13 +352,23 @@
             customerDashboard_sidepanel2.Name = "customerDashboard_sidepanel2";
             customerDashboard_sidepanel2.Size = new Size(1527, 1032);
             customerDashboard_sidepanel2.TabIndex = 1;
+            customerDashboard_sidepanel2.Paint += customerDashboard_sidepanel2_Paint;
+            // 
+            // pictureBox14
+            // 
+            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
+            pictureBox14.Location = new Point(1470, 64);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(32, 32);
+            pictureBox14.TabIndex = 7;
+            pictureBox14.TabStop = false;
             // 
             // labelLoggedInAs
             // 
             labelLoggedInAs.AutoSize = true;
             labelLoggedInAs.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelLoggedInAs.ForeColor = SystemColors.Control;
-            labelLoggedInAs.Location = new Point(1266, 73);
+            labelLoggedInAs.Location = new Point(1239, 73);
             labelLoggedInAs.Name = "labelLoggedInAs";
             labelLoggedInAs.Size = new Size(152, 23);
             labelLoggedInAs.TabIndex = 6;
@@ -366,7 +379,7 @@
             labelDateTime.AutoSize = true;
             labelDateTime.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelDateTime.ForeColor = SystemColors.ControlLightLight;
-            labelDateTime.Location = new Point(1202, 23);
+            labelDateTime.Location = new Point(1175, 25);
             labelDateTime.Name = "labelDateTime";
             labelDateTime.Size = new Size(114, 23);
             labelDateTime.TabIndex = 5;
@@ -608,6 +621,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             customerDashboard_sidepanel2.ResumeLayout(false);
             customerDashboard_sidepanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             customerDashboard_sidepanel3.ResumeLayout(false);
             panelData3.ResumeLayout(false);
             panelData3.PerformLayout();
@@ -667,5 +681,6 @@
         private PictureBox pictureBox13;
         private PictureBox pictureBox7;
         private PictureBox pictureBox5;
+        private PictureBox pictureBox14;
     }
 }
