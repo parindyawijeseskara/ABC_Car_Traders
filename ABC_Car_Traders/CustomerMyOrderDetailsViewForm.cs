@@ -16,5 +16,10 @@ namespace ABC_Car_Traders
         {
             InitializeComponent();
         }
+
+        private void btnCancelOrder_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

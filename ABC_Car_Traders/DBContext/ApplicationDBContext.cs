@@ -23,6 +23,9 @@ namespace ABC_Car_Traders.DBContext
         public DbSet<User > User { get; set; }
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Models> Model { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<Payment> Payment { get; set; }
 
 
         //public DbSet<Login> Logins { get; set; }

@@ -230,6 +230,7 @@
             btnUpdate.TabIndex = 47;
             btnUpdate.Text = "Confirm Order";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // panel1
             // 

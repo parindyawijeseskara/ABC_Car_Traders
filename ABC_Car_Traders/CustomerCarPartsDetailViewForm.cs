@@ -47,7 +47,10 @@ namespace ABC_Car_Traders
             {
                 using (var ms = new MemoryStream(_carParts.image))
                 {
-                    pictureBoxImage.Image = Image.FromStream(ms);
+                    Image originalImage = Image.FromStream(ms);
+
+                    Image resizedImage = new Bitmap(originalImage, new Size(502, 246));
+                    pictureBoxImage.Image = resizedImage;
                 }
             }
             else

@@ -54,26 +54,27 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(43, 151);
+            label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label2.Location = new Point(56, 137);
             label2.Name = "label2";
-            label2.Size = new Size(101, 22);
+            label2.Size = new Size(108, 23);
             label2.TabIndex = 8;
             label2.Text = "Car Name :";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(177, 1);
+            pictureBox1.Location = new Point(320, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(521, 380);
+            pictureBox1.Size = new Size(700, 322);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
             // txtModel
             // 
-            txtModel.Location = new Point(43, 272);
+            txtModel.BackColor = SystemColors.Window;
+            txtModel.Location = new Point(183, 213);
             txtModel.Name = "txtModel";
             txtModel.Size = new Size(200, 27);
             txtModel.TabIndex = 11;
@@ -81,16 +82,16 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(43, 320);
+            label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label3.Location = new Point(56, 298);
             label3.Name = "label3";
-            label3.Size = new Size(103, 22);
+            label3.Size = new Size(110, 23);
             label3.TabIndex = 12;
             label3.Text = "Car Brand :";
             // 
             // txtCarBrand
             // 
-            txtCarBrand.Location = new Point(43, 354);
+            txtCarBrand.Location = new Point(183, 296);
             txtCarBrand.Name = "txtCarBrand";
             txtCarBrand.Size = new Size(200, 27);
             txtCarBrand.TabIndex = 13;
@@ -98,16 +99,16 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(43, 406);
+            label4.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label4.Location = new Point(56, 373);
             label4.Name = "label4";
-            label4.Size = new Size(58, 22);
+            label4.Size = new Size(61, 23);
             label4.TabIndex = 14;
             label4.Text = "Year :";
             // 
             // txtYear
             // 
-            txtYear.Location = new Point(43, 438);
+            txtYear.Location = new Point(183, 368);
             txtYear.Name = "txtYear";
             txtYear.Size = new Size(200, 27);
             txtYear.TabIndex = 15;
@@ -115,16 +116,16 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(43, 486);
+            label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(56, 449);
             label5.Name = "label5";
-            label5.Size = new Size(68, 22);
+            label5.Size = new Size(71, 23);
             label5.TabIndex = 16;
             label5.Text = "Price : ";
             // 
             // txtPrice
             // 
-            txtPrice.Location = new Point(43, 520);
+            txtPrice.Location = new Point(183, 444);
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(200, 27);
             txtPrice.TabIndex = 17;
@@ -132,16 +133,16 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(43, 577);
+            label6.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label6.Location = new Point(500, 296);
             label6.Name = "label6";
-            label6.Size = new Size(114, 22);
+            label6.Size = new Size(118, 23);
             label6.TabIndex = 18;
             label6.Text = "Description :";
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(43, 612);
+            txtDescription.Location = new Point(640, 293);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(200, 27);
             txtDescription.TabIndex = 19;
@@ -149,16 +150,16 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(43, 665);
+            label7.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label7.Location = new Point(500, 373);
             label7.Name = "label7";
-            label7.Size = new Size(126, 22);
+            label7.Size = new Size(131, 23);
             label7.TabIndex = 20;
             label7.Text = "Transmission :";
             // 
             // txtTransmission
             // 
-            txtTransmission.Location = new Point(43, 699);
+            txtTransmission.Location = new Point(640, 368);
             txtTransmission.Name = "txtTransmission";
             txtTransmission.Size = new Size(200, 27);
             txtTransmission.TabIndex = 21;
@@ -166,10 +167,10 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(405, 371);
+            label8.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(56, 529);
             label8.Name = "label8";
-            label8.Size = new Size(68, 22);
+            label8.Size = new Size(74, 23);
             label8.TabIndex = 22;
             label8.Text = "Image :";
             // 
@@ -178,7 +179,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.FromArgb(35, 115, 144);
-            label9.Location = new Point(43, 58);
+            label9.Location = new Point(53, 55);
             label9.Name = "label9";
             label9.Size = new Size(148, 32);
             label9.TabIndex = 23;
@@ -186,9 +187,9 @@
             // 
             // pictureBoxImage
             // 
-            pictureBoxImage.Location = new Point(337, 406);
+            pictureBoxImage.Location = new Point(56, 564);
             pictureBoxImage.Name = "pictureBoxImage";
-            pictureBoxImage.Size = new Size(312, 246);
+            pictureBoxImage.Size = new Size(502, 246);
             pictureBoxImage.TabIndex = 24;
             pictureBoxImage.TabStop = false;
             pictureBoxImage.Click += pictureBoxImage_Click;
@@ -196,16 +197,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(43, 247);
+            label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label1.Location = new Point(56, 218);
             label1.Name = "label1";
-            label1.Size = new Size(107, 22);
+            label1.Size = new Size(112, 23);
             label1.TabIndex = 25;
             label1.Text = "Car Model :";
             // 
             // txtCarName
             // 
-            txtCarName.Location = new Point(43, 187);
+            txtCarName.BackColor = SystemColors.Window;
+            txtCarName.Location = new Point(183, 132);
             txtCarName.Name = "txtCarName";
             txtCarName.Size = new Size(200, 27);
             txtCarName.TabIndex = 26;
@@ -216,7 +218,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(698, 856);
+            ClientSize = new Size(1018, 856);
             Controls.Add(txtCarName);
             Controls.Add(label1);
             Controls.Add(pictureBoxImage);

@@ -33,26 +33,25 @@
             pictureBox10 = new PictureBox();
             panel1 = new Panel();
             adminDashboard_panel3 = new Panel();
-            panel5 = new Panel();
-            label15 = new Label();
-            pictureBox14 = new PictureBox();
             panel4 = new Panel();
             label14 = new Label();
             pictureBox13 = new PictureBox();
+            labelTotalCarOrders = new Label();
             panel3 = new Panel();
+            labelTotalCarParts = new Label();
             label13 = new Label();
             pictureBox12 = new PictureBox();
             panel2 = new Panel();
+            labelTotalCars = new Label();
             label12 = new Label();
             pictureBox11 = new PictureBox();
             panel6 = new Panel();
+            labeltotalCustomers = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             panel1.SuspendLayout();
             adminDashboard_panel3.SuspendLayout();
-            panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             panel3.SuspendLayout();
@@ -97,7 +96,6 @@
             // adminDashboard_panel3
             // 
             adminDashboard_panel3.BackColor = Color.White;
-            adminDashboard_panel3.Controls.Add(panel5);
             adminDashboard_panel3.Controls.Add(panel4);
             adminDashboard_panel3.Controls.Add(panel3);
             adminDashboard_panel3.Controls.Add(panel2);
@@ -106,46 +104,17 @@
             adminDashboard_panel3.Name = "adminDashboard_panel3";
             adminDashboard_panel3.Size = new Size(1375, 783);
             adminDashboard_panel3.TabIndex = 3;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.FromArgb(35, 115, 144);
-            panel5.Controls.Add(label15);
-            panel5.Controls.Add(pictureBox14);
-            panel5.Location = new Point(946, 42);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(372, 101);
-            panel5.TabIndex = 4;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Times New Roman", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.ForeColor = SystemColors.ControlLightLight;
-            label15.Location = new Point(137, 35);
-            label15.Name = "label15";
-            label15.Size = new Size(149, 29);
-            label15.TabIndex = 1;
-            label15.Text = "Total Orders";
-            // 
-            // pictureBox14
-            // 
-            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
-            pictureBox14.Location = new Point(29, 15);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(87, 62);
-            pictureBox14.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox14.TabIndex = 0;
-            pictureBox14.TabStop = false;
+            adminDashboard_panel3.Paint += adminDashboard_panel3_Paint;
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(35, 115, 144);
             panel4.Controls.Add(label14);
             panel4.Controls.Add(pictureBox13);
-            panel4.Location = new Point(510, 42);
+            panel4.Controls.Add(labelTotalCarOrders);
+            panel4.Location = new Point(727, 47);
             panel4.Name = "panel4";
-            panel4.Size = new Size(389, 101);
+            panel4.Size = new Size(538, 129);
             panel4.TabIndex = 3;
             // 
             // label14
@@ -153,7 +122,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("Times New Roman", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = SystemColors.ControlLightLight;
-            label14.Location = new Point(137, 35);
+            label14.Location = new Point(175, 37);
             label14.Name = "label14";
             label14.Size = new Size(149, 29);
             label14.TabIndex = 1;
@@ -162,22 +131,45 @@
             // pictureBox13
             // 
             pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(29, 15);
+            pictureBox13.Location = new Point(49, 18);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(87, 62);
             pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox13.TabIndex = 0;
             pictureBox13.TabStop = false;
             // 
+            // labelTotalCarOrders
+            // 
+            labelTotalCarOrders.AutoSize = true;
+            labelTotalCarOrders.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTotalCarOrders.ForeColor = SystemColors.Control;
+            labelTotalCarOrders.Location = new Point(387, 39);
+            labelTotalCarOrders.Name = "labelTotalCarOrders";
+            labelTotalCarOrders.Size = new Size(90, 35);
+            labelTotalCarOrders.TabIndex = 34;
+            labelTotalCarOrders.Text = "label7";
+            // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(35, 115, 144);
+            panel3.Controls.Add(labelTotalCarParts);
             panel3.Controls.Add(label13);
             panel3.Controls.Add(pictureBox12);
-            panel3.Location = new Point(59, 203);
+            panel3.Location = new Point(59, 231);
             panel3.Name = "panel3";
-            panel3.Size = new Size(402, 101);
+            panel3.Size = new Size(538, 129);
             panel3.TabIndex = 2;
+            // 
+            // labelTotalCarParts
+            // 
+            labelTotalCarParts.AutoSize = true;
+            labelTotalCarParts.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTotalCarParts.ForeColor = SystemColors.Control;
+            labelTotalCarParts.Location = new Point(378, 42);
+            labelTotalCarParts.Name = "labelTotalCarParts";
+            labelTotalCarParts.Size = new Size(90, 35);
+            labelTotalCarParts.TabIndex = 33;
+            labelTotalCarParts.Text = "label7";
             // 
             // label13
             // 
@@ -203,12 +195,24 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(35, 115, 144);
+            panel2.Controls.Add(labelTotalCars);
             panel2.Controls.Add(label12);
             panel2.Controls.Add(pictureBox11);
-            panel2.Location = new Point(510, 203);
+            panel2.Location = new Point(727, 231);
             panel2.Name = "panel2";
-            panel2.Size = new Size(389, 101);
+            panel2.Size = new Size(538, 129);
             panel2.TabIndex = 2;
+            // 
+            // labelTotalCars
+            // 
+            labelTotalCars.AutoSize = true;
+            labelTotalCars.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTotalCars.ForeColor = SystemColors.Control;
+            labelTotalCars.Location = new Point(312, 35);
+            labelTotalCars.Name = "labelTotalCars";
+            labelTotalCars.Size = new Size(199, 35);
+            labelTotalCars.TabIndex = 32;
+            labelTotalCars.Text = "labelTotalCars";
             // 
             // label12
             // 
@@ -234,19 +238,31 @@
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(35, 115, 144);
+            panel6.Controls.Add(labeltotalCustomers);
             panel6.Controls.Add(label1);
             panel6.Controls.Add(pictureBox1);
             panel6.Location = new Point(59, 42);
             panel6.Name = "panel6";
-            panel6.Size = new Size(402, 101);
+            panel6.Size = new Size(538, 129);
             panel6.TabIndex = 0;
+            // 
+            // labeltotalCustomers
+            // 
+            labeltotalCustomers.AutoSize = true;
+            labeltotalCustomers.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labeltotalCustomers.ForeColor = SystemColors.Control;
+            labeltotalCustomers.Location = new Point(378, 42);
+            labeltotalCustomers.Name = "labeltotalCustomers";
+            labeltotalCustomers.Size = new Size(90, 35);
+            labeltotalCustomers.TabIndex = 34;
+            labeltotalCustomers.Text = "label7";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(125, 37);
+            label1.Location = new Point(162, 42);
             label1.Name = "label1";
             label1.Size = new Size(188, 29);
             label1.TabIndex = 1;
@@ -255,7 +271,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(29, 23);
+            pictureBox1.Location = new Point(56, 23);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(74, 51);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -276,9 +292,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             adminDashboard_panel3.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
@@ -300,9 +313,6 @@
         private PictureBox pictureBox10;
         private Panel panel1;
         private Panel adminDashboard_panel3;
-        private Panel panel5;
-        private Label label15;
-        private PictureBox pictureBox14;
         private Panel panel4;
         private Label label14;
         private PictureBox pictureBox13;
@@ -315,5 +325,9 @@
         private Panel panel6;
         private Label label1;
         private PictureBox pictureBox1;
+        private Label labelTotalCarOrders;
+        private Label labelTotalCars;
+        private Label labelTotalCarParts;
+        private Label labeltotalCustomers;
     }
 }

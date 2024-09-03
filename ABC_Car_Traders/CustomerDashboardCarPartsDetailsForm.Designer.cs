@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerDashboardCarPartsDetailsForm));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
@@ -59,7 +59,6 @@
             Column9 = new DataGridViewTextBoxColumn();
             Column10 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewButtonColumn();
-            Column12 = new DataGridViewButtonColumn();
             cmbBrand = new ComboBox();
             label7 = new Label();
             cmbModel = new ComboBox();
@@ -74,7 +73,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(76, 237);
+            label2.Location = new Point(76, 288);
             label2.Name = "label2";
             label2.Size = new Size(226, 23);
             label2.TabIndex = 29;
@@ -105,7 +104,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(76, 139);
+            label3.Location = new Point(76, 160);
             label3.Name = "label3";
             label3.Size = new Size(149, 23);
             label3.TabIndex = 32;
@@ -173,7 +172,7 @@
             // 
             SearchByPriceRange.BackColor = Color.FromArgb(35, 115, 144);
             SearchByPriceRange.FlatAppearance.BorderSize = 0;
-            SearchByPriceRange.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchByPriceRange.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             SearchByPriceRange.ForeColor = SystemColors.ControlLightLight;
             SearchByPriceRange.Location = new Point(737, 345);
             SearchByPriceRange.Name = "SearchByPriceRange";
@@ -187,9 +186,9 @@
             // 
             txtSearchModel.BackColor = Color.FromArgb(35, 115, 144);
             txtSearchModel.FlatAppearance.BorderSize = 0;
-            txtSearchModel.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearchModel.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             txtSearchModel.ForeColor = SystemColors.ControlLightLight;
-            txtSearchModel.Location = new Point(503, 166);
+            txtSearchModel.Location = new Point(503, 206);
             txtSearchModel.Name = "txtSearchModel";
             txtSearchModel.Size = new Size(184, 42);
             txtSearchModel.TabIndex = 42;
@@ -201,9 +200,9 @@
             // 
             btnSearchByCartPartName.BackColor = Color.FromArgb(35, 115, 144);
             btnSearchByCartPartName.FlatAppearance.BorderSize = 0;
-            btnSearchByCartPartName.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchByCartPartName.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             btnSearchByCartPartName.ForeColor = SystemColors.ControlLightLight;
-            btnSearchByCartPartName.Location = new Point(503, 218);
+            btnSearchByCartPartName.Location = new Point(503, 269);
             btnSearchByCartPartName.Name = "btnSearchByCartPartName";
             btnSearchByCartPartName.Size = new Size(184, 42);
             btnSearchByCartPartName.TabIndex = 43;
@@ -215,7 +214,7 @@
             // 
             btnReset.BackColor = Color.FromArgb(35, 115, 144);
             btnReset.FlatAppearance.BorderSize = 0;
-            btnReset.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReset.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             btnReset.ForeColor = SystemColors.ControlLightLight;
             btnReset.Location = new Point(942, 345);
             btnReset.Name = "btnReset";
@@ -223,33 +222,35 @@
             btnReset.TabIndex = 44;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // dataGridViewCarParts
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridViewCarParts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(35, 115, 144);
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCarParts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCarParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCarParts.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column13, Column5, Column6, Column7, Column8, Column9, Column10, Column11, Column12 });
+            dataGridViewCarParts.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column13, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
+            dataGridViewCarParts.EnableHeadersVisualStyles = false;
             dataGridViewCarParts.Location = new Point(76, 464);
             dataGridViewCarParts.Name = "dataGridViewCarParts";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewCarParts.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewCarParts.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewCarParts.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCarParts.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCarParts.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCarParts.Size = new Size(1188, 188);
             dataGridViewCarParts.TabIndex = 45;
             dataGridViewCarParts.CellClick += dataGridViewCarParts_CellClick;
@@ -349,17 +350,10 @@
             Column11.Name = "Column11";
             Column11.Width = 125;
             // 
-            // Column12
-            // 
-            Column12.HeaderText = "Place Order";
-            Column12.MinimumWidth = 6;
-            Column12.Name = "Column12";
-            Column12.Width = 125;
-            // 
             // cmbBrand
             // 
             cmbBrand.FormattingEnabled = true;
-            cmbBrand.Location = new Point(270, 134);
+            cmbBrand.Location = new Point(270, 155);
             cmbBrand.Name = "cmbBrand";
             cmbBrand.Size = new Size(203, 28);
             cmbBrand.TabIndex = 46;
@@ -369,7 +363,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(76, 185);
+            label7.Location = new Point(76, 225);
             label7.Name = "label7";
             label7.Size = new Size(151, 23);
             label7.TabIndex = 48;
@@ -378,14 +372,14 @@
             // cmbModel
             // 
             cmbModel.FormattingEnabled = true;
-            cmbModel.Location = new Point(270, 184);
+            cmbModel.Location = new Point(270, 220);
             cmbModel.Name = "cmbModel";
             cmbModel.Size = new Size(203, 28);
             cmbModel.TabIndex = 49;
             // 
             // txtCarPartName
             // 
-            txtCarPartName.Location = new Point(323, 233);
+            txtCarPartName.Location = new Point(313, 284);
             txtCarPartName.Name = "txtCarPartName";
             txtCarPartName.Size = new Size(160, 27);
             txtCarPartName.TabIndex = 50;
@@ -443,6 +437,10 @@
         private TextBox txtFromPrice;
         private TextBox txtToPrice;
         private DataGridView dataGridViewCarParts;
+        private ComboBox cmbBrand;
+        private Label label7;
+        private ComboBox cmbModel;
+        private TextBox txtCarPartName;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
@@ -455,10 +453,5 @@
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
         private DataGridViewButtonColumn Column11;
-        private DataGridViewButtonColumn Column12;
-        private ComboBox cmbBrand;
-        private Label label7;
-        private ComboBox cmbModel;
-        private TextBox txtCarPartName;
     }
 }

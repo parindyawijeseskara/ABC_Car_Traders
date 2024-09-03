@@ -1,5 +1,6 @@
 ﻿using ABC_Car_Traders.Controllers;
 using ABC_Car_Traders.Model;
+using ABC_Car_Traders.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +19,7 @@ namespace ABC_Car_Traders
         private readonly CarController _carController;
         private readonly int _carId;
         private Car _car;
+        private string _carImageFileName;
 
 
         public ManageCarActionForm(CarController carController, int carId)
@@ -25,14 +28,7 @@ namespace ABC_Car_Traders
             _carController = carController;
             _carId = carId;
             loadCarDetails();
-            lblRegNoError.Visible = false;
-            lblBrandError.Visible = false;
-            lblModelError.Visible = false;
-            lblYearError.Visible = false;
-            lblPriceError.Visible = false;
-            lblDescriptionError.Visible = false;
-            lblQuantityError.Visible = false;
-            lblTransmissionError.Visible = false;
+           
             
 
 
@@ -129,22 +125,10 @@ namespace ABC_Car_Traders
         {
             bool isValid = true;
 
-            // Validate Registration Number
-            if (string.IsNullOrWhiteSpace(txtCarName.Text))
-            {
-                lblRegNoError.Text = "** Please enter the registration number.";
-                lblRegNoError.Visible = true;
-                isValid = false;
-            }
-            else
-            {
-                lblRegNoError.Visible = false;
-            }
-
             // Validate Brand Name
-            if (string.IsNullOrWhiteSpace(txtBrand.Text))
+            if (string.IsNullOrWhiteSpace(txtBrand.Text) || !Regex.IsMatch(txtBrand.Text, PatternValidation.namePattern))
             {
-                lblBrandError.Text = "Please enter the brand name.";
+                lblBrandError.Text = "Please enter a valid brand name.";
                 lblBrandError.Visible = true;
                 isValid = false;
             }
@@ -154,9 +138,9 @@ namespace ABC_Car_Traders
             }
 
             // Validate Model Name
-            if (string.IsNullOrWhiteSpace(txtModel.Text))
+            if (string.IsNullOrWhiteSpace(txtModel.Text) || !Regex.IsMatch(txtModel.Text, PatternValidation.namePattern))
             {
-                lblModelError.Text = "Please enter the model name.";
+                lblModelError.Text = "Please enter a valid model name.";
                 lblModelError.Visible = true;
                 isValid = false;
             }
@@ -168,25 +152,25 @@ namespace ABC_Car_Traders
             // Validate Year
             if (!int.TryParse(txtYear.Text, out int year) || txtYear.Text.Length != 4)
             {
-                lblYearError.Text = "Please enter a valid 4-digit year.";
-                lblYearError.Visible = true;
+                lblYear.Text = "Please enter a valid 4-digit year.";
+                lblYear.Visible = true;
                 isValid = false;
             }
             else
             {
-                lblYearError.Visible = false;
+                lblYear.Visible = false;
             }
 
             // Validate Price
             if (!decimal.TryParse(txtPrice.Text, out decimal price) || price <= 0)
             {
-                lblPriceError.Text = "Please enter a valid price.";
-                lblPriceError.Visible = true;
+                lblYear.Text = "Please enter a valid price.";
+                lblYear.Visible = true;
                 isValid = false;
             }
             else
             {
-                lblPriceError.Visible = false;
+                lblYear.Visible = false;
             }
 
             // Validate Quantity
@@ -213,7 +197,22 @@ namespace ABC_Car_Traders
                 lblTransmissionError.Visible = false;
             }
 
+            // Validate Image
+            if (string.IsNullOrWhiteSpace(_carImageFileName) || !Regex.IsMatch(_carImageFileName, PatternValidation.imagePattern, RegexOptions.IgnoreCase))
+            {
+                lblpictureBoxImage.Text = "Please upload a valid image file (jpg, jpeg, png, gif).";
+                lblpictureBoxImage.Visible = true;
+                isValid = false;
+            }
+            else
+            {
+                lblpictureBoxImage.Visible = false;
+            }
+
             return isValid;
         }
+
+
+
     }
 }

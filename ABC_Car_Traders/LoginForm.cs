@@ -12,15 +12,17 @@ namespace ABC_Car_Traders
         public readonly RegistrationController _controller;
         private readonly CarController _carController;
         private readonly CarPartsController _carPartsController;
+        private readonly OrdersController _ordersController;
         public int userId;
-        
-        public LoginForm(UserController userController, RegistrationController controller, CarController carController, CarPartsController carPartsController)
+
+        public LoginForm(UserController userController, RegistrationController controller, CarController carController, CarPartsController carPartsController, OrdersController ordersController)
         {
             InitializeComponent();
             _carController = carController;
             _carPartsController = carPartsController;
             _userController = userController;
             _controller = controller;
+            _ordersController = ordersController;
             LoadRoleUsers();
         }
 
@@ -62,7 +64,7 @@ namespace ABC_Car_Traders
 
         private void link_Register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            RegistrationForm registrationForm = new RegistrationForm(_controller, _userController,_carController,_carPartsController);
+            RegistrationForm registrationForm = new RegistrationForm(_controller, _userController, _carController, _carPartsController, _ordersController);
             LoadFormIntoPanel(registrationForm);
         }
 
@@ -75,7 +77,7 @@ namespace ABC_Car_Traders
         {
             var roles = _controller.GetRoles();
             cmbUserRole.DataSource = roles;
-            cmbUserRole.DisplayMember = "Role"; 
+            cmbUserRole.DisplayMember = "Role";
             cmbUserRole.ValueMember = "RoleId";
         }
 
@@ -95,13 +97,13 @@ namespace ABC_Car_Traders
                     MessageBox.Show("Login successful!");
                     if (user.roleId == 1)
                     {
-                        AdminDashboard adminDashboard = new AdminDashboard(_carController,_carPartsController,_userController,_controller);
+                        AdminDashboard adminDashboard = new AdminDashboard(_carController, _carPartsController, _userController, _controller, _ordersController, this.userId);
                         adminDashboard.Show();
                         this.Hide();
                     }
                     else if (user.roleId == 2)
                     {
-                        CustomerDashboard customerDashboard = new CustomerDashboard(_carController,_carPartsController,_userController,_controller,this.userId);
+                        CustomerDashboard customerDashboard = new CustomerDashboard(_carController, _carPartsController, _userController, _controller, this.userId, _ordersController);
                         customerDashboard.Show();
                         this.Hide();
                     }
@@ -115,6 +117,11 @@ namespace ABC_Car_Traders
             {
                 MessageBox.Show($"An error occurred during login: {ex.Message}");
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

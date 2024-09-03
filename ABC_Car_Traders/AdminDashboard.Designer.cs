@@ -52,19 +52,20 @@ namespace ABC_Car_Traders
             adminDashboard_panel2 = new Panel();
             labelDateTime = new Label();
             adminDashboard_panel3 = new Panel();
-            panel5 = new Panel();
-            label15 = new Label();
-            pictureBox14 = new PictureBox();
             panel4 = new Panel();
+            labelTotalCarOrders = new Label();
             pictureBox11 = new PictureBox();
             label14 = new Label();
             panel3 = new Panel();
             pictureBox12 = new PictureBox();
+            labelTotalCarParts = new Label();
             label13 = new Label();
             panel2 = new Panel();
+            labelTotalCars = new Label();
             pictureBox13 = new PictureBox();
             label12 = new Label();
             panel1 = new Panel();
+            labeltotalCustomers = new Label();
             label11 = new Label();
             pictureBox10 = new PictureBox();
             label2 = new Label();
@@ -82,8 +83,6 @@ namespace ABC_Car_Traders
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             adminDashboard_panel2.SuspendLayout();
             adminDashboard_panel3.SuspendLayout();
-            panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             panel3.SuspendLayout();
@@ -357,16 +356,16 @@ namespace ABC_Car_Traders
             labelDateTime.AutoSize = true;
             labelDateTime.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelDateTime.ForeColor = SystemColors.ControlLightLight;
-            labelDateTime.Location = new Point(1207, 24);
+            labelDateTime.Location = new Point(1156, 23);
             labelDateTime.Name = "labelDateTime";
             labelDateTime.Size = new Size(114, 23);
             labelDateTime.TabIndex = 3;
             labelDateTime.Text = "lblDateTime";
+            labelDateTime.Click += labelDateTime_Click;
             // 
             // adminDashboard_panel3
             // 
             adminDashboard_panel3.BackColor = Color.White;
-            adminDashboard_panel3.Controls.Add(panel5);
             adminDashboard_panel3.Controls.Add(panel4);
             adminDashboard_panel3.Controls.Add(panel3);
             adminDashboard_panel3.Controls.Add(panel2);
@@ -375,52 +374,34 @@ namespace ABC_Car_Traders
             adminDashboard_panel3.Name = "adminDashboard_panel3";
             adminDashboard_panel3.Size = new Size(1375, 783);
             adminDashboard_panel3.TabIndex = 2;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.FromArgb(35, 115, 144);
-            panel5.Controls.Add(label15);
-            panel5.Controls.Add(pictureBox14);
-            panel5.Location = new Point(946, 42);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(372, 101);
-            panel5.TabIndex = 4;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Times New Roman", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.ForeColor = SystemColors.ControlLightLight;
-            label15.Location = new Point(137, 35);
-            label15.Name = "label15";
-            label15.Size = new Size(149, 29);
-            label15.TabIndex = 1;
-            label15.Text = "Total Orders";
-            // 
-            // pictureBox14
-            // 
-            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
-            pictureBox14.Location = new Point(29, 15);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(87, 62);
-            pictureBox14.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox14.TabIndex = 0;
-            pictureBox14.TabStop = false;
+            adminDashboard_panel3.Paint += adminDashboard_panel3_Paint;
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(35, 115, 144);
+            panel4.Controls.Add(labelTotalCarOrders);
             panel4.Controls.Add(pictureBox11);
             panel4.Controls.Add(label14);
-            panel4.Location = new Point(510, 42);
+            panel4.Location = new Point(757, 42);
             panel4.Name = "panel4";
-            panel4.Size = new Size(389, 101);
+            panel4.Size = new Size(538, 129);
             panel4.TabIndex = 3;
+            // 
+            // labelTotalCarOrders
+            // 
+            labelTotalCarOrders.AutoSize = true;
+            labelTotalCarOrders.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTotalCarOrders.ForeColor = SystemColors.Control;
+            labelTotalCarOrders.Location = new Point(350, 48);
+            labelTotalCarOrders.Name = "labelTotalCarOrders";
+            labelTotalCarOrders.Size = new Size(90, 35);
+            labelTotalCarOrders.TabIndex = 37;
+            labelTotalCarOrders.Text = "label7";
             // 
             // pictureBox11
             // 
             pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(52, 26);
+            pictureBox11.Location = new Point(52, 35);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(59, 51);
             pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
@@ -432,7 +413,7 @@ namespace ABC_Car_Traders
             label14.AutoSize = true;
             label14.Font = new Font("Times New Roman", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = SystemColors.ControlLightLight;
-            label14.Location = new Point(137, 35);
+            label14.Location = new Point(137, 48);
             label14.Name = "label14";
             label14.Size = new Size(149, 29);
             label14.TabIndex = 1;
@@ -442,28 +423,40 @@ namespace ABC_Car_Traders
             // 
             panel3.BackColor = Color.FromArgb(35, 115, 144);
             panel3.Controls.Add(pictureBox12);
+            panel3.Controls.Add(labelTotalCarParts);
             panel3.Controls.Add(label13);
-            panel3.Location = new Point(59, 203);
+            panel3.Location = new Point(103, 251);
             panel3.Name = "panel3";
-            panel3.Size = new Size(402, 101);
+            panel3.Size = new Size(538, 131);
             panel3.TabIndex = 2;
             // 
             // pictureBox12
             // 
             pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
-            pictureBox12.Location = new Point(44, 25);
+            pictureBox12.Location = new Point(44, 35);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(59, 51);
             pictureBox12.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox12.TabIndex = 3;
             pictureBox12.TabStop = false;
             // 
+            // labelTotalCarParts
+            // 
+            labelTotalCarParts.AutoSize = true;
+            labelTotalCarParts.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTotalCarParts.ForeColor = SystemColors.Control;
+            labelTotalCarParts.Location = new Point(359, 43);
+            labelTotalCarParts.Name = "labelTotalCarParts";
+            labelTotalCarParts.Size = new Size(90, 35);
+            labelTotalCarParts.TabIndex = 36;
+            labelTotalCarParts.Text = "label7";
+            // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Times New Roman", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = SystemColors.ControlLightLight;
-            label13.Location = new Point(137, 35);
+            label13.Location = new Point(137, 47);
             label13.Name = "label13";
             label13.Size = new Size(176, 29);
             label13.TabIndex = 1;
@@ -472,17 +465,29 @@ namespace ABC_Car_Traders
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(35, 115, 144);
+            panel2.Controls.Add(labelTotalCars);
             panel2.Controls.Add(pictureBox13);
             panel2.Controls.Add(label12);
-            panel2.Location = new Point(510, 203);
+            panel2.Location = new Point(757, 251);
             panel2.Name = "panel2";
-            panel2.Size = new Size(389, 101);
+            panel2.Size = new Size(543, 131);
             panel2.TabIndex = 2;
+            // 
+            // labelTotalCars
+            // 
+            labelTotalCars.AutoSize = true;
+            labelTotalCars.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTotalCars.ForeColor = SystemColors.Control;
+            labelTotalCars.Location = new Point(304, 51);
+            labelTotalCars.Name = "labelTotalCars";
+            labelTotalCars.Size = new Size(199, 35);
+            labelTotalCars.TabIndex = 35;
+            labelTotalCars.Text = "labelTotalCars";
             // 
             // pictureBox13
             // 
             pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(52, 25);
+            pictureBox13.Location = new Point(52, 35);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(59, 51);
             pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
@@ -494,7 +499,7 @@ namespace ABC_Car_Traders
             label12.AutoSize = true;
             label12.Font = new Font("Times New Roman", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = SystemColors.ControlLightLight;
-            label12.Location = new Point(137, 35);
+            label12.Location = new Point(137, 47);
             label12.Name = "label12";
             label12.Size = new Size(123, 29);
             label12.TabIndex = 1;
@@ -503,19 +508,31 @@ namespace ABC_Car_Traders
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(35, 115, 144);
+            panel1.Controls.Add(labeltotalCustomers);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(pictureBox10);
-            panel1.Location = new Point(59, 42);
+            panel1.Location = new Point(103, 42);
             panel1.Name = "panel1";
-            panel1.Size = new Size(402, 101);
+            panel1.Size = new Size(538, 129);
             panel1.TabIndex = 0;
+            // 
+            // labeltotalCustomers
+            // 
+            labeltotalCustomers.AutoSize = true;
+            labeltotalCustomers.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labeltotalCustomers.ForeColor = SystemColors.Control;
+            labeltotalCustomers.Location = new Point(383, 42);
+            labeltotalCustomers.Name = "labeltotalCustomers";
+            labeltotalCustomers.Size = new Size(90, 35);
+            labeltotalCustomers.TabIndex = 37;
+            labeltotalCustomers.Text = "label7";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Times New Roman", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = SystemColors.ControlLightLight;
-            label11.Location = new Point(125, 37);
+            label11.Location = new Point(125, 48);
             label11.Name = "label11";
             label11.Size = new Size(188, 29);
             label11.TabIndex = 1;
@@ -524,7 +541,7 @@ namespace ABC_Car_Traders
             // pictureBox10
             // 
             pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(44, 23);
+            pictureBox10.Location = new Point(44, 35);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(59, 51);
             pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
@@ -538,9 +555,10 @@ namespace ABC_Car_Traders
             label2.ForeColor = SystemColors.ControlLightLight;
             label2.Location = new Point(320, 90);
             label2.Name = "label2";
-            label2.Size = new Size(787, 23);
+            label2.Size = new Size(772, 23);
             label2.TabIndex = 1;
-            label2.Text = "known for long-lasting good will trust suppliers high-quality vehicles and a transport solutions";
+            label2.Text = "known for long-lasting good will trust suppliers high-quality vehicles and transport solutions";
+            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -581,9 +599,6 @@ namespace ABC_Car_Traders
             adminDashboard_panel2.ResumeLayout(false);
             adminDashboard_panel2.PerformLayout();
             adminDashboard_panel3.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
@@ -624,9 +639,6 @@ namespace ABC_Car_Traders
         private Label label13;
         private Panel panel4;
         private Label label14;
-        private Panel panel5;
-        private Label label15;
-        private PictureBox pictureBox14;
         private Button btnAdminDasboard;
         private Button btnManageCustomers;
         private Button btnManageCars;
@@ -640,5 +652,9 @@ namespace ABC_Car_Traders
         private PictureBox pictureBox13;
         private Label labelDateTime;
         private System.Windows.Forms.Timer timerDateTime;
+        private Label labelTotalCarOrders;
+        private Label labelTotalCarParts;
+        private Label labelTotalCars;
+        private Label labeltotalCustomers;
     }
 }

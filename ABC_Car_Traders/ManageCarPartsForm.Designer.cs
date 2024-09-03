@@ -135,8 +135,8 @@
             // dataGridViewCarParts
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(35, 115, 144);
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -152,7 +152,8 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridViewCarParts.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCarParts.Location = new Point(23, 448);
+            dataGridViewCarParts.EnableHeadersVisualStyles = false;
+            dataGridViewCarParts.Location = new Point(23, 477);
             dataGridViewCarParts.Name = "dataGridViewCarParts";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Control;
@@ -165,7 +166,7 @@
             dataGridViewCarParts.RowHeadersWidth = 51;
             dataGridViewCellStyle5.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCarParts.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCarParts.Size = new Size(1322, 247);
+            dataGridViewCarParts.Size = new Size(1322, 218);
             dataGridViewCarParts.TabIndex = 20;
             dataGridViewCarParts.CellClick += dataGridView1_CellClick;
             // 
@@ -413,6 +414,12 @@
         private Button btnSearchModel;
         private Button txtSearchName;
         private PictureBox pictureBox2;
+        private Label label4;
+        private ComboBox cmbBrand;
+        private Button txtSearchStatus;
+        private TextBox txtName;
+        private Label label5;
+        private TextBox txtStatus;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
@@ -424,11 +431,5 @@
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
         private DataGridViewButtonColumn Column11;
-        private Label label4;
-        private ComboBox cmbBrand;
-        private Button txtSearchStatus;
-        private TextBox txtName;
-        private Label label5;
-        private TextBox txtStatus;
     }
 }

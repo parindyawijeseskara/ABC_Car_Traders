@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCarsForm));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             btnAddNewCar = new Button();
@@ -153,7 +154,7 @@
             // 
             btnRefresh.BackColor = Color.FromArgb(35, 115, 144);
             btnRefresh.FlatAppearance.BorderSize = 0;
-            btnRefresh.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRefresh.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             btnRefresh.ForeColor = SystemColors.ControlLightLight;
             btnRefresh.Location = new Point(1090, 411);
             btnRefresh.Name = "btnRefresh";
@@ -167,7 +168,7 @@
             // 
             btnSearchModel.BackColor = Color.FromArgb(35, 115, 144);
             btnSearchModel.FlatAppearance.BorderSize = 0;
-            btnSearchModel.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchModel.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             btnSearchModel.ForeColor = SystemColors.ControlLightLight;
             btnSearchModel.Location = new Point(1090, 239);
             btnSearchModel.Name = "btnSearchModel";
@@ -181,7 +182,7 @@
             // 
             searchRegNo.BackColor = Color.FromArgb(35, 115, 144);
             searchRegNo.FlatAppearance.BorderSize = 0;
-            searchRegNo.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            searchRegNo.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             searchRegNo.ForeColor = SystemColors.ControlLightLight;
             searchRegNo.Location = new Point(1090, 298);
             searchRegNo.Name = "searchRegNo";
@@ -232,7 +233,7 @@
             // 
             btnSearchStatus.BackColor = Color.FromArgb(35, 115, 144);
             btnSearchStatus.FlatAppearance.BorderSize = 0;
-            btnSearchStatus.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchStatus.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             btnSearchStatus.ForeColor = SystemColors.ControlLightLight;
             btnSearchStatus.Location = new Point(1090, 358);
             btnSearchStatus.Name = "btnSearchStatus";
@@ -252,8 +253,17 @@
             // 
             // dataGridViewCars
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(35, 115, 144);
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCars.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCars.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10 });
+            dataGridViewCars.EnableHeadersVisualStyles = false;
             dataGridViewCars.Location = new Point(60, 506);
             dataGridViewCars.Name = "dataGridViewCars";
             dataGridViewCars.RowHeadersWidth = 51;

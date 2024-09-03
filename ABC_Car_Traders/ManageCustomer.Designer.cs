@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCustomer));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             btnAddNewCustomer = new Button();
@@ -87,7 +88,6 @@
             // 
             btnAddNewCustomer.BackColor = Color.FromArgb(35, 115, 144);
             btnAddNewCustomer.FlatAppearance.BorderSize = 0;
-            btnAddNewCustomer.FlatStyle = FlatStyle.Flat;
             btnAddNewCustomer.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddNewCustomer.ForeColor = SystemColors.ControlLightLight;
             btnAddNewCustomer.ImageAlign = ContentAlignment.MiddleRight;
@@ -124,7 +124,7 @@
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "ACT", "INACT" });
+            cmbStatus.Items.AddRange(new object[] { "ACT", "InAct" });
             cmbStatus.Location = new Point(859, 265);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(219, 28);
@@ -153,7 +153,6 @@
             // 
             btnSearchEmail.BackColor = Color.FromArgb(35, 115, 144);
             btnSearchEmail.FlatAppearance.BorderSize = 0;
-            btnSearchEmail.FlatStyle = FlatStyle.Flat;
             btnSearchEmail.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearchEmail.ForeColor = SystemColors.ControlLightLight;
             btnSearchEmail.Location = new Point(1151, 176);
@@ -166,9 +165,9 @@
             // 
             // btnRefresh
             // 
+            btnRefresh.AutoSize = true;
             btnRefresh.BackColor = Color.FromArgb(35, 115, 144);
             btnRefresh.FlatAppearance.BorderSize = 0;
-            btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = SystemColors.ControlLightLight;
             btnRefresh.Location = new Point(1151, 328);
@@ -184,30 +183,39 @@
             dataGridViewCellStyle1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCustomers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(35, 115, 144);
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCustomers.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Action });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dataGridViewCustomers.DefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCustomers.Location = new Point(73, 456);
-            dataGridViewCustomers.Name = "dataGridViewCustomers";
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dataGridViewCustomers.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCustomers.EnableHeadersVisualStyles = false;
+            dataGridViewCustomers.Location = new Point(73, 456);
+            dataGridViewCustomers.Name = "dataGridViewCustomers";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridViewCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewCustomers.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCustomers.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCustomers.RowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCustomers.Size = new Size(1279, 188);
             dataGridViewCustomers.TabIndex = 9;
             dataGridViewCustomers.CellClick += dataGridView1_CellClick;
@@ -216,10 +224,10 @@
             // Column1
             // 
             Column1.DataPropertyName = "userId";
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            Column1.DefaultCellStyle = dataGridViewCellStyle3;
             Column1.HeaderText = "Customer Id";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
@@ -275,11 +283,11 @@
             // 
             // Action
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 192, 192);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Teal;
-            Action.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 192, 192);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Teal;
+            Action.DefaultCellStyle = dataGridViewCellStyle4;
             Action.HeaderText = "Action";
             Action.MinimumWidth = 6;
             Action.Name = "Action";
@@ -303,7 +311,6 @@
             // 
             btnSearchStatus.BackColor = Color.FromArgb(35, 115, 144);
             btnSearchStatus.FlatAppearance.BorderSize = 0;
-            btnSearchStatus.FlatStyle = FlatStyle.Flat;
             btnSearchStatus.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearchStatus.ForeColor = SystemColors.ControlLightLight;
             btnSearchStatus.Location = new Point(1151, 251);

@@ -1,139 +1,146 @@
 ﻿using ABC_Car_Traders.Controllers;
 using ABC_Car_Traders.Model;
-using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using User = ABC_Car_Traders.Model.User;
 
 namespace ABC_Car_Traders
 {
-    public partial class CustomerDashboardMyOrdersForm : Form
+    public partial class CustomerDashboardCarPartsOrderForm : Form
     {
+        private readonly CarPartsController _carPartsController;
         private readonly CarController _carController;
         private OrdersController _ordersController;
         private int total = 0;
         private User user;
-        private Car car;
+        private CarParts carPart;
         private List<OrderDetail> orderDetailsList = null;
-
-        public CustomerDashboardMyOrdersForm(CarController carController, OrdersController ordersController)
+        public CustomerDashboardCarPartsOrderForm(CarPartsController carPartsController, CarController carController, OrdersController ordersController)
         {
             InitializeComponent();
+            _carPartsController = carPartsController;
+            loadBrands();
             _carController = carController;
             _ordersController = ordersController;
             dataGridPlaceOrder.AutoGenerateColumns = false;
         }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void loadBrands()
         {
-            if (e.ColumnIndex == 5)
-            {
-                CustomerMyOrderDetailsViewForm actionForm = new CustomerMyOrderDetailsViewForm();
-                actionForm.Show();
+            var carBrands = _carPartsController.GetAllBrands();
+            cmbCarBrand.DataSource = carBrands;
+            cmbCarBrand.DisplayMember = "brandName";
+            cmbCarBrand.ValueMember = "brandId";
+            cmbCarBrand.SelectedIndex = -1;
+        }
 
+        public void loadModels(int brandId)
+        {
+            var carModels = _carPartsController.GetModelsByBrand(brandId);
+
+            if (carModels.Count == 0)
+            {
+                MessageBox.Show("No models found for the selected brand.");
+            }
+            else
+            {
+                cmbCarModel.DataSource = carModels;
+                cmbCarModel.DisplayMember = "modelName";
+                cmbCarModel.ValueMember = "modelId";
+                cmbCarModel.SelectedIndex = -1;
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        public void loadCarPartNames(int modelId)
         {
+            var carParts = _carPartsController.GetCarPartsByModelIdAndPartName(modelId, string.Empty);
 
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCarRegNoOrPartName_TextChanged(object sender, EventArgs e)
-        {
-            //string input = txtCarRegNoOrPartName.Text.Trim();
-
-            //if (string.IsNullOrEmpty(input))
-            //{
-            //    MessageBox.Show("Please enter a Car RegNo or Car Part Name.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //var details = _carController.GetCarOrCarPartDetails(input);
-
-            //if (details != null)
-            //{
-            //    txtBrand.Text = details.Brand;
-            //    txtCarModel.Text = details.Model;
-            //    txtCarRegNoOrPartName.Text = details.ItemName;  // Unified field name
-            //    txtUnitPrice.Text = details.Price.ToString();
-            //    txtQuantityOnHand.Text = details.Quantity.ToString();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No matching car or car part found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-        }
-
-        private void txtCarRegNoOrPartName_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter)
+            if (carParts.Count == 0)
             {
-                string input = txtCarRegNoOrPartName.Text.Trim();
-
-                if (string.IsNullOrEmpty(input))
-                {
-                    ClearCarDetailsFields();
-                    MessageBox.Show("Please enter a Car RegNo or Car Part Name.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var details = _carController.GetCarOrCarPartDetails(input);
-
-                if (details != null)
-                {
-                    txtBrand.Text = details.Brand;
-                    txtCarModel.Text = details.Model;
-                    txtCarRegNoOrPartName.Text = details.ItemName;  // Unified field name
-                    txtUnitPrice.Text = details.Price.ToString();
-                    txtQuantityOnHand.Text = details.Quantity.ToString();
-
-                    this.car = _carController.getcarByRegNo(input);
-                }
-                else
-                {
-                    MessageBox.Show("No matching car or car part found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearCarDetailsFields();
-                }
-
-                //// Prevent the beep sound on enter key press
-                //e.Handled = true;
-                //e.SuppressKeyPress = true;
+                MessageBox.Show("No carparts found for the selected model.");
+            }
+            else
+            {
+                cmbCarPartName.DataSource = carParts;
+                cmbCarPartName.DisplayMember = "carPartName";
+                cmbCarPartName.ValueMember = "carPartId";
+                cmbCarPartName.SelectedIndex = -1;
             }
         }
 
-        //clear the car details fields
-        private void ClearCarDetailsFields()
+        private void LoadCarPartQuantityandUnitPrice(int carPartId)
         {
-            txtBrand.Text = string.Empty;
-            txtCarModel.Text = string.Empty;
-            txtUnitPrice.Text = string.Empty;
-            txtQuantityOnHand.Text = string.Empty;
+            var carPart = _carPartsController.getCarPartById(carPartId);
+
+            if (carPart != null)
+            {
+                txtUnitPrice.Text = carPart.price.ToString();
+                txtQuantityOnHand.Text = carPart.quantity.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Unable to load the quantity for the selected car part.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void cmbCarBrand_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCarBrand.SelectedIndex != -1)
+            {
+                var selectedValue = cmbCarBrand.SelectedValue;
+                if (selectedValue is int selectedBrandId)
+                {
+                    loadModels(selectedBrandId);
+                }
+                //else
+                //{
+                //    MessageBox.Show("Invalid brand selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+            }
+        }
+
+        private void cmbCarModel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCarModel.SelectedIndex != -1)
+            {
+                var selectedCarModel = cmbCarModel.SelectedValue;
+                if (selectedCarModel is int selectedCarModelId)
+                {
+                    loadCarPartNames(selectedCarModelId);
+                }
+                //else
+                //{
+                //    MessageBox.Show("Invalid model selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+            }
+
+        }
+
+        private void cmbCarPartName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCarPartName.SelectedIndex != -1)
+            {
+                var selectedCarPartId = cmbCarPartName.SelectedValue;
+                if (selectedCarPartId is int carPartId)
+                {
+                    // Load the quantity on hand for the selected car part
+                    LoadCarPartQuantityandUnitPrice(carPartId);
+                }
+            }
+
         }
 
         private void txtNic_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.Enter)
             {
                 string input = txtNic.Text.Trim();
@@ -162,10 +169,6 @@ namespace ABC_Car_Traders
                     MessageBox.Show("No matching Nic found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearCustomerDetailsFields();
                 }
-
-                //// Prevent the beep sound on enter key press
-                //e.Handled = true;
-                //e.SuppressKeyPress = true;
             }
         }
 
@@ -178,7 +181,7 @@ namespace ABC_Car_Traders
             txtContactNo.Text = string.Empty;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             _ordersController.btnSendEmail_Click();
             this.total += int.Parse(txtTotal.Text.Trim());
@@ -188,7 +191,7 @@ namespace ABC_Car_Traders
             DataGridViewRow newRow = dataGridPlaceOrder.Rows[newRowIndex];
 
             // Set the value for the first cell (column index 0) in the new row
-            newRow.Cells[0].Value = txtCarRegNoOrPartName.Text.Trim();
+            newRow.Cells[0].Value = cmbCarPartName.Text.Trim();
             newRow.Cells[1].Value = txtDate.Text.Trim();
             newRow.Cells[2].Value = txtQuantity.Text.Trim();
             newRow.Cells[3].Value = txtTotal.Text.Trim();
@@ -201,8 +204,8 @@ namespace ABC_Car_Traders
 
             // Create a new OrderDetail instance
             OrderDetail orderDetail = new OrderDetail();
-            orderDetail.CarParts = null;
-            orderDetail.Car = this.car;
+            orderDetail.CarParts = this.carPart;
+            orderDetail.Car = null;
             orderDetail.qty = int.Parse(txtQuantity.Text.Trim());
             orderDetail.created_at = DateTime.Now;
             orderDetail.status = "PEN";
@@ -210,31 +213,6 @@ namespace ABC_Car_Traders
 
             // Add the new OrderDetail to the list
             orderDetailsList.Add(orderDetail);
-
-
-            //dataGridPlaceOrder.Rows[1].Cells[1].Value = txtUnitPrice.Text.Trim();
-
-        }
-
-        private void txtQuantityOnHand_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtQuantity_TextChanged(object sender, EventArgs e)
-        {
-            if (txtQuantity.Text.Trim() != "")
-            {
-                int input = int.Parse(txtQuantity.Text.Trim());
-                int price = int.Parse(txtUnitPrice.Text.Trim());
-                var totalPrice = input * price;
-                txtTotal.Text = totalPrice.ToString();
-            }
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -260,8 +238,8 @@ namespace ABC_Car_Traders
                 foreach (var item in orderDetailsList)
                 {
                     OrderDetail orderDetail = new OrderDetail();
-                    orderDetail.carId = item.Car.carId;
-                    orderDetail.CarParts = null;
+                    orderDetail.carId = null;
+                    orderDetail.CarPartsId = item.CarParts.carPartId;
                     orderDetail.Order = order;
                     orderDetail.created_at = txtDate.Value;
                     orderDetail.qty = item.qty;
@@ -274,14 +252,21 @@ namespace ABC_Car_Traders
             {
                 MessageBox.Show("Order saved Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
-        private void txtContactNo_TextChanged(object sender, EventArgs e)
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
-
+            if (txtQuantity.Text.Trim() != "")
+            {
+                int input = int.Parse(txtQuantity.Text.Trim());
+                int price = int.Parse(txtUnitPrice.Text.Trim());
+                var totalPrice = input * price;
+                txtTotal.Text = totalPrice.ToString();
+            }
         }
 
-        private void dataGridPlaceOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void label15_Click(object sender, EventArgs e)
         {
 
         }

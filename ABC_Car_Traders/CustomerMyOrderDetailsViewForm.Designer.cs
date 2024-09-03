@@ -200,6 +200,7 @@
             btnCancelOrder.TabIndex = 43;
             btnCancelOrder.Text = "Cancel Order";
             btnCancelOrder.UseVisualStyleBackColor = false;
+            btnCancelOrder.Click += btnCancelOrder_Click;
             // 
             // CustomerMyOrderDetailsViewForm
             // 

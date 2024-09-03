@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABC_Car_Traders.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,20 +14,32 @@ namespace ABC_Car_Traders
 {
     public partial class ManageCustomerOrderForm : Form
     {
-        public ManageCustomerOrderForm()
+        private readonly CarController _carController;
+        private OrdersController _ordersController;
+        public ManageCustomerOrderForm(CarController carController, OrdersController ordersController)
         {
             InitializeComponent();
+            _carController = carController;
+            _ordersController = ordersController;
+            orderDetailsGird.AutoGenerateColumns = false;
+            loadOrderDetails();
+        }
+
+        public void loadOrderDetails()
+        {
+            var orderdetails = _ordersController.GetAllOrders();
+            orderDetailsGird.DataSource = orderdetails;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridView1.Columns["Column5"].Index || e.ColumnIndex == dataGridView1.Columns["Column6"].Index))
+            if (e.RowIndex >= 0 && (e.ColumnIndex == orderDetailsGird.Columns["Column5"].Index || e.ColumnIndex == orderDetailsGird.Columns["Column6"].Index))
             {
-                if (e.ColumnIndex == dataGridView1.Columns["Column5"].Index)
+                if (e.ColumnIndex == orderDetailsGird.Columns["Column5"].Index)
                 {
                     OpenForm1();
                 }
-                else if (e.ColumnIndex == dataGridView1.Columns["Column6"].Index)
+                else if (e.ColumnIndex == orderDetailsGird.Columns["Column6"].Index)
                 {
                     OpenForm2();
                 }
@@ -42,6 +55,16 @@ namespace ABC_Car_Traders
         {
             ManageCustomerOrderActionForm form2 = new ManageCustomerOrderActionForm();
             form2.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

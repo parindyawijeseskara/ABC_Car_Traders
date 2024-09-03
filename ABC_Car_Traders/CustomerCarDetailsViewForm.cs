@@ -35,7 +35,8 @@ namespace ABC_Car_Traders
                 return;
             }
             txtCarName.Text = _car.regNo;
-            txtModel.Text = null;
+            txtModel.Text = _car.Model.modelName;
+            txtCarBrand.Text = _car.Model.Brand.brandName;
             txtYear.Text = _car.year;
             txtPrice.Text = _car.price.ToString();
             txtDescription.Text = _car.description;
@@ -45,7 +46,11 @@ namespace ABC_Car_Traders
             {
                 using (var ms = new MemoryStream(_car.image))
                 {
-                    pictureBoxImage.Image = Image.FromStream(ms);
+                    //pictureBoxImage.Image = Image.FromStream(ms);
+                    Image originalImage = Image.FromStream(ms);
+                    
+                    Image resizedImage = new Bitmap(originalImage, new Size(502, 246));
+                    pictureBoxImage.Image = resizedImage;
                 }
             }
             else

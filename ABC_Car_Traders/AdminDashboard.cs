@@ -20,13 +20,18 @@ namespace ABC_Car_Traders
         private readonly CarPartsController _carPartsController;
         private readonly UserController _userController;
         public readonly RegistrationController _controller;
-        public AdminDashboard(CarController carController, CarPartsController carPartsController, UserController userController, RegistrationController controller)
+        public readonly OrdersController _ordersController;
+        public int _userId;
+        public AdminDashboard(CarController carController, CarPartsController carPartsController, UserController userController, RegistrationController controller, OrdersController ordersController, int userId)
         {
             _carController = carController;
             InitializeComponent();
             _carPartsController = carPartsController;
             _userController = userController;
             _controller = controller;
+            _ordersController = ordersController;
+            _userId = userId;
+
         }
 
         public void loadForm(Form newForm)
@@ -52,6 +57,19 @@ namespace ABC_Car_Traders
         private void adminDashboard_load(object sender, EventArgs e)
         {
             timerDateTime.Start();
+
+            // Get totals
+            int totalCars = _carController.GetTotalCars();
+            int totalCarParts = _carPartsController.GetTotalCarParts();
+            int totalCarOrders = _ordersController.GetTotalCarOrders();
+            int totalCustomers = _userController.GetTotalUsers();
+
+
+            labelTotalCars.Text = totalCars.ToString();
+            labelTotalCarParts.Text = totalCarParts.ToString();
+            labelTotalCarOrders.Text = totalCarOrders.ToString();
+            labeltotalCustomers.Text = totalCustomers.ToString();
+
         }
 
         private void btnManageCustomers_Click(object sender, EventArgs e)
@@ -62,7 +80,7 @@ namespace ABC_Car_Traders
         private void btnAdminDasboard_Click(object sender, EventArgs e)
         {
 
-            loadForm(new dasboard());
+            loadForm(new dasboard(_carController, _carPartsController, _userController, _ordersController));
         }
 
         private void btnManageCars_Click(object sender, EventArgs e)
@@ -77,7 +95,8 @@ namespace ABC_Car_Traders
 
         private void ManageCustomerOrders_Click(object sender, EventArgs e)
         {
-            loadForm(new ManageCustomerOrderForm());
+            loadForm(new ManageCustomerOrderForm(_carController, _ordersController));
+            //loadForm(new MyOrdersForm(_carController, _ordersController));
         }
 
         private void btnManageUsers_Click(object sender, EventArgs e)
@@ -87,7 +106,7 @@ namespace ABC_Car_Traders
 
         private void btnManageReports_Click(object sender, EventArgs e)
         {
-            loadForm(new ManageReports());
+            loadForm(new ManageReports(_carController, _carPartsController, _userController));
         }
 
         private void adminDashboard_panel2_Paint(object sender, PaintEventArgs e)
@@ -103,11 +122,26 @@ namespace ABC_Car_Traders
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            this.Close(); 
+            this.Close();
 
             // Show the LoginForm
-            LoginForm loginForm = new LoginForm(_userController,_controller,_carController,_carPartsController);
+            LoginForm loginForm = new LoginForm(_userController, _controller, _carController, _carPartsController, _ordersController);
             loginForm.Show();
+        }
+
+        private void labelDateTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adminDashboard_panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

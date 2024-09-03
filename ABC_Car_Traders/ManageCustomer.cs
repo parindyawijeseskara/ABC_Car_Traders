@@ -99,16 +99,14 @@ namespace ABC_Car_Traders
         {
             if (cmbStatus.SelectedItem != null)
             {
-                string selectedModel = cmbStatus.Text;
-                var filteredCars = _userController.GetCustomersByStatus(selectedModel);
-                dataGridViewCustomers.DataSource = filteredCars;
+                string selectedStatus = cmbStatus.Text; // Get the selected status from the combo box
+                var filteredCustomers = _userController.GetCustomersByStatus(selectedStatus);
+                dataGridViewCustomers.DataSource = filteredCustomers; // Bind the filtered list to the data grid
             }
             else
             {
                 MessageBox.Show("Please select a status to search.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
-
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

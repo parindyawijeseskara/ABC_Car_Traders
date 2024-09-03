@@ -31,7 +31,7 @@ namespace ABC_Car_Traders
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridViewCars.Columns["Column11"].Index || e.ColumnIndex == dataGridViewCars.Columns["Column12"].Index))
+            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridViewCars.Columns["Column11"].Index || e.ColumnIndex == dataGridViewCars.Columns["Column11"].Index))
             {
                 if (e.ColumnIndex == dataGridViewCars.Columns["Column11"].Index)
                 {
@@ -40,7 +40,11 @@ namespace ABC_Car_Traders
                         // Ensure the cell value is not null
                         if (dataGridViewCars.Rows[e.RowIndex].Cells[3].Value != null)
                         {
-                            int carId = (int)dataGridViewCars.Rows[e.RowIndex].Cells[3].Value;
+                            string carIdString = dataGridViewCars.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                            // Convert the string to an integer
+                            int carId = int.Parse(carIdString);
+
                             CustomerCarDetailsViewForm form1 = new CustomerCarDetailsViewForm(_carController, carId);
                             form1.Show();
                         }

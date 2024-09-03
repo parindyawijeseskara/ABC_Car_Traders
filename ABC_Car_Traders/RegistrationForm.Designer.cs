@@ -294,7 +294,6 @@
             // 
             txtUserName.Location = new Point(534, 88);
             txtUserName.Name = "txtUserName";
-            txtUserName.PasswordChar = '*';
             txtUserName.Size = new Size(175, 27);
             txtUserName.TabIndex = 24;
             // 

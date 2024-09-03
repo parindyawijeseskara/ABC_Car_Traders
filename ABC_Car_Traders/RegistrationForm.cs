@@ -24,8 +24,9 @@ namespace ABC_Car_Traders
         public readonly UserController _userController;
         private readonly CarController _carController;
         private readonly CarPartsController _carPartsController;
+        private readonly OrdersController _ordersController;
         private Form activeForm = null; // Keep track of the currently active form
-        public RegistrationForm(RegistrationController controller, UserController userController, CarController carController, CarPartsController carPartsController)
+        public RegistrationForm(RegistrationController controller, UserController userController, CarController carController, CarPartsController carPartsController, OrdersController ordersController)
         {
             InitializeComponent();
             _controller = controller;
@@ -33,6 +34,7 @@ namespace ABC_Car_Traders
             _carController = carController;
             _carPartsController = carPartsController;
             LoadRoleUsers();
+            _ordersController = ordersController;
         }
 
         public static class PasswordHelper
@@ -145,7 +147,7 @@ namespace ABC_Car_Traders
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //loadForm(new ManageCustomer(_userController));
-            LoginForm loginForm = new LoginForm(_userController,_controller,_carController,_carPartsController);
+            LoginForm loginForm = new LoginForm(_userController,_controller,_carController,_carPartsController, _ordersController);
             LoadFormIntoPanel(loginForm);
         }
     }

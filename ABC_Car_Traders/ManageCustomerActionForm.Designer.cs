@@ -56,6 +56,12 @@
             txtUserName = new TextBox();
             panel8 = new Panel();
             txtPassword = new TextBox();
+            lblNicError = new Label();
+            lblcontactNoError = new Label();
+            lblAddressError = new Label();
+            lblEmailError = new Label();
+            lblLastNameError = new Label();
+            lblFirstNameError = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -91,7 +97,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(39, 475);
+            label6.Location = new Point(38, 458);
             label6.Name = "label6";
             label6.Size = new Size(39, 22);
             label6.TabIndex = 13;
@@ -313,6 +319,7 @@
             txtUserName.Location = new Point(0, 0);
             txtUserName.Multiline = true;
             txtUserName.Name = "txtUserName";
+            txtUserName.ReadOnly = true;
             txtUserName.Size = new Size(222, 36);
             txtUserName.TabIndex = 32;
             // 
@@ -332,8 +339,75 @@
             txtPassword.Location = new Point(0, 0);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
+            txtPassword.ReadOnly = true;
             txtPassword.Size = new Size(222, 36);
             txtPassword.TabIndex = 33;
+            // 
+            // lblNicError
+            // 
+            lblNicError.AutoSize = true;
+            lblNicError.ForeColor = Color.Red;
+            lblNicError.Location = new Point(252, 519);
+            lblNicError.Name = "lblNicError";
+            lblNicError.Size = new Size(58, 20);
+            lblNicError.TabIndex = 36;
+            lblNicError.Text = "label12";
+            lblNicError.Visible = false;
+            // 
+            // lblcontactNoError
+            // 
+            lblcontactNoError.AutoSize = true;
+            lblcontactNoError.ForeColor = Color.Red;
+            lblcontactNoError.Location = new Point(252, 430);
+            lblcontactNoError.Name = "lblcontactNoError";
+            lblcontactNoError.Size = new Size(58, 20);
+            lblcontactNoError.TabIndex = 35;
+            lblcontactNoError.Text = "label12";
+            lblcontactNoError.Visible = false;
+            // 
+            // lblAddressError
+            // 
+            lblAddressError.AutoSize = true;
+            lblAddressError.ForeColor = Color.Red;
+            lblAddressError.Location = new Point(252, 350);
+            lblAddressError.Name = "lblAddressError";
+            lblAddressError.Size = new Size(58, 20);
+            lblAddressError.TabIndex = 34;
+            lblAddressError.Text = "label12";
+            lblAddressError.Visible = false;
+            // 
+            // lblEmailError
+            // 
+            lblEmailError.AutoSize = true;
+            lblEmailError.ForeColor = Color.Red;
+            lblEmailError.Location = new Point(252, 262);
+            lblEmailError.Name = "lblEmailError";
+            lblEmailError.Size = new Size(58, 20);
+            lblEmailError.TabIndex = 33;
+            lblEmailError.Text = "label12";
+            lblEmailError.Visible = false;
+            // 
+            // lblLastNameError
+            // 
+            lblLastNameError.AutoSize = true;
+            lblLastNameError.ForeColor = Color.Red;
+            lblLastNameError.Location = new Point(252, 178);
+            lblLastNameError.Name = "lblLastNameError";
+            lblLastNameError.Size = new Size(58, 20);
+            lblLastNameError.TabIndex = 32;
+            lblLastNameError.Text = "label12";
+            lblLastNameError.Visible = false;
+            // 
+            // lblFirstNameError
+            // 
+            lblFirstNameError.AutoSize = true;
+            lblFirstNameError.ForeColor = Color.Red;
+            lblFirstNameError.Location = new Point(252, 94);
+            lblFirstNameError.Name = "lblFirstNameError";
+            lblFirstNameError.Size = new Size(58, 20);
+            lblFirstNameError.TabIndex = 31;
+            lblFirstNameError.Text = "label12";
+            lblFirstNameError.Visible = false;
             // 
             // ManageCustomerActionForm
             // 
@@ -341,6 +415,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(652, 753);
+            Controls.Add(lblNicError);
+            Controls.Add(lblcontactNoError);
+            Controls.Add(lblAddressError);
+            Controls.Add(lblEmailError);
+            Controls.Add(lblLastNameError);
+            Controls.Add(lblFirstNameError);
             Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(label9);
@@ -363,6 +443,7 @@
             Name = "ManageCustomerActionForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ManageCustomerActionForm";
+            Load += ManageCustomerActionForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -417,5 +498,11 @@
         private ComboBox cmbRole;
         private TextBox txtUserName;
         private TextBox txtPassword;
+        private Label lblNicError;
+        private Label lblcontactNoError;
+        private Label lblAddressError;
+        private Label lblEmailError;
+        private Label lblLastNameError;
+        private Label lblFirstNameError;
     }
 }

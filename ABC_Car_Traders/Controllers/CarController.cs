@@ -2,11 +2,14 @@
 using ABC_Car_Traders.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.ApplicationServices;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using User = ABC_Car_Traders.Model.User;
 
 namespace ABC_Car_Traders.Controllers
 {
@@ -47,7 +50,14 @@ namespace ABC_Car_Traders.Controllers
 
         }
 
-         
+        public Car getcarByRegNo(String regNo)
+        {
+            //return _context.Cars.Find(carId);
+            return _context.Cars.FirstOrDefault(b => b.regNo == regNo);
+
+
+        }
+
 
         public void AddCar(Car car) 
         {
@@ -247,11 +257,11 @@ namespace ABC_Car_Traders.Controllers
             .Where(c => c.regNo == input)
             .Select(c => new
             {
-                Brand = c.Model.Brand.brandName,
-                Model = c.Model.modelName,
-                ItemName = c.regNo,
-                Price = c.price,
-                Quantity = c.quantity
+                Brand = c.Model.Brand.brandName ?? string.Empty,  // Handle potential NULL for Brand
+                Model = c.Model.modelName ?? string.Empty,        // Handle potential NULL for Model
+                ItemName = c.regNo ?? string.Empty,               // Handle potential NULL for regNo
+                Price = c.price,                             // Handle potential NULL for Price (assuming it's nullable)
+                Quantity = c.quantity,                       // Handle potential NULL for Quantity (assuming it's nullable)
             })
             .FirstOrDefault();
 
@@ -292,6 +302,121 @@ namespace ABC_Car_Traders.Controllers
 
             return userDeatils;
         }
+
+        public User GetUserByNIC(String nic)
+        {
+            return _context.User.FirstOrDefault(b => b.nic == nic);
+        }
+
+        public int GetTotalCars()
+        {
+            try
+            {
+                return _context.Cars.Count();  // Get the total number of cars
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while retrieving total cars: {ex.Message}");
+            }
+        }
+
+
+
+
+        public void GenerateCarInventoryReport()
+        {
+            var carsInventory = GetAllCars();
+
+            if (carsInventory == null || !carsInventory.Any())
+            {
+                MessageBox.Show("No car data available to generate the report.");
+                return;
+            }
+
+            var document = new PdfDocument();
+            var page = document.AddPage();
+            var gfx = XGraphics.FromPdfPage(page);
+            var fontTitle = new XFont("Arial", 18, XFontStyleEx.Bold);
+            var fontHeader = new XFont("Arial", 12, XFontStyleEx.Bold);
+            var fontRegular = new XFont("Arial", 10, XFontStyleEx.Regular);
+            var headerBrush = XBrushes.White;
+            var evenRowBrush = XBrushes.LightGray;
+            var oddRowBrush = XBrushes.White;
+            var headerBackgroundBrush = new XSolidBrush(XColor.FromArgb(0, 51, 102));
+            var titleBrush = XBrushes.Black;
+
+            // Title
+            gfx.DrawString("Car Inventory Report", fontTitle, titleBrush, new XRect(0, 0, page.Width, 50), XStringFormats.Center);
+
+            // Table Headers
+            int yPoint = 70;
+            int xPoint = 20;
+
+            double[] columnWidths = { 50, 100, 100, 60, 50, 70, 50, 70 };
+            string[] headers = { "Car ID", "Model", "Brand", "Reg No", "Year", "Price", "Quantity", "Status" };
+
+            gfx.DrawRectangle(headerBackgroundBrush, xPoint, yPoint, page.Width - 40, 20);
+
+            for (int i = 0; i < headers.Length; i++)
+            {
+                gfx.DrawString(headers[i], fontHeader, headerBrush, new XRect(xPoint, yPoint, columnWidths[i], 20), XStringFormats.Center);
+                xPoint += (int)columnWidths[i];
+            }
+
+            yPoint += 20;
+
+            // Draw Rows
+            bool isEvenRow = true;
+            foreach (var car in carsInventory)
+            {
+                xPoint = 20;
+                var rowBrush = isEvenRow ? evenRowBrush : oddRowBrush;
+                gfx.DrawRectangle(rowBrush, xPoint, yPoint, page.Width - 40, 20);
+
+                gfx.DrawString(car.carId.ToString(), fontRegular, XBrushes.Black, new XRect(xPoint, yPoint, columnWidths[0], 20), XStringFormats.Center);
+                xPoint += (int)columnWidths[0];
+
+                gfx.DrawString(car.modelName, fontRegular, XBrushes.Black, new XRect(xPoint, yPoint, columnWidths[1], 20), XStringFormats.Center);
+                xPoint += (int)columnWidths[1];
+
+                gfx.DrawString(car.brandName, fontRegular, XBrushes.Black, new XRect(xPoint, yPoint, columnWidths[2], 20), XStringFormats.Center);
+                xPoint += (int)columnWidths[2];
+
+                gfx.DrawString(car.regNo, fontRegular, XBrushes.Black, new XRect(xPoint, yPoint, columnWidths[3], 20), XStringFormats.Center);
+                xPoint += (int)columnWidths[3];
+
+                gfx.DrawString(car.year.ToString(), fontRegular, XBrushes.Black, new XRect(xPoint, yPoint, columnWidths[4], 20), XStringFormats.Center);
+                xPoint += (int)columnWidths[4];
+
+                gfx.DrawString(car.price.ToString("C2"), fontRegular, XBrushes.Black, new XRect(xPoint, yPoint, columnWidths[5], 20), XStringFormats.Center);
+                xPoint += (int)columnWidths[5];
+
+                gfx.DrawString(car.quantity.ToString(), fontRegular, XBrushes.Black, new XRect(xPoint, yPoint, columnWidths[6], 20), XStringFormats.Center);
+                xPoint += (int)columnWidths[6];
+
+                gfx.DrawString(car.status, fontRegular, XBrushes.Black, new XRect(xPoint, yPoint, columnWidths[7], 20), XStringFormats.Center);
+
+                yPoint += 20;
+                isEvenRow = !isEvenRow;
+
+                // Add a new page if the content exceeds the page height
+                if (yPoint > page.Height - 50)
+                {
+                    page = document.AddPage();
+                    gfx = XGraphics.FromPdfPage(page);
+                    yPoint = 50; // reset yPoint for new page
+                }
+            }
+
+            // Save the document to the Downloads folder
+            string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            string filePath = Path.Combine(downloadsPath, "CarInventoryReport.pdf");
+            document.Save(filePath);
+            document.Close();
+
+            MessageBox.Show($"Car Inventory Report generated successfully! Saved to: {filePath}");
+        }
+
 
 
     }

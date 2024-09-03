@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerDashboardCarDetailsForm));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnSearchModel = new Button();
             label2 = new Label();
             label1 = new Label();
@@ -44,11 +45,6 @@
             btnSearchPriceRange = new Button();
             btnReset = new Button();
             dataGridViewCars = new DataGridView();
-            label5 = new Label();
-            panel3 = new Panel();
-            txtToPriceRange = new TextBox();
-            label6 = new Label();
-            cmbBrand = new ComboBox();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -60,7 +56,11 @@
             Column9 = new DataGridViewTextBoxColumn();
             Column10 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewButtonColumn();
-            Column12 = new DataGridViewButtonColumn();
+            label5 = new Label();
+            panel3 = new Panel();
+            txtToPriceRange = new TextBox();
+            label6 = new Label();
+            cmbBrand = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -72,9 +72,9 @@
             // 
             btnSearchModel.BackColor = Color.FromArgb(35, 115, 144);
             btnSearchModel.FlatAppearance.BorderSize = 0;
-            btnSearchModel.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchModel.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearchModel.ForeColor = SystemColors.ControlLightLight;
-            btnSearchModel.Location = new Point(414, 167);
+            btnSearchModel.Location = new Point(414, 177);
             btnSearchModel.Name = "btnSearchModel";
             btnSearchModel.Size = new Size(184, 42);
             btnSearchModel.TabIndex = 27;
@@ -86,7 +86,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(65, 181);
+            label2.Location = new Point(65, 186);
             label2.Name = "label2";
             label2.Size = new Size(154, 23);
             label2.TabIndex = 26;
@@ -136,7 +136,7 @@
             // cmbModel
             // 
             cmbModel.FormattingEnabled = true;
-            cmbModel.Location = new Point(244, 176);
+            cmbModel.Location = new Point(244, 185);
             cmbModel.Name = "cmbModel";
             cmbModel.Size = new Size(151, 28);
             cmbModel.TabIndex = 33;
@@ -182,9 +182,9 @@
             // btnSearchYear
             // 
             btnSearchYear.BackColor = Color.FromArgb(35, 115, 144);
-            btnSearchYear.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnSearchYear.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             btnSearchYear.ForeColor = SystemColors.ControlLightLight;
-            btnSearchYear.Location = new Point(475, 225);
+            btnSearchYear.Location = new Point(475, 228);
             btnSearchYear.Name = "btnSearchYear";
             btnSearchYear.Size = new Size(184, 42);
             btnSearchYear.TabIndex = 36;
@@ -195,7 +195,7 @@
             // btnSearchPriceRange
             // 
             btnSearchPriceRange.BackColor = Color.FromArgb(35, 115, 144);
-            btnSearchPriceRange.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnSearchPriceRange.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             btnSearchPriceRange.ForeColor = SystemColors.ControlLightLight;
             btnSearchPriceRange.Location = new Point(752, 296);
             btnSearchPriceRange.Name = "btnSearchPriceRange";
@@ -208,7 +208,7 @@
             // btnReset
             // 
             btnReset.BackColor = Color.FromArgb(35, 115, 144);
-            btnReset.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnReset.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             btnReset.ForeColor = SystemColors.ControlLightLight;
             btnReset.Location = new Point(954, 296);
             btnReset.Name = "btnReset";
@@ -220,62 +220,23 @@
             // 
             // dataGridViewCars
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(35, 115, 144);
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCars.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCars.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11, Column12 });
+            dataGridViewCars.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
+            dataGridViewCars.EnableHeadersVisualStyles = false;
             dataGridViewCars.Location = new Point(44, 420);
             dataGridViewCars.Name = "dataGridViewCars";
             dataGridViewCars.RowHeadersWidth = 51;
             dataGridViewCars.Size = new Size(1269, 288);
             dataGridViewCars.TabIndex = 39;
             dataGridViewCars.CellClick += dataGridView1_CellClick;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(475, 315);
-            label5.Name = "label5";
-            label5.Size = new Size(31, 23);
-            label5.TabIndex = 40;
-            label5.Text = "To";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.FromArgb(35, 115, 144);
-            panel3.Controls.Add(txtToPriceRange);
-            panel3.Location = new Point(512, 299);
-            panel3.Name = "panel3";
-            panel3.Padding = new Padding(0, 0, 0, 3);
-            panel3.Size = new Size(219, 39);
-            panel3.TabIndex = 36;
-            // 
-            // txtToPriceRange
-            // 
-            txtToPriceRange.Dock = DockStyle.Fill;
-            txtToPriceRange.Location = new Point(0, 0);
-            txtToPriceRange.Multiline = true;
-            txtToPriceRange.Name = "txtToPriceRange";
-            txtToPriceRange.Size = new Size(219, 36);
-            txtToPriceRange.TabIndex = 2;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(65, 136);
-            label6.Name = "label6";
-            label6.Size = new Size(152, 23);
-            label6.TabIndex = 41;
-            label6.Text = "Search By Brand";
-            // 
-            // cmbBrand
-            // 
-            cmbBrand.FormattingEnabled = true;
-            cmbBrand.Location = new Point(244, 135);
-            cmbBrand.Name = "cmbBrand";
-            cmbBrand.Size = new Size(151, 28);
-            cmbBrand.TabIndex = 42;
-            cmbBrand.SelectedIndexChanged += cmbBrand_SelectedIndexChanged;
             // 
             // Column1
             // 
@@ -364,12 +325,53 @@
             Column11.Name = "Column11";
             Column11.Width = 125;
             // 
-            // Column12
+            // label5
             // 
-            Column12.HeaderText = "Place Order";
-            Column12.MinimumWidth = 6;
-            Column12.Name = "Column12";
-            Column12.Width = 125;
+            label5.AutoSize = true;
+            label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(475, 315);
+            label5.Name = "label5";
+            label5.Size = new Size(31, 23);
+            label5.TabIndex = 40;
+            label5.Text = "To";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(35, 115, 144);
+            panel3.Controls.Add(txtToPriceRange);
+            panel3.Location = new Point(512, 299);
+            panel3.Name = "panel3";
+            panel3.Padding = new Padding(0, 0, 0, 3);
+            panel3.Size = new Size(219, 39);
+            panel3.TabIndex = 36;
+            // 
+            // txtToPriceRange
+            // 
+            txtToPriceRange.Dock = DockStyle.Fill;
+            txtToPriceRange.Location = new Point(0, 0);
+            txtToPriceRange.Multiline = true;
+            txtToPriceRange.Name = "txtToPriceRange";
+            txtToPriceRange.Size = new Size(219, 36);
+            txtToPriceRange.TabIndex = 2;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(65, 136);
+            label6.Name = "label6";
+            label6.Size = new Size(152, 23);
+            label6.TabIndex = 41;
+            label6.Text = "Search By Brand";
+            // 
+            // cmbBrand
+            // 
+            cmbBrand.FormattingEnabled = true;
+            cmbBrand.Location = new Point(244, 135);
+            cmbBrand.Name = "cmbBrand";
+            cmbBrand.Size = new Size(151, 28);
+            cmbBrand.TabIndex = 42;
+            cmbBrand.SelectedIndexChanged += cmbBrand_SelectedIndexChanged;
             // 
             // CustomerDashboardCarDetailsForm
             // 
@@ -442,6 +444,5 @@
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
         private DataGridViewButtonColumn Column11;
-        private DataGridViewButtonColumn Column12;
     }
 }

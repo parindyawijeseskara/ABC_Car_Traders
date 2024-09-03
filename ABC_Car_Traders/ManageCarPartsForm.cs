@@ -22,6 +22,7 @@ namespace ABC_Car_Traders
             loadCarParts();
             loadBrands();
             dataGridViewCarParts.AutoGenerateColumns = false;
+            
         }
 
         private void btnAddNewCarPart_Click(object sender, EventArgs e)

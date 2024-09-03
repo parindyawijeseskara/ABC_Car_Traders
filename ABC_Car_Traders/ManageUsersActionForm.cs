@@ -44,7 +44,7 @@ namespace ABC_Car_Traders
             }
             txtCustomerName.Text = _user.firstName;
             txtEmail.Text = _user.email;
-            txtRegistrationDate.Text = _user.createdAt.ToString("yyyy-MM-dd");
+            txtRegistrationDate.Text = null;
             LoadRoles();
             cmbRole.SelectedValue = _user.roleId;
             cmbStatus.SelectedValue = _user.status;

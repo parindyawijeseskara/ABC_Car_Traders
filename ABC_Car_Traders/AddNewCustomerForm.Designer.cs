@@ -44,6 +44,7 @@
             panel2 = new Panel();
             txtLastName = new TextBox();
             panel3 = new Panel();
+            label11 = new Label();
             txtEmail = new TextBox();
             panel4 = new Panel();
             txtAddress = new TextBox();
@@ -58,6 +59,14 @@
             txtUserName = new TextBox();
             panel8 = new Panel();
             txtPassword = new TextBox();
+            lblFirstNameError = new Label();
+            lblLastNameError = new Label();
+            lblEmailError = new Label();
+            lblAddressError = new Label();
+            lblcontactNoError = new Label();
+            lblNicError = new Label();
+            lblUserNameError = new Label();
+            lblPasswordError = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -211,12 +220,23 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(35, 115, 144);
+            panel3.Controls.Add(label11);
             panel3.Controls.Add(txtEmail);
             panel3.Location = new Point(44, 359);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(0, 0, 0, 3);
             panel3.Size = new Size(226, 45);
             panel3.TabIndex = 12;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.ForeColor = Color.Red;
+            label11.Location = new Point(0, 45);
+            label11.Name = "label11";
+            label11.Size = new Size(58, 20);
+            label11.TabIndex = 27;
+            label11.Text = "label12";
             // 
             // txtEmail
             // 
@@ -353,8 +373,97 @@
             txtPassword.Location = new Point(0, 0);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(217, 39);
             txtPassword.TabIndex = 26;
+            // 
+            // lblFirstNameError
+            // 
+            lblFirstNameError.AutoSize = true;
+            lblFirstNameError.ForeColor = Color.Red;
+            lblFirstNameError.Location = new Point(47, 203);
+            lblFirstNameError.Name = "lblFirstNameError";
+            lblFirstNameError.Size = new Size(58, 20);
+            lblFirstNameError.TabIndex = 25;
+            lblFirstNameError.Text = "label12";
+            lblFirstNameError.Visible = false;
+            // 
+            // lblLastNameError
+            // 
+            lblLastNameError.AutoSize = true;
+            lblLastNameError.ForeColor = Color.Red;
+            lblLastNameError.Location = new Point(47, 312);
+            lblLastNameError.Name = "lblLastNameError";
+            lblLastNameError.Size = new Size(58, 20);
+            lblLastNameError.TabIndex = 26;
+            lblLastNameError.Text = "label12";
+            lblLastNameError.Visible = false;
+            // 
+            // lblEmailError
+            // 
+            lblEmailError.AutoSize = true;
+            lblEmailError.ForeColor = Color.Red;
+            lblEmailError.Location = new Point(47, 404);
+            lblEmailError.Name = "lblEmailError";
+            lblEmailError.Size = new Size(58, 20);
+            lblEmailError.TabIndex = 27;
+            lblEmailError.Text = "label12";
+            lblEmailError.Visible = false;
+            // 
+            // lblAddressError
+            // 
+            lblAddressError.AutoSize = true;
+            lblAddressError.ForeColor = Color.Red;
+            lblAddressError.Location = new Point(44, 494);
+            lblAddressError.Name = "lblAddressError";
+            lblAddressError.Size = new Size(58, 20);
+            lblAddressError.TabIndex = 28;
+            lblAddressError.Text = "label12";
+            lblAddressError.Visible = false;
+            // 
+            // lblcontactNoError
+            // 
+            lblcontactNoError.AutoSize = true;
+            lblcontactNoError.ForeColor = Color.Red;
+            lblcontactNoError.Location = new Point(47, 585);
+            lblcontactNoError.Name = "lblcontactNoError";
+            lblcontactNoError.Size = new Size(58, 20);
+            lblcontactNoError.TabIndex = 29;
+            lblcontactNoError.Text = "label12";
+            lblcontactNoError.Visible = false;
+            // 
+            // lblNicError
+            // 
+            lblNicError.AutoSize = true;
+            lblNicError.ForeColor = Color.Red;
+            lblNicError.Location = new Point(47, 673);
+            lblNicError.Name = "lblNicError";
+            lblNicError.Size = new Size(58, 20);
+            lblNicError.TabIndex = 30;
+            lblNicError.Text = "label12";
+            lblNicError.Visible = false;
+            // 
+            // lblUserNameError
+            // 
+            lblUserNameError.AutoSize = true;
+            lblUserNameError.ForeColor = Color.Red;
+            lblUserNameError.Location = new Point(401, 407);
+            lblUserNameError.Name = "lblUserNameError";
+            lblUserNameError.Size = new Size(58, 20);
+            lblUserNameError.TabIndex = 31;
+            lblUserNameError.Text = "label12";
+            lblUserNameError.Visible = false;
+            // 
+            // lblPasswordError
+            // 
+            lblPasswordError.AutoSize = true;
+            lblPasswordError.ForeColor = Color.Red;
+            lblPasswordError.Location = new Point(401, 494);
+            lblPasswordError.Name = "lblPasswordError";
+            lblPasswordError.Size = new Size(58, 20);
+            lblPasswordError.TabIndex = 32;
+            lblPasswordError.Text = "label12";
+            lblPasswordError.Visible = false;
             // 
             // AddNewCustomerForm
             // 
@@ -362,6 +471,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(698, 856);
+            Controls.Add(lblPasswordError);
+            Controls.Add(lblUserNameError);
+            Controls.Add(lblNicError);
+            Controls.Add(lblcontactNoError);
+            Controls.Add(lblAddressError);
+            Controls.Add(lblEmailError);
+            Controls.Add(lblLastNameError);
+            Controls.Add(lblFirstNameError);
             Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(label10);
@@ -414,7 +531,7 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label label8;
+        private Label lblLastNameError;
         private Panel panel1;
         private TextBox textBox1;
         private TextBox txtFirstName;
@@ -440,5 +557,12 @@
         private Panel panel8;
         private TextBox txtPassword;
         private ComboBox cmbRole;
+        private Label lblFirstNameError;
+        private Label lblEmailError;
+        private Label lblAddressError;
+        private Label lblcontactNoError;
+        private Label lblNicError;
+        private Label lblUserNameError;
+        private Label lblPasswordError;
     }
 }

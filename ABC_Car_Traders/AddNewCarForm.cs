@@ -1,5 +1,6 @@
 ﻿using ABC_Car_Traders.Controllers;
 using ABC_Car_Traders.Model;
+using ABC_Car_Traders.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -18,6 +20,7 @@ namespace ABC_Car_Traders
     {
         private readonly CarController _carController;
         private byte[] _carImage;
+        private string _carImageFileName;
 
         public AddNewCarForm(CarController carController)
         {
@@ -34,6 +37,7 @@ namespace ABC_Car_Traders
             lblImageError.Visible = false;
         }
 
+        //Function to save Cars
         private void btnSaveCar_Click(object sender, EventArgs e)
         {
             try
@@ -82,7 +86,7 @@ namespace ABC_Car_Traders
             }
             catch (Exception ex)
             {
-                // show error message if not something went wrong
+                // show error message 
                 MessageBox.Show($"An error occured:{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -140,9 +144,9 @@ namespace ABC_Car_Traders
             bool isValid = true;
 
             // Validate Registration Number
-            if (string.IsNullOrWhiteSpace(txtCarName.Text))
+            if (string.IsNullOrWhiteSpace(txtCarName.Text) || !Regex.IsMatch(txtCarName.Text, PatternValidation.regNoPattern))
             {
-                lblRegNoError.Text = "** Please enter the registration number.";
+                lblRegNoError.Text = "** Please enter a valid registration number.";
                 lblRegNoError.Visible = true;
                 isValid = false;
             }
@@ -152,9 +156,9 @@ namespace ABC_Car_Traders
             }
 
             // Validate Brand Name
-            if (string.IsNullOrWhiteSpace(txtBrand.Text))
+            if (string.IsNullOrWhiteSpace(txtBrand.Text) || !Regex.IsMatch(txtBrand.Text, PatternValidation.namePattern))
             {
-                lblBrandError.Text = "Please enter the brand name.";
+                lblBrandError.Text = "Please enter a valid brand name.";
                 lblBrandError.Visible = true;
                 isValid = false;
             }
@@ -164,9 +168,9 @@ namespace ABC_Car_Traders
             }
 
             // Validate Model Name
-            if (string.IsNullOrWhiteSpace(txtModel.Text))
+            if (string.IsNullOrWhiteSpace(txtModel.Text) || !Regex.IsMatch(txtModel.Text, PatternValidation.namePattern))
             {
-                lblModelError.Text = "Please enter the model name.";
+                lblModelError.Text = "Please enter a valid model name.";
                 lblModelError.Visible = true;
                 isValid = false;
             }
@@ -224,9 +228,9 @@ namespace ABC_Car_Traders
             }
 
             // Validate Image
-            if (_carImage == null || _carImage.Length == 0)
+            if (string.IsNullOrWhiteSpace(_carImageFileName) || !Regex.IsMatch(_carImageFileName, PatternValidation.imagePattern, RegexOptions.IgnoreCase))
             {
-                lblImageError.Text = "Please upload an image.";
+                lblImageError.Text = "Please upload a valid image file (jpg, jpeg, png, gif).";
                 lblImageError.Visible = true;
                 isValid = false;
             }
@@ -235,11 +239,10 @@ namespace ABC_Car_Traders
                 lblImageError.Visible = false;
             }
 
-
-
             return isValid;
         }
 
-        
+
+
     }
 }

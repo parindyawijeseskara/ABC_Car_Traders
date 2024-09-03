@@ -31,17 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCustomerOrderForm));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnSearch = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            dataGridView1 = new DataGridView();
+            orderDetailsGird = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
+            Column10 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
+            Column9 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewButtonColumn();
             Column6 = new DataGridViewButtonColumn();
@@ -56,7 +60,7 @@
             button3 = new Button();
             button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)orderDetailsGird).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -73,6 +77,7 @@
             btnSearch.TabIndex = 11;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // label1
             // 
@@ -125,19 +130,29 @@
             label4.TabIndex = 15;
             label4.Text = "Date From";
             // 
-            // dataGridView1
+            // orderDetailsGird
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column7, Column5, Column6 });
-            dataGridView1.Location = new Point(93, 491);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1199, 235);
-            dataGridView1.TabIndex = 16;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(35, 115, 144);
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            orderDetailsGird.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            orderDetailsGird.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            orderDetailsGird.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column10, Column8, Column3, Column4, Column9, Column7, Column5, Column6 });
+            orderDetailsGird.EnableHeadersVisualStyles = false;
+            orderDetailsGird.Location = new Point(93, 491);
+            orderDetailsGird.Name = "orderDetailsGird";
+            orderDetailsGird.RowHeadersWidth = 51;
+            orderDetailsGird.Size = new Size(1199, 235);
+            orderDetailsGird.TabIndex = 16;
+            orderDetailsGird.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
             // 
+            Column1.DataPropertyName = "orderId";
             Column1.HeaderText = "Order Id";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
@@ -145,27 +160,55 @@
             // 
             // Column2
             // 
+            Column2.DataPropertyName = "firstName";
             Column2.HeaderText = "Customer Name";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
             Column2.Width = 200;
             // 
+            // Column10
+            // 
+            Column10.DataPropertyName = "nic";
+            Column10.HeaderText = "Customer Nic";
+            Column10.MinimumWidth = 6;
+            Column10.Name = "Column10";
+            Column10.Width = 125;
+            // 
+            // Column8
+            // 
+            Column8.DataPropertyName = "modelName";
+            Column8.HeaderText = "Model";
+            Column8.MinimumWidth = 6;
+            Column8.Name = "Column8";
+            Column8.Width = 125;
+            // 
             // Column3
             // 
-            Column3.HeaderText = "Car / Part Id";
+            Column3.DataPropertyName = "regNo";
+            Column3.HeaderText = "Ordered Cars";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
             Column3.Width = 150;
             // 
             // Column4
             // 
-            Column4.HeaderText = "Order Date";
+            Column4.DataPropertyName = "carPartName";
+            Column4.HeaderText = "Ordered Car Parts";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
             Column4.Width = 150;
             // 
+            // Column9
+            // 
+            Column9.DataPropertyName = "qty";
+            Column9.HeaderText = "Ordered Quantity";
+            Column9.MinimumWidth = 6;
+            Column9.Name = "Column9";
+            Column9.Width = 125;
+            // 
             // Column7
             // 
+            Column7.DataPropertyName = "status";
             Column7.HeaderText = "Status";
             Column7.MinimumWidth = 6;
             Column7.Name = "Column7";
@@ -173,9 +216,9 @@
             // 
             // Column5
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.Teal;
-            Column5.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.Teal;
+            Column5.DefaultCellStyle = dataGridViewCellStyle2;
             Column5.HeaderText = "View";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
@@ -184,9 +227,9 @@
             // 
             // Column6
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Teal;
-            Column6.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.Teal;
+            Column6.DefaultCellStyle = dataGridViewCellStyle3;
             Column6.HeaderText = "Actions";
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
@@ -243,6 +286,7 @@
             button1.TabIndex = 20;
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // dateTimePicker1
             // 
@@ -308,7 +352,7 @@
             Controls.Add(button1);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(dataGridView1);
+            Controls.Add(orderDetailsGird);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -319,7 +363,7 @@
             Name = "ManageCustomerOrderForm";
             Text = "ManageCustomerOrderForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)orderDetailsGird).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -336,7 +380,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private DataGridView dataGridView1;
+        private DataGridView orderDetailsGird;
         private Panel panel1;
         private Panel panel2;
         private Button button1;
@@ -349,8 +393,11 @@
         private Button button2;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column10;
+        private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewButtonColumn Column5;
         private DataGridViewButtonColumn Column6;

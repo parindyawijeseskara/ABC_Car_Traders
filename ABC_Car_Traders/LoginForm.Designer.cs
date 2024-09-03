@@ -58,18 +58,18 @@ namespace ABC_Car_Traders
             // 
             panel.BackColor = Color.FromArgb(35, 115, 144);
             panel.Controls.Add(pictureBox1);
-            panel.Location = new Point(28, 74);
+            panel.Location = new Point(0, 0);
             panel.Name = "panel";
-            panel.Size = new Size(370, 463);
+            panel.Size = new Size(398, 590);
             panel.TabIndex = 0;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(75, 84);
+            pictureBox1.Location = new Point(79, 120);
             pictureBox1.Margin = new Padding(0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(216, 273);
+            pictureBox1.Size = new Size(224, 304);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -97,7 +97,7 @@ namespace ABC_Car_Traders
             // 
             link_Register.AutoSize = true;
             link_Register.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            link_Register.Location = new Point(646, 482);
+            link_Register.Location = new Point(669, 482);
             link_Register.Name = "link_Register";
             link_Register.Size = new Size(76, 22);
             link_Register.TabIndex = 10;
@@ -109,11 +109,12 @@ namespace ABC_Car_Traders
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(453, 482);
+            label5.Location = new Point(487, 482);
             label5.Name = "label5";
             label5.Size = new Size(187, 22);
             label5.TabIndex = 9;
             label5.Text = "Don't Have Account ? ";
+            label5.Click += label5_Click;
             // 
             // btnLogin
             // 
@@ -144,6 +145,7 @@ namespace ABC_Car_Traders
             txtPassword.Location = new Point(0, 0);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(214, 36);
             txtPassword.TabIndex = 12;
             // 
@@ -210,7 +212,7 @@ namespace ABC_Car_Traders
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(429, 23);
+            label1.Location = new Point(456, 28);
             label1.Name = "label1";
             label1.Size = new Size(85, 32);
             label1.TabIndex = 0;

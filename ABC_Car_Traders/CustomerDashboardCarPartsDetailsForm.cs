@@ -29,16 +29,16 @@ namespace ABC_Car_Traders
 
         private void dataGridViewCarParts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridViewCarParts.Columns["Column11"].Index || e.ColumnIndex == dataGridViewCarParts.Columns["Column12"].Index))
+            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridViewCarParts.Columns["Column11"].Index))
             {
                 if (e.ColumnIndex == dataGridViewCarParts.Columns["Column11"].Index)
                 {
                     if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                     {
                         // Ensure the cell value is not null
-                        if (dataGridViewCarParts.Rows[e.RowIndex].Cells[2].Value != null)
+                        if (dataGridViewCarParts.Rows[e.RowIndex].Cells[3].Value != null)
                         {
-                            int carPartId = (int)dataGridViewCarParts.Rows[e.RowIndex].Cells[2].Value;
+                            int carPartId = (int)dataGridViewCarParts.Rows[e.RowIndex].Cells[0].Value;
                             CustomerCarPartsDetailViewForm form1 = new CustomerCarPartsDetailViewForm(_carPartsController, carPartId);
                             form1.Show();
                         }
@@ -103,23 +103,23 @@ namespace ABC_Car_Traders
 
         private void btnSearchByCartPartName_Click(object sender, EventArgs e)
         {
-            //string partName = txtCarPartName.Text.Trim();
-            //if (string.IsNullOrEmpty(partName))
-            //{
-            //    MessageBox.Show("Please enter an regNo to search.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            string partName = txtCarPartName.Text.Trim();
+            if (string.IsNullOrEmpty(partName))
+            {
+                MessageBox.Show("Please enter an regNo to search.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //var filteredCars = _carPartsController.GetCarsByPartName(partName);
+            var filteredCars = _carPartsController.GetCarsByPartName(partName);
 
-            //if (filteredCars.Count == 0)
-            //{
-            //    MessageBox.Show("No cars found with the specified regNo.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //else
-            //{
-            //    dataGridViewCarParts.DataSource = filteredCars;
-            //}
+            if (filteredCars.Count == 0)
+            {
+                MessageBox.Show("No cars found with the specified regNo.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                dataGridViewCarParts.DataSource = filteredCars;
+            }
         }
 
         private void txtSearchModel_Click(object sender, EventArgs e)
@@ -158,7 +158,7 @@ namespace ABC_Car_Traders
                 var selectedValue = cmbBrand.SelectedValue;
                 if (selectedValue is int selectedBrandId)
                 {
-                    loadModels(selectedBrandId); 
+                    loadModels(selectedBrandId);
                 }
                 //else
                 //{
@@ -191,6 +191,16 @@ namespace ABC_Car_Traders
                 }
 
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            cmbBrand.SelectedIndex = -1;
+            cmbModel.SelectedIndex = -1;
+            txtCarPartName.Text = string.Empty;
+            txtToPrice.Text = string.Empty;
+            txtFromPrice.Text = string.Empty;
+            loadCarPartDetails();
         }
     }
 }
