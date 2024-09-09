@@ -335,6 +335,7 @@
             Name = "RegistrationForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistrationForm";
+            Load += RegistrationForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             registrationPanel.ResumeLayout(false);

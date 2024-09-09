@@ -134,7 +134,7 @@ namespace ABC_Car_Traders
         {
             if (this.registrationPanel.Controls.Count > 0)
             {
-                this.registrationPanel.Controls[0].Dispose();  // Dispose the previous form
+                this.registrationPanel.Controls[0].Dispose();
             }
             formToLoad.TopLevel = false;
             formToLoad.FormBorderStyle = FormBorderStyle.None;
@@ -147,8 +147,13 @@ namespace ABC_Car_Traders
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //loadForm(new ManageCustomer(_userController));
-            LoginForm loginForm = new LoginForm(_userController,_controller,_carController,_carPartsController, _ordersController);
+            LoginForm loginForm = new LoginForm(_userController, _controller, _carController, _carPartsController, _ordersController);
             LoadFormIntoPanel(loginForm);
+        }
+
+        private void RegistrationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -55,8 +55,7 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             pictureBoxImage = new PictureBox();
-            label8 = new Label();
-            txtBrand = new TextBox();
+            UpdateUploadImage = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -81,9 +80,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(182, 27);
+            pictureBox1.Location = new Point(315, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(458, 306);
+            pictureBox1.Size = new Size(587, 306);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -152,7 +151,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(364, 380);
+            label9.Location = new Point(381, 379);
             label9.Name = "label9";
             label9.Size = new Size(57, 22);
             label9.TabIndex = 14;
@@ -174,6 +173,7 @@
             txtCarPartName.Location = new Point(0, 0);
             txtCarPartName.Multiline = true;
             txtCarPartName.Name = "txtCarPartName";
+            txtCarPartName.ReadOnly = true;
             txtCarPartName.Size = new Size(250, 48);
             txtCarPartName.TabIndex = 29;
             // 
@@ -193,6 +193,7 @@
             txtModel.Location = new Point(0, 0);
             txtModel.Multiline = true;
             txtModel.Name = "txtModel";
+            txtModel.ReadOnly = true;
             txtModel.Size = new Size(250, 48);
             txtModel.TabIndex = 30;
             // 
@@ -296,7 +297,7 @@
             btnDelete.BackColor = Color.FromArgb(35, 115, 144);
             btnDelete.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Location = new Point(444, 715);
+            btnDelete.Location = new Point(702, 715);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(178, 55);
             btnDelete.TabIndex = 28;
@@ -309,7 +310,7 @@
             btnUpdate.BackColor = Color.FromArgb(35, 115, 144);
             btnUpdate.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             btnUpdate.ForeColor = SystemColors.ControlLightLight;
-            btnUpdate.Location = new Point(260, 715);
+            btnUpdate.Location = new Point(496, 715);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(178, 55);
             btnUpdate.TabIndex = 27;
@@ -319,37 +320,29 @@
             // 
             // pictureBoxImage
             // 
-            pictureBoxImage.Location = new Point(346, 416);
+            pictureBoxImage.Location = new Point(378, 416);
             pictureBoxImage.Name = "pictureBoxImage";
-            pictureBoxImage.Size = new Size(294, 228);
+            pictureBoxImage.Size = new Size(502, 246);
             pictureBoxImage.TabIndex = 29;
             pictureBoxImage.TabStop = false;
             // 
-            // label8
+            // UpdateUploadImage
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(346, 257);
-            label8.Name = "label8";
-            label8.Size = new Size(58, 22);
-            label8.TabIndex = 30;
-            label8.Text = "Brand";
-            // 
-            // txtBrand
-            // 
-            txtBrand.Location = new Point(346, 292);
-            txtBrand.Name = "txtBrand";
-            txtBrand.Size = new Size(218, 27);
-            txtBrand.TabIndex = 31;
+            UpdateUploadImage.Location = new Point(786, 372);
+            UpdateUploadImage.Name = "UpdateUploadImage";
+            UpdateUploadImage.Size = new Size(94, 29);
+            UpdateUploadImage.TabIndex = 48;
+            UpdateUploadImage.Text = "button1";
+            UpdateUploadImage.UseVisualStyleBackColor = true;
+            UpdateUploadImage.Click += UpdateUploadImage_Click;
             // 
             // ManageCarPartsActionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(652, 798);
-            Controls.Add(txtBrand);
-            Controls.Add(label8);
+            ClientSize = new Size(908, 798);
+            Controls.Add(UpdateUploadImage);
             Controls.Add(pictureBoxImage);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
@@ -422,5 +415,6 @@
         private PictureBox pictureBoxImage;
         private Label label8;
         private TextBox txtBrand;
+        private Button UpdateUploadImage;
     }
 }

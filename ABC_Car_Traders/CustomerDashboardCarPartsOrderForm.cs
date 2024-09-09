@@ -23,6 +23,7 @@ namespace ABC_Car_Traders
         private User user;
         private CarParts carPart;
         private List<OrderDetail> orderDetailsList = null;
+        public int selectedCarModelIdVal = 0;
         public CustomerDashboardCarPartsOrderForm(CarPartsController carPartsController, CarController carController, OrdersController ordersController)
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace ABC_Car_Traders
             _ordersController = ordersController;
             dataGridPlaceOrder.AutoGenerateColumns = false;
         }
+        // load all brands in combo box
         private void loadBrands()
         {
             var carBrands = _carPartsController.GetAllBrands();
@@ -40,7 +42,7 @@ namespace ABC_Car_Traders
             cmbCarBrand.ValueMember = "brandId";
             cmbCarBrand.SelectedIndex = -1;
         }
-
+        // load all models in combo box
         public void loadModels(int brandId)
         {
             var carModels = _carPartsController.GetModelsByBrand(brandId);
@@ -58,9 +60,11 @@ namespace ABC_Car_Traders
             }
         }
 
+        // load car part names by model
         public void loadCarPartNames(int modelId)
         {
-            var carParts = _carPartsController.GetCarPartsByModelIdAndPartName(modelId, string.Empty);
+            this.selectedCarModelIdVal = modelId;
+            var carParts = _carPartsController.GetCarPartsByModel(modelId);
 
             if (carParts.Count == 0)
             {
@@ -77,7 +81,7 @@ namespace ABC_Car_Traders
 
         private void LoadCarPartQuantityandUnitPrice(int carPartId)
         {
-            var carPart = _carPartsController.getCarPartById(carPartId);
+            this.carPart = _carPartsController.getCarPartById(carPartId);
 
             if (carPart != null)
             {
@@ -90,8 +94,6 @@ namespace ABC_Car_Traders
             }
         }
 
-
-
         private void cmbCarBrand_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbCarBrand.SelectedIndex != -1)
@@ -101,10 +103,6 @@ namespace ABC_Car_Traders
                 {
                     loadModels(selectedBrandId);
                 }
-                //else
-                //{
-                //    MessageBox.Show("Invalid brand selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
             }
         }
 
@@ -113,14 +111,11 @@ namespace ABC_Car_Traders
             if (cmbCarModel.SelectedIndex != -1)
             {
                 var selectedCarModel = cmbCarModel.SelectedValue;
+
                 if (selectedCarModel is int selectedCarModelId)
                 {
                     loadCarPartNames(selectedCarModelId);
                 }
-                //else
-                //{
-                //    MessageBox.Show("Invalid model selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
             }
 
         }
@@ -132,7 +127,6 @@ namespace ABC_Car_Traders
                 var selectedCarPartId = cmbCarPartName.SelectedValue;
                 if (selectedCarPartId is int carPartId)
                 {
-                    // Load the quantity on hand for the selected car part
                     LoadCarPartQuantityandUnitPrice(carPartId);
                 }
             }
@@ -158,7 +152,7 @@ namespace ABC_Car_Traders
                 {
                     txtCustomerName.Text = details.Name;
                     txtAddress.Text = details.Address;
-                    txtNic.Text = details.ItemName;  // Unified field name
+                    txtNic.Text = details.ItemName;
                     txtEmail.Text = details.Email;
                     txtContactNo.Text = details.ContactNo;
 
@@ -183,36 +177,51 @@ namespace ABC_Car_Traders
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            _ordersController.btnSendEmail_Click();
-            this.total += int.Parse(txtTotal.Text.Trim());
-            int newRowIndex = dataGridPlaceOrder.Rows.Add();
+            Models model = _carController.GetModelById(this.selectedCarModelIdVal);
+            int qtyOnHand = int.Parse(txtQuantityOnHand.Text);
+            int qty = int.Parse(txtQuantity.Text);
 
-            // Access the newly added row
-            DataGridViewRow newRow = dataGridPlaceOrder.Rows[newRowIndex];
-
-            // Set the value for the first cell (column index 0) in the new row
-            newRow.Cells[0].Value = cmbCarPartName.Text.Trim();
-            newRow.Cells[1].Value = txtDate.Text.Trim();
-            newRow.Cells[2].Value = txtQuantity.Text.Trim();
-            newRow.Cells[3].Value = txtTotal.Text.Trim();
-
-            txtFinalTotal.Text = this.total.ToString();
-            if (orderDetailsList == null)
+            if (qty > qtyOnHand)
             {
-                orderDetailsList = new List<OrderDetail>();
+                MessageBox.Show("Quantity cannot be greater than Qty On Hand.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                //_ordersController.btnSendEmail_Click();
+                this.total += int.Parse(txtTotal.Text.Trim());
+                int newRowIndex = dataGridPlaceOrder.Rows.Add();
 
-            // Create a new OrderDetail instance
-            OrderDetail orderDetail = new OrderDetail();
-            orderDetail.CarParts = this.carPart;
-            orderDetail.Car = null;
-            orderDetail.qty = int.Parse(txtQuantity.Text.Trim());
-            orderDetail.created_at = DateTime.Now;
-            orderDetail.status = "PEN";
-            orderDetail.unitPrice = int.Parse(txtUnitPrice.Text.Trim());
+                // Access the newly added row
+                DataGridViewRow newRow = dataGridPlaceOrder.Rows[newRowIndex];
 
-            // Add the new OrderDetail to the list
-            orderDetailsList.Add(orderDetail);
+                // Set the value for the first cell (column index 0) in the new row
+                newRow.Cells[0].Value = cmbCarPartName.Text.Trim();
+                newRow.Cells[1].Value = txtDate.Text.Trim();
+                newRow.Cells[2].Value = txtQuantity.Text.Trim();
+                newRow.Cells[3].Value = txtUnitPrice.Text.Trim();
+                newRow.Cells[4].Value = txtTotal.Text.Trim();
+                newRow.Cells[5].Value = "PEN";
+
+                txtFinalTotal.Text = this.total.ToString();
+                if (orderDetailsList == null)
+                {
+                    orderDetailsList = new List<OrderDetail>();
+                }
+
+                // Create a new OrderDetail instance
+                OrderDetail orderDetail = new OrderDetail();
+                orderDetail.CarParts = this.carPart;
+                orderDetail.Car = null;
+                orderDetail.qty = int.Parse(txtQuantity.Text.Trim());
+                orderDetail.created_at = DateTime.Now;
+                orderDetail.status = "PEN";
+                orderDetail.Model = model;
+                orderDetail.Model.modelId = model.modelId;
+                orderDetail.unitPrice = int.Parse(txtUnitPrice.Text.Trim());
+
+                // Add the new OrderDetail to the list
+                orderDetailsList.Add(orderDetail);
+            }
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -238,19 +247,24 @@ namespace ABC_Car_Traders
                 foreach (var item in orderDetailsList)
                 {
                     OrderDetail orderDetail = new OrderDetail();
-                    orderDetail.carId = null;
+                    orderDetail.Car = null;
+                    //orderDetail.CarParts = this.carPart;
                     orderDetail.CarPartsId = item.CarParts.carPartId;
                     orderDetail.Order = order;
                     orderDetail.created_at = txtDate.Value;
                     orderDetail.qty = item.qty;
                     orderDetail.status = "PEN";
+                    orderDetail.unitPrice= int.Parse(txtUnitPrice.Text);
+                    orderDetail.modelId = item.Model.modelId;
+                    MessageBox.Show(orderDetail.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _ordersController.SaveOrderDetails(orderDetail);
-                    MessageBox.Show("Order saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _carPartsController.UpdateCarPartsQty(this.carPart.carPartId, item.qty);
+                    MessageBox.Show("Order placed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Order saved Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Order placed Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

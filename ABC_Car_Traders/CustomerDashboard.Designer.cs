@@ -123,7 +123,7 @@
             // pictureBox13
             // 
             pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(27, 804);
+            pictureBox13.Location = new Point(27, 699);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(60, 53);
             pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
@@ -137,7 +137,7 @@
             btnMyOrders.FlatStyle = FlatStyle.Flat;
             btnMyOrders.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMyOrders.ForeColor = SystemColors.ControlLightLight;
-            btnMyOrders.Location = new Point(114, 804);
+            btnMyOrders.Location = new Point(114, 699);
             btnMyOrders.Name = "btnMyOrders";
             btnMyOrders.Size = new Size(288, 53);
             btnMyOrders.TabIndex = 30;
@@ -149,7 +149,7 @@
             // pictureBox12
             // 
             pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
-            pictureBox12.Location = new Point(27, 699);
+            pictureBox12.Location = new Point(24, 804);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(60, 53);
             pictureBox12.SizeMode = PictureBoxSizeMode.Zoom;
@@ -163,7 +163,7 @@
             btnManageProfile.FlatStyle = FlatStyle.Flat;
             btnManageProfile.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnManageProfile.ForeColor = SystemColors.ControlLightLight;
-            btnManageProfile.Location = new Point(114, 699);
+            btnManageProfile.Location = new Point(112, 804);
             btnManageProfile.Name = "btnManageProfile";
             btnManageProfile.Size = new Size(288, 53);
             btnManageProfile.TabIndex = 28;
@@ -357,7 +357,7 @@
             // pictureBox14
             // 
             pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
-            pictureBox14.Location = new Point(1470, 64);
+            pictureBox14.Location = new Point(1295, 24);
             pictureBox14.Name = "pictureBox14";
             pictureBox14.Size = new Size(32, 32);
             pictureBox14.TabIndex = 7;
@@ -379,11 +379,12 @@
             labelDateTime.AutoSize = true;
             labelDateTime.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelDateTime.ForeColor = SystemColors.ControlLightLight;
-            labelDateTime.Location = new Point(1175, 25);
+            labelDateTime.Location = new Point(1333, 24);
             labelDateTime.Name = "labelDateTime";
             labelDateTime.Size = new Size(114, 23);
             labelDateTime.TabIndex = 5;
             labelDateTime.Text = "lblDateTime";
+            labelDateTime.Click += labelDateTime_Click;
             // 
             // customerDashboard_sidepanel3
             // 

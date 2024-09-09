@@ -29,42 +29,35 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCustomerOrderActionForm));
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             label2 = new Label();
-            label1 = new Label();
             label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
             label7 = new Label();
             panel1 = new Panel();
-            textBox1 = new TextBox();
-            panel2 = new Panel();
-            textBox2 = new TextBox();
-            panel3 = new Panel();
-            textBox3 = new TextBox();
+            txtCustomerName = new TextBox();
             dateTimePicker1 = new DateTimePicker();
-            panel4 = new Panel();
-            textBox4 = new TextBox();
-            panel5 = new Panel();
-            textBox5 = new TextBox();
-            comboBox1 = new ComboBox();
-            btnDelete = new Button();
-            btnUpdate = new Button();
+            cmbStatus = new ComboBox();
+            btnUpdateOrder = new Button();
+            dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            panel4.SuspendLayout();
-            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(263, 27);
+            pictureBox1.Location = new Point(230, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(377, 465);
+            pictureBox1.Size = new Size(589, 465);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -79,61 +72,21 @@
             label2.TabIndex = 10;
             label2.Text = "Customer Name";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(37, 135);
-            label1.Name = "label1";
-            label1.Size = new Size(108, 22);
-            label1.TabIndex = 11;
-            label1.Text = "Car / Part Id";
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(37, 295);
+            label3.Location = new Point(37, 152);
             label3.Name = "label3";
             label3.Size = new Size(99, 22);
             label3.TabIndex = 12;
             label3.Text = "Order Date";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(37, 216);
-            label4.Name = "label4";
-            label4.Size = new Size(138, 22);
-            label4.TabIndex = 13;
-            label4.Text = "Car / Part Name";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(37, 367);
-            label5.Name = "label5";
-            label5.Size = new Size(76, 22);
-            label5.TabIndex = 14;
-            label5.Text = "Quantity";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(37, 454);
-            label6.Name = "label6";
-            label6.Size = new Size(52, 22);
-            label6.TabIndex = 15;
-            label6.Text = "Price";
-            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(37, 544);
+            label7.Location = new Point(37, 245);
             label7.Name = "label7";
             label7.Size = new Size(57, 22);
             label7.TabIndex = 16;
@@ -142,158 +95,139 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(35, 115, 144);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtCustomerName);
             panel1.Location = new Point(37, 77);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(0, 0, 0, 3);
             panel1.Size = new Size(250, 42);
             panel1.TabIndex = 17;
             // 
-            // textBox1
+            // txtCustomerName
             // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(0, 0);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(250, 39);
-            textBox1.TabIndex = 23;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(35, 115, 144);
-            panel2.Controls.Add(textBox2);
-            panel2.Location = new Point(37, 160);
-            panel2.Name = "panel2";
-            panel2.Padding = new Padding(0, 0, 0, 3);
-            panel2.Size = new Size(250, 42);
-            panel2.TabIndex = 18;
-            // 
-            // textBox2
-            // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(0, 0);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(250, 39);
-            textBox2.TabIndex = 24;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.FromArgb(35, 115, 144);
-            panel3.Controls.Add(textBox3);
-            panel3.Location = new Point(37, 241);
-            panel3.Name = "panel3";
-            panel3.Padding = new Padding(0, 0, 0, 3);
-            panel3.Size = new Size(250, 42);
-            panel3.TabIndex = 19;
-            // 
-            // textBox3
-            // 
-            textBox3.Dock = DockStyle.Fill;
-            textBox3.Location = new Point(0, 0);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(250, 39);
-            textBox3.TabIndex = 25;
+            txtCustomerName.Dock = DockStyle.Fill;
+            txtCustomerName.Location = new Point(0, 0);
+            txtCustomerName.Multiline = true;
+            txtCustomerName.Name = "txtCustomerName";
+            txtCustomerName.Size = new Size(250, 39);
+            txtCustomerName.TabIndex = 23;
+            txtCustomerName.TextChanged += textBox1_TextChanged;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(37, 320);
+            dateTimePicker1.Location = new Point(37, 188);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(250, 27);
             dateTimePicker1.TabIndex = 20;
             // 
-            // panel4
+            // cmbStatus
             // 
-            panel4.BackColor = Color.FromArgb(35, 115, 144);
-            panel4.Controls.Add(textBox4);
-            panel4.Location = new Point(37, 392);
-            panel4.Name = "panel4";
-            panel4.Padding = new Padding(0, 0, 0, 3);
-            panel4.Size = new Size(250, 42);
-            panel4.TabIndex = 20;
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(37, 281);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(250, 28);
+            cmbStatus.TabIndex = 22;
             // 
-            // textBox4
+            // btnUpdateOrder
             // 
-            textBox4.Dock = DockStyle.Fill;
-            textBox4.Location = new Point(0, 0);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(250, 39);
-            textBox4.TabIndex = 26;
+            btnUpdateOrder.BackColor = Color.FromArgb(35, 115, 144);
+            btnUpdateOrder.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            btnUpdateOrder.ForeColor = SystemColors.ControlLightLight;
+            btnUpdateOrder.Location = new Point(606, 653);
+            btnUpdateOrder.Name = "btnUpdateOrder";
+            btnUpdateOrder.Size = new Size(178, 55);
+            btnUpdateOrder.TabIndex = 25;
+            btnUpdateOrder.Text = "Update Order";
+            btnUpdateOrder.UseVisualStyleBackColor = false;
+            btnUpdateOrder.Click += btnUpdateOrder_Click;
             // 
-            // panel5
+            // dataGridView1
             // 
-            panel5.BackColor = Color.FromArgb(35, 115, 144);
-            panel5.Controls.Add(textBox5);
-            panel5.Location = new Point(37, 479);
-            panel5.Name = "panel5";
-            panel5.Padding = new Padding(0, 0, 0, 3);
-            panel5.Size = new Size(250, 42);
-            panel5.TabIndex = 21;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(35, 115, 144);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.Location = new Point(20, 384);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(764, 227);
+            dataGridView1.TabIndex = 27;
             // 
-            // textBox5
+            // Column1
             // 
-            textBox5.Dock = DockStyle.Fill;
-            textBox5.Location = new Point(0, 0);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(250, 39);
-            textBox5.TabIndex = 27;
+            Column1.DataPropertyName = "regNo";
+            Column1.HeaderText = "Car Reg No";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.Width = 125;
             // 
-            // comboBox1
+            // Column2
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(37, 569);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(250, 28);
-            comboBox1.TabIndex = 22;
+            Column2.DataPropertyName = "carPartName";
+            Column2.HeaderText = "Car Part Name";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Width = 125;
             // 
-            // btnDelete
+            // Column3
             // 
-            btnDelete.BackColor = Color.FromArgb(35, 115, 144);
-            btnDelete.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Location = new Point(432, 654);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(178, 55);
-            btnDelete.TabIndex = 26;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
+            Column3.DataPropertyName = "qty";
+            Column3.HeaderText = "Quantity";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Width = 125;
             // 
-            // btnUpdate
+            // Column4
             // 
-            btnUpdate.BackColor = Color.FromArgb(35, 115, 144);
-            btnUpdate.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            btnUpdate.ForeColor = SystemColors.ControlLightLight;
-            btnUpdate.Location = new Point(236, 654);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(178, 55);
-            btnUpdate.TabIndex = 25;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseVisualStyleBackColor = false;
+            Column4.DataPropertyName = "created_at";
+            Column4.HeaderText = "Created At";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            Column5.DataPropertyName = "status";
+            Column5.HeaderText = "Status";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            Column6.DataPropertyName = "unitPrice";
+            Column6.HeaderText = "Unit Price";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
+            Column6.Width = 125;
+            // 
+            // Column7
+            // 
+            Column7.DataPropertyName = "modelName";
+            Column7.HeaderText = "Model";
+            Column7.MinimumWidth = 6;
+            Column7.Name = "Column7";
+            Column7.Width = 125;
             // 
             // ManageCustomerOrderActionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(652, 753);
-            Controls.Add(btnDelete);
-            Controls.Add(btnUpdate);
-            Controls.Add(comboBox1);
-            Controls.Add(panel5);
-            Controls.Add(panel4);
+            ClientSize = new Size(814, 753);
+            Controls.Add(dataGridView1);
+            Controls.Add(btnUpdateOrder);
+            Controls.Add(cmbStatus);
             Controls.Add(dateTimePicker1);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
             Name = "ManageCustomerOrderActionForm";
@@ -302,14 +236,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -318,25 +245,20 @@
 
         private PictureBox pictureBox1;
         private Label label2;
-        private Label label1;
         private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
         private Label label7;
         private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
         private DateTimePicker dateTimePicker1;
-        private Panel panel4;
-        private Panel panel5;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Button btnDelete;
-        private Button btnUpdate;
+        private ComboBox cmbStatus;
+        private TextBox txtCustomerName;
+        private Button btnUpdateOrder;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
     }
 }

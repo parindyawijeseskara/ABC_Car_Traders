@@ -57,7 +57,7 @@
             Column7 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
             Column9 = new DataGridViewTextBoxColumn();
-            Column10 = new DataGridViewButtonColumn();
+            Column10 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
@@ -255,7 +255,7 @@
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(35, 115, 144);
-            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -264,12 +264,12 @@
             dataGridViewCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCars.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10 });
             dataGridViewCars.EnableHeadersVisualStyles = false;
-            dataGridViewCars.Location = new Point(60, 506);
+            dataGridViewCars.Location = new Point(58, 505);
             dataGridViewCars.Name = "dataGridViewCars";
             dataGridViewCars.RowHeadersWidth = 51;
-            dataGridViewCars.Size = new Size(1228, 188);
+            dataGridViewCars.Size = new Size(1235, 188);
             dataGridViewCars.TabIndex = 20;
-            dataGridViewCars.CellClick += dataGridViewCars_CellClick;
+            dataGridViewCars.CellClick += dataGridViewCars_CellClick_1;
             // 
             // Column1
             // 
@@ -281,74 +281,75 @@
             // 
             // Column2
             // 
-            Column2.DataPropertyName = "modelName";
-            Column2.HeaderText = "Model";
+            Column2.DataPropertyName = "regNo";
+            Column2.HeaderText = "RegNo";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
             Column2.Width = 125;
             // 
             // Column3
             // 
-            Column3.DataPropertyName = "regNo";
-            Column3.HeaderText = "RegNo";
+            Column3.DataPropertyName = "brandName";
+            Column3.HeaderText = "Brand Name";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
-            Column3.Width = 125;
+            Column3.Width = 140;
             // 
             // Column4
             // 
-            Column4.DataPropertyName = "year";
-            Column4.HeaderText = "Year";
+            Column4.DataPropertyName = "modelName";
+            Column4.HeaderText = "Model";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
-            Column4.Width = 125;
+            Column4.Width = 140;
             // 
             // Column5
             // 
-            Column5.DataPropertyName = "price";
-            Column5.HeaderText = "Price";
+            Column5.DataPropertyName = "year";
+            Column5.HeaderText = "Year";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
-            Column5.Width = 125;
+            Column5.Width = 130;
             // 
             // Column6
             // 
-            Column6.DataPropertyName = "description";
-            Column6.HeaderText = "Description";
+            Column6.DataPropertyName = "price";
+            Column6.HeaderText = "Price";
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
             Column6.Width = 125;
             // 
             // Column7
             // 
-            Column7.DataPropertyName = "quantity";
-            Column7.HeaderText = "Quantity";
+            Column7.DataPropertyName = "description";
+            Column7.HeaderText = "Description";
             Column7.MinimumWidth = 6;
             Column7.Name = "Column7";
-            Column7.Width = 125;
+            Column7.Width = 150;
             // 
             // Column8
             // 
-            Column8.DataPropertyName = "transmission";
-            Column8.HeaderText = "Transmission";
+            Column8.DataPropertyName = "quantity";
+            Column8.HeaderText = "Quantity";
             Column8.MinimumWidth = 6;
             Column8.Name = "Column8";
             Column8.Width = 125;
             // 
             // Column9
             // 
-            Column9.DataPropertyName = "status";
-            Column9.HeaderText = "Status";
+            Column9.DataPropertyName = "transmission";
+            Column9.HeaderText = "Transmission";
             Column9.MinimumWidth = 6;
             Column9.Name = "Column9";
-            Column9.Width = 125;
+            Column9.Width = 140;
             // 
             // Column10
             // 
-            Column10.HeaderText = "Action";
+            Column10.DataPropertyName = "status";
+            Column10.HeaderText = "Status";
             Column10.MinimumWidth = 6;
             Column10.Name = "Column10";
-            Column10.Width = 125;
+            Column10.Width = 140;
             // 
             // ManageCarsForm
             // 
@@ -414,6 +415,6 @@
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column9;
-        private DataGridViewButtonColumn Column10;
+        private DataGridViewTextBoxColumn Column10;
     }
 }

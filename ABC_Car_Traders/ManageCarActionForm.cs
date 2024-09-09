@@ -19,7 +19,7 @@ namespace ABC_Car_Traders
         private readonly CarController _carController;
         private readonly int _carId;
         private Car _car;
-        private string _carImageFileName;
+        private byte[] _updatedCarImage; // Store the updated image
 
 
         public ManageCarActionForm(CarController carController, int carId)
@@ -28,10 +28,6 @@ namespace ABC_Car_Traders
             _carController = carController;
             _carId = carId;
             loadCarDetails();
-           
-            
-
-
         }
 
         public void loadCarDetails()
@@ -53,8 +49,6 @@ namespace ABC_Car_Traders
             txtDescription.Text = _car.description;
             txtQuantity.Text = _car.quantity.ToString();
             cmbTransmission.Text = _car.transmission;
-            
-
 
             if (_car.image != null && _car.image.Length > 0)
             {
@@ -89,6 +83,12 @@ namespace ABC_Car_Traders
                 _car.description = txtDescription.Text;
                 _car.quantity = int.Parse(txtQuantity.Text);
                 _car.transmission = cmbTransmission.Text;
+
+                if (_updatedCarImage != null)
+                {
+                    _car.image = _updatedCarImage;  // Update the image if a new one has been uploaded
+                }
+
                 _carController.UpdateCar(_car);
                 this.Close();
                 MessageBox.Show("Car Updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -98,7 +98,6 @@ namespace ABC_Car_Traders
                 MessageBox.Show($"An error occured:{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
 
         }
 
@@ -135,18 +134,6 @@ namespace ABC_Car_Traders
             else
             {
                 lblBrandError.Visible = false;
-            }
-
-            // Validate Model Name
-            if (string.IsNullOrWhiteSpace(txtModel.Text) || !Regex.IsMatch(txtModel.Text, PatternValidation.namePattern))
-            {
-                lblModelError.Text = "Please enter a valid model name.";
-                lblModelError.Visible = true;
-                isValid = false;
-            }
-            else
-            {
-                lblModelError.Visible = false;
             }
 
             // Validate Year
@@ -197,22 +184,52 @@ namespace ABC_Car_Traders
                 lblTransmissionError.Visible = false;
             }
 
-            // Validate Image
-            if (string.IsNullOrWhiteSpace(_carImageFileName) || !Regex.IsMatch(_carImageFileName, PatternValidation.imagePattern, RegexOptions.IgnoreCase))
-            {
-                lblpictureBoxImage.Text = "Please upload a valid image file (jpg, jpeg, png, gif).";
-                lblpictureBoxImage.Visible = true;
-                isValid = false;
-            }
-            else
-            {
-                lblpictureBoxImage.Visible = false;
-            }
-
             return isValid;
         }
 
+        private void uploadImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
 
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
 
+                    // Load the original image
+                    Image originalImage = Image.FromFile(filePath);
+
+                    _updatedCarImage = ResizeImage(originalImage, 502, 246);
+
+                    // Display the resized image in the PictureBox
+                    using (var ms = new MemoryStream(_updatedCarImage))
+                    {
+                        pictureBoxImage.Image = Image.FromStream(ms);
+                    }
+                }
+            }
+        }
+
+        private byte[] ResizeImage(Image originalImage, int width, int height)
+        {
+            var resizedImage = new Bitmap(width, height);
+            using (var graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.DrawImage(originalImage, 0, 0, width, height);
+            }
+
+            using (var ms = new MemoryStream())
+            {
+                resizedImage.Save(ms, originalImage.RawFormat);
+                return ms.ToArray();
+            }
+        }
     }
 }

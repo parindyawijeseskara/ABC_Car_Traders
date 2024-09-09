@@ -21,6 +21,7 @@ namespace ABC_Car_Traders.Controllers
             _context = context;
         }
 
+        // Get all car parts
         public List<dynamic> GetAllCarParts()
         {
             return _context.CarParts
@@ -39,17 +40,20 @@ namespace ABC_Car_Traders.Controllers
                     carParts.warrantyPeriod,
                     carParts.status
                 }).ToList<dynamic>();
+
         }
-       
+        // get car part details by id
         public CarParts getCarPartById(int carPartId)
         {
-            //return _context.CarParts.Find(carPartId);
-            return _context.CarParts
-                  .Include(c => c.Model)
-                  .ThenInclude(m => m.Brand)
-                  .FirstOrDefault(c => c.carPartId == carPartId);
+            ////return _context.CarParts.Find(carPartId);
+            //return _context.CarParts
+            //      .Include(c => c.Model)
+            //      .ThenInclude(m => m.Brand)
+            //      .FirstOrDefault(c => c.carPartId == carPartId);
+            return _context.CarParts.Find(carPartId);
         }
 
+        //Add car part details
         public void AddCarParts(CarParts carParts)
         {
             carParts.createdAt = DateTime.Now;
@@ -58,6 +62,7 @@ namespace ABC_Car_Traders.Controllers
             _context.SaveChanges();
         }
 
+        //Update car part details
         public void UpdateCarParts(CarParts carParts)
         {
             carParts.updatedAt = DateTime.Now;
@@ -76,30 +81,19 @@ namespace ABC_Car_Traders.Controllers
                 _context.SaveChanges();
             }
         }
-
+        //Delete car part details
         public void DeleteCarPart(int carPartId)
         {
             var partId = _context.CarParts.Find(carPartId);
             if (partId != null)
             {
                 partId.deletedAt = DateTime.Now;
-                partId.status = "NOT AVAILABLE";
+                partId.status = "Not Available";
                 // _context.Cars.Remove(car);
                 _context.SaveChanges();
             }
         }
 
-        ////GetAllCarsByYear
-        //public List<dynamic> GetAllCarPartsByName(string carPartName)
-        //{
-        //    return _context.CarParts
-        //    .Where(carPrts => carPrts.deletedAt == null && carPrts.carPartName == carPartName)
-        //    .Select(carPrts => new
-        //    {
-
-        //    })
-        //    .ToList<dynamic>();
-        //}
         public Brand GetBrandByName(string brand)
         {
             return _context.Brand.FirstOrDefault(b => b.brandName == brand);
@@ -110,17 +104,21 @@ namespace ABC_Car_Traders.Controllers
             return _context.Model.FirstOrDefault(m => m.modelName == modelName && m.brandId == brandId);
         }
 
+        // Add brands
         public void AddBrand(Brand brand)
         {
             _context.Brand.Add(brand);
             _context.SaveChanges();
         }
+
+        //Add models
         public void AddModel(Models model)
         {
             _context.Model.Add(model);
             _context.SaveChanges();
         }
 
+        // search car parts by brand and model
         public List<dynamic> SearchCarPartsByBrandAndModel(int brandId, int modelId)
         {
             return _context.CarParts
@@ -141,6 +139,7 @@ namespace ABC_Car_Traders.Controllers
                 .ToList<dynamic>();
         }
 
+        // Get all brands
         public List<dynamic> GetAllBrands()
         {
             return _context.Brand
@@ -165,12 +164,25 @@ namespace ABC_Car_Traders.Controllers
                 .ToList<dynamic>();
         }
 
+
         //get all cars by car part name
         public List<CarParts> GetCarsByPartName(string carPartName)
         {
             return _context.CarParts
                 .Where(carPart => carPart.carPartName.Contains(carPartName))
                 .ToList();
+        }
+
+        //Get car parts by model
+        public List<dynamic> GetCarPartsByModel(int modelId)
+        {
+            return _context.CarParts
+                .Where(carPart => carPart.Model.modelId == modelId)
+                .Select(carpart => new
+                {
+                    carpart.carPartId,
+                    carpart.carPartName
+                }).ToList<dynamic>();
         }
 
         // Get all car parts by model ID and part name
@@ -202,6 +214,7 @@ namespace ABC_Car_Traders.Controllers
             .ToList<dynamic>();
         }
 
+        // Get total no of car parts
         public int GetTotalCarParts()
         {
             try
@@ -214,7 +227,19 @@ namespace ABC_Car_Traders.Controllers
             }
         }
 
+        // Upadate car parts qty when order
+        public void UpdateCarPartsQty(int carPartId, int qty)
+        {
+            var existingCarPart = _context.CarParts.Find(carPartId);
+            if (existingCarPart != null)
+            {
+                existingCarPart.updatedAt = DateTime.Now;
+                existingCarPart.quantity = (existingCarPart.quantity - qty);
+                _context.SaveChanges();
+            }
+        }
 
+        // Function to generate car parts inventory report
         public void GenerateCarPartsInventoryReport()
         {
             var carPartsInventory = _context.CarParts

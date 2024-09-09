@@ -48,14 +48,14 @@ namespace ABC_Car_Traders
                 {
                     //pictureBoxImage.Image = Image.FromStream(ms);
                     Image originalImage = Image.FromStream(ms);
-                    
+
                     Image resizedImage = new Bitmap(originalImage, new Size(502, 246));
                     pictureBoxImage.Image = resizedImage;
                 }
             }
             else
             {
-                pictureBoxImage.Image = null; // Or set a default image
+                pictureBoxImage.Image = null;
             }
 
         }
@@ -66,6 +66,16 @@ namespace ABC_Car_Traders
         }
 
         private void txtCarName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtModel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTransmission_TextChanged(object sender, EventArgs e)
         {
 
         }

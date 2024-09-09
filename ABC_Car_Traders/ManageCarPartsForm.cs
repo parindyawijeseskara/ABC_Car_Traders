@@ -1,4 +1,5 @@
 ﻿using ABC_Car_Traders.Controllers;
+using ABC_Car_Traders.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace ABC_Car_Traders
             loadCarParts();
             loadBrands();
             dataGridViewCarParts.AutoGenerateColumns = false;
-            
+
         }
 
         private void btnAddNewCarPart_Click(object sender, EventArgs e)
@@ -31,31 +32,11 @@ namespace ABC_Car_Traders
             addNewCarPartsForm.Show();
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 10)
-            {
-                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-                {
-                    // Ensure the cell value is not null
-                    if (dataGridViewCarParts.Rows[e.RowIndex].Cells[1].Value != null)
-                    {
-                        int carPartId = (int)dataGridViewCarParts.Rows[e.RowIndex].Cells[1].Value;
-                        ManageCarPartsActionForm actionForm = new ManageCarPartsActionForm(_controller, carPartId);
-                        actionForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Selected carPart ID is null. Please select a valid car part Id.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-
         private void loadCarParts()
         {
             var carParts = _controller.GetAllCarParts();
             dataGridViewCarParts.DataSource = carParts;
+
         }
 
         private void loadBrands()
@@ -119,12 +100,8 @@ namespace ABC_Car_Traders
                 var selectedValue = cmbBrand.SelectedValue;
                 if (selectedValue is int selectedBrandId)
                 {
-                    loadModels(selectedBrandId); 
+                    loadModels(selectedBrandId);
                 }
-                //else
-                //{
-                //    MessageBox.Show("Invalid brand selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
             }
         }
 
@@ -147,6 +124,48 @@ namespace ABC_Car_Traders
             {
                 dataGridViewCarParts.DataSource = filteredCarParts;
             }
+        }
+
+        private void txtSearchStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewCarParts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Ensure the carId column exists and has a value
+                if (dataGridViewCarParts.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    try
+                    {
+                        // Convert the carId value to an integer
+                        int carPartId = Convert.ToInt32(dataGridViewCarParts.Rows[e.RowIndex].Cells[0].Value);
+
+                        // Show the ManageCarActionForm popup
+                        ManageCarPartsActionForm actionForm = new ManageCarPartsActionForm(_controller, carPartId);
+                        actionForm.Show();
+                    }
+                    catch (InvalidCastException ex)
+                    {
+                        MessageBox.Show($"Invalid Car Part ID. Expected an integer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error opening form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selected car ID is null. Please select a valid car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

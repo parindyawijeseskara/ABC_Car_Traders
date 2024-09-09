@@ -19,6 +19,7 @@ namespace ABC_Car_Traders.Controllers
             _context = context;
         }
 
+        //Add users 
         public void AddUser(User user)
         {
             user.createdAt = DateTime.Now;
@@ -28,6 +29,7 @@ namespace ABC_Car_Traders.Controllers
 
         }
 
+        //Get all users
         public List<dynamic> GetAllUsers()
         {
             return _context.User
@@ -66,7 +68,7 @@ namespace ABC_Car_Traders.Controllers
                 .ToList<dynamic>();
 
         }
-
+        //Get user by id
         public User getUserById(int userId)
         {
             return _context.User.Find(userId);
@@ -77,6 +79,7 @@ namespace ABC_Car_Traders.Controllers
             return _context.Role.ToList();
         }
 
+        // update user
         public void updateUser(User user)
         {
             user.updatedAt = DateTime.Now;
@@ -97,7 +100,7 @@ namespace ABC_Car_Traders.Controllers
             }
 
         } 
-
+        // Function to delete users
         public void deleteUser(int userId)
         {
             var user = _context.User.Find(userId);
@@ -123,13 +126,14 @@ namespace ABC_Car_Traders.Controllers
             //return _context.User
             //.Where(user => user.deletedAt == null && user.status == status)
             //.ToList<dynamic>();
-            string lowerCaseStatus = status.ToLower();  // Convert the input status to lowercase
+            string lowerCaseStatus = status.ToLower(); 
 
             return _context.User
                 .Where(user => user.deletedAt == null && user.status.ToLower() == lowerCaseStatus)
                 .ToList<dynamic>();
         }
 
+        // Get total no of users where role Id is 2
         public int GetTotalUsers()
         {
             try
@@ -140,11 +144,11 @@ namespace ABC_Car_Traders.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception($"An error occurred while retrieving total users: {ex.Message}");
+                throw new Exception($"An error occurred while retrieving total customers: {ex.Message}");
             }
         }
 
-
+        // Function to generate customer report
         public void GenerateCustomerReport()
         {
             var userReport = GetAllUsers();

@@ -24,6 +24,7 @@ namespace ABC_Car_Traders
         private User user;
         private Car car;
         private List<OrderDetail> orderDetailsList = null;
+        public int selectedCarModelIdVal = 0;
 
         public CustomerDashboardMyOrdersForm(CarController carController, OrdersController ordersController)
         {
@@ -60,28 +61,7 @@ namespace ABC_Car_Traders
 
         private void txtCarRegNoOrPartName_TextChanged(object sender, EventArgs e)
         {
-            //string input = txtCarRegNoOrPartName.Text.Trim();
 
-            //if (string.IsNullOrEmpty(input))
-            //{
-            //    MessageBox.Show("Please enter a Car RegNo or Car Part Name.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //var details = _carController.GetCarOrCarPartDetails(input);
-
-            //if (details != null)
-            //{
-            //    txtBrand.Text = details.Brand;
-            //    txtCarModel.Text = details.Model;
-            //    txtCarRegNoOrPartName.Text = details.ItemName;  // Unified field name
-            //    txtUnitPrice.Text = details.Price.ToString();
-            //    txtQuantityOnHand.Text = details.Quantity.ToString();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No matching car or car part found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
         }
 
         private void txtCarRegNoOrPartName_KeyDown(object sender, KeyEventArgs e)
@@ -104,9 +84,10 @@ namespace ABC_Car_Traders
                 {
                     txtBrand.Text = details.Brand;
                     txtCarModel.Text = details.Model;
-                    txtCarRegNoOrPartName.Text = details.ItemName;  // Unified field name
+                    txtCarRegNoOrPartName.Text = details.ItemName;
                     txtUnitPrice.Text = details.Price.ToString();
                     txtQuantityOnHand.Text = details.Quantity.ToString();
+                    this.selectedCarModelIdVal = details.modelId;
 
                     this.car = _carController.getcarByRegNo(input);
                 }
@@ -115,14 +96,10 @@ namespace ABC_Car_Traders
                     MessageBox.Show("No matching car or car part found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearCarDetailsFields();
                 }
-
-                //// Prevent the beep sound on enter key press
-                //e.Handled = true;
-                //e.SuppressKeyPress = true;
             }
         }
 
-        //clear the car details fields
+        //clear the car detail fields
         private void ClearCarDetailsFields()
         {
             txtBrand.Text = string.Empty;
@@ -151,7 +128,7 @@ namespace ABC_Car_Traders
                 {
                     txtCustomerName.Text = details.Name;
                     txtAddress.Text = details.Address;
-                    txtNic.Text = details.ItemName;  // Unified field name
+                    txtNic.Text = details.ItemName; 
                     txtEmail.Text = details.Email;
                     txtContactNo.Text = details.ContactNo;
 
@@ -162,10 +139,6 @@ namespace ABC_Car_Traders
                     MessageBox.Show("No matching Nic found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearCustomerDetailsFields();
                 }
-
-                //// Prevent the beep sound on enter key press
-                //e.Handled = true;
-                //e.SuppressKeyPress = true;
             }
         }
 
@@ -180,40 +153,55 @@ namespace ABC_Car_Traders
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _ordersController.btnSendEmail_Click();
-            this.total += int.Parse(txtTotal.Text.Trim());
-            int newRowIndex = dataGridPlaceOrder.Rows.Add();
+            Models model = _carController.GetModelById(this.selectedCarModelIdVal);
+            int qty_on_hand = int.Parse(txtQuantityOnHand.Text);
+            int qty = int.Parse(txtQuantity.Text);
 
-            // Access the newly added row
-            DataGridViewRow newRow = dataGridPlaceOrder.Rows[newRowIndex];
-
-            // Set the value for the first cell (column index 0) in the new row
-            newRow.Cells[0].Value = txtCarRegNoOrPartName.Text.Trim();
-            newRow.Cells[1].Value = txtDate.Text.Trim();
-            newRow.Cells[2].Value = txtQuantity.Text.Trim();
-            newRow.Cells[3].Value = txtTotal.Text.Trim();
-
-            txtFinalTotal.Text = this.total.ToString();
-            if (orderDetailsList == null)
+            if (qty > qty_on_hand)
             {
-                orderDetailsList = new List<OrderDetail>();
+                MessageBox.Show("Quantity cannot be greater than Qty On Hand.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                //_ordersController.btnSendEmail_Click();
+                this.total += int.Parse(txtTotal.Text.Trim());
+                int newRowIndex = dataGridPlaceOrder.Rows.Add();
 
-            // Create a new OrderDetail instance
-            OrderDetail orderDetail = new OrderDetail();
-            orderDetail.CarParts = null;
-            orderDetail.Car = this.car;
-            orderDetail.qty = int.Parse(txtQuantity.Text.Trim());
-            orderDetail.created_at = DateTime.Now;
-            orderDetail.status = "PEN";
-            orderDetail.unitPrice = int.Parse(txtUnitPrice.Text.Trim());
+                // Access the newly added row
+                DataGridViewRow newRow = dataGridPlaceOrder.Rows[newRowIndex];
 
-            // Add the new OrderDetail to the list
-            orderDetailsList.Add(orderDetail);
+                // Set the value for the first cell (column index 0) in the new row
+                newRow.Cells[0].Value = txtCarRegNoOrPartName.Text.Trim();
+                newRow.Cells[1].Value = txtDate.Text.Trim();
+                newRow.Cells[2].Value = txtQuantity.Text.Trim();
+                newRow.Cells[3].Value = txtUnitPrice.Text.Trim();
+                newRow.Cells[4].Value = txtTotal.Text.Trim();
+                newRow.Cells[5].Value = "PEN";
+                
+
+                txtFinalTotal.Text = this.total.ToString();
+                if (orderDetailsList == null)
+                {
+                    orderDetailsList = new List<OrderDetail>();
+                }
+
+                // Create a new OrderDetail instance
+                OrderDetail orderDetail = new OrderDetail();
+                orderDetail.CarParts = null;
+                orderDetail.Car = this.car;
+                orderDetail.qty = int.Parse(txtQuantity.Text.Trim());
+                orderDetail.created_at = DateTime.Now;
+                orderDetail.status = "PEN";
+                orderDetail.unitPrice = int.Parse(txtUnitPrice.Text.Trim());
+                //orderDetail.Model.modelId = this.selectedCarModelIdVal;
+                orderDetail.Model = model;
+                orderDetail.Model.modelId = model.modelId;
+
+                // Add the new OrderDetail to the list
+                orderDetailsList.Add(orderDetail);
 
 
-            //dataGridPlaceOrder.Rows[1].Cells[1].Value = txtUnitPrice.Text.Trim();
-
+            }
         }
 
         private void txtQuantityOnHand_TextChanged(object sender, EventArgs e)
@@ -265,14 +253,17 @@ namespace ABC_Car_Traders
                     orderDetail.Order = order;
                     orderDetail.created_at = txtDate.Value;
                     orderDetail.qty = item.qty;
+                    orderDetail.unitPrice = int.Parse(txtUnitPrice.Text);
+                    //orderDetail.modelId = item.modelId;
                     orderDetail.status = "PEN";
                     _ordersController.SaveOrderDetails(orderDetail);
-                    MessageBox.Show("Order saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _carController.UpdateCarQty(item.Car.carId, item.qty);
+                    MessageBox.Show("Order placed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Order saved Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Order placed Failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

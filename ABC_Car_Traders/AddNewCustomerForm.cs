@@ -22,14 +22,6 @@ namespace ABC_Car_Traders
         {
             _userController = userController;
             InitializeComponent();
-            //bool lblFirstNameError;
-            //bool lblLastNameError;
-            //bool lblEmailError;
-            //bool lblAddressError; 
-            //bool lblcontactNoError;
-            //bool lblNicError;
-            //bool lblUserNameError;
-            //bool lblPasswordError;
             
         }
 
@@ -37,7 +29,19 @@ namespace ABC_Car_Traders
         {
             try
             {
-
+                // Check if any fields are empty
+                if (string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                    string.IsNullOrWhiteSpace(txtLastName.Text) ||
+                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                    string.IsNullOrWhiteSpace(txtAddress.Text) ||
+                    string.IsNullOrWhiteSpace(txtContactNo.Text) ||
+                    string.IsNullOrWhiteSpace(txtNic.Text) ||
+                    string.IsNullOrWhiteSpace(txtUserName.Text) ||
+                    string.IsNullOrWhiteSpace(txtPassword.Text))
+                {
+                    MessageBox.Show("Please fill in all the required fields.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 //Validate the form
                 if (!ValidateFields())
                 {
@@ -61,7 +65,7 @@ namespace ABC_Car_Traders
 
                 };
                 _userController.AddUser(user);
-                MessageBox.Show("User added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Added customer successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             //catch (Exception ex)
@@ -79,9 +83,7 @@ namespace ABC_Car_Traders
 
         }
 
-
-
-
+        // Validate form feilds
         private bool ValidateFields()
         {
             bool isValid = true;
@@ -89,7 +91,7 @@ namespace ABC_Car_Traders
             // Validate First Name
             if (string.IsNullOrWhiteSpace(txtFirstName.Text) || !Regex.IsMatch(txtFirstName.Text, PatternValidation.namePattern))
             {
-                lblFirstNameError.Text = "Invalid first name.";
+                lblFirstNameError.Text = "Please enter a valid first name.";
                 lblFirstNameError.Visible = true;
                 isValid = false;
             }
@@ -101,7 +103,7 @@ namespace ABC_Car_Traders
             // Validate Last Name
             if (string.IsNullOrWhiteSpace(txtLastName.Text) || !Regex.IsMatch(txtLastName.Text, PatternValidation.namePattern))
             {
-                lblLastNameError.Text = "Invalid last name.";
+                lblLastNameError.Text = "Please enter a valid last name.";
                 lblLastNameError.Visible = true;
                 isValid = false;
             }
@@ -113,7 +115,7 @@ namespace ABC_Car_Traders
             // Validate Email
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || !Regex.IsMatch(txtEmail.Text, PatternValidation.emailPattern))
             {
-                lblEmailError.Text = "Invalid email address.";
+                lblEmailError.Text = "Please enter a valid email address.";
                 lblEmailError.Visible = true;
                 isValid = false;
             }
@@ -125,7 +127,7 @@ namespace ABC_Car_Traders
             // Validate Address
             if (string.IsNullOrWhiteSpace(txtAddress.Text) || !Regex.IsMatch(txtAddress.Text, PatternValidation.addressPattern))
             {
-                lblAddressError.Text = "Invalid address.";
+                lblAddressError.Text = "Please enter a valid address.";
                 lblAddressError.Visible = true;
                 isValid = false;
             }
@@ -137,7 +139,7 @@ namespace ABC_Car_Traders
             // Validate Contact No
             if (string.IsNullOrWhiteSpace(txtContactNo.Text) || !Regex.IsMatch(txtContactNo.Text, PatternValidation.contactNoPattern))
             {
-                lblcontactNoError.Text = "Invalid contact number.";
+                lblcontactNoError.Text = "Please enter a valid contact number.";
                 lblcontactNoError.Visible = true;
                 isValid = false;
             }
@@ -149,7 +151,7 @@ namespace ABC_Car_Traders
             // Validate NIC
             if (string.IsNullOrWhiteSpace(txtNic.Text) || !Regex.IsMatch(txtNic.Text, PatternValidation.nicPattern))
             {
-                lblNicError.Text = "Invalid NIC.";
+                lblNicError.Text = "Please enter a valid NIC.";
                 lblNicError.Visible = true;
                 isValid = false;
             }
@@ -161,7 +163,7 @@ namespace ABC_Car_Traders
             // Validate Username
             if (string.IsNullOrWhiteSpace(txtUserName.Text) || !Regex.IsMatch(txtUserName.Text, PatternValidation.userNamePattern))
             {
-                lblUserNameError.Text = "Invalid username.";
+                lblUserNameError.Text = "Please enter a valid username.";
                 lblUserNameError.Visible = true;
                 isValid = false;
             }
@@ -173,7 +175,7 @@ namespace ABC_Car_Traders
             // Validate Password
             if (string.IsNullOrWhiteSpace(txtPassword.Text) || !Regex.IsMatch(txtPassword.Text, PatternValidation.passwordPattern))
             {
-                lblPasswordError.Text = "Invalid password.";
+                lblPasswordError.Text = "Please enter a valid password.";
                 lblPasswordError.Visible = true;
                 isValid = false;
             }

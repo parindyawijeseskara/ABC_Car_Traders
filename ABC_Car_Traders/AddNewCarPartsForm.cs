@@ -1,5 +1,7 @@
 ﻿using ABC_Car_Traders.Controllers;
 using ABC_Car_Traders.Model;
+using ABC_Car_Traders.Validation;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,10 +35,24 @@ namespace ABC_Car_Traders
             lblImageError.Visible = false;
         }
 
+        // Save car part details
         private void btnSaveCarParts_Click(object sender, EventArgs e)
         {
             try
             {
+                // Check if any fields are empty in the form
+                if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                    string.IsNullOrWhiteSpace(txtBrand.Text)||
+                    string.IsNullOrWhiteSpace(txtModel.Text) ||
+                    string.IsNullOrWhiteSpace(txtPrice.Text) ||
+                    string.IsNullOrWhiteSpace(txtQuantity.Text) ||
+                    string.IsNullOrWhiteSpace(txtDescription.Text) ||
+                    string.IsNullOrWhiteSpace(txtManufacturer.Text) ||
+                    string.IsNullOrWhiteSpace(txtWarrantyPeriod.Text))
+                {
+                    MessageBox.Show("Please fill in all the required fields.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 //Validate the form
                 if (!IsFormValid())
                 {
@@ -75,9 +92,14 @@ namespace ABC_Car_Traders
                 _carPartsController.AddCarParts(carParts);
                 MessageBox.Show("Car Parts saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            catch (DbUpdateException ex)
+            {
+                var innerException = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                MessageBox.Show($"An error occurred: {innerException}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occured:{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -98,7 +120,7 @@ namespace ABC_Car_Traders
                     Image originalImage = Image.FromFile(filePath);
 
                     // Resize the image
-                    _carPartsImage = ResizeImage(originalImage, 200, 200);
+                    _carPartsImage = ResizeImage(originalImage, 502, 246);
 
                     // Display the resized image in a PictureBox
                     using (var ms = new MemoryStream(_carPartsImage))
@@ -126,15 +148,15 @@ namespace ABC_Car_Traders
                 return ms.ToArray();
             }
         }
-
+        // Validate form feilds
         private bool IsFormValid()
         {
             bool isValid = true;
 
-            // Validate Registration Number
-            if (string.IsNullOrWhiteSpace(txtName.Text))
+            // Validate car part name
+            if (string.IsNullOrWhiteSpace(txtName.Text) || !Regex.IsMatch(txtName.Text, PatternValidation.namePattern))
             {
-                lblNameError.Text = "** Please enter the registration number.";
+                lblNameError.Text = "** Please enter a valid car part name .";
                 lblNameError.Visible = true;
                 isValid = false;
             }
@@ -144,9 +166,9 @@ namespace ABC_Car_Traders
             }
 
             // Validate Brand Name
-            if (string.IsNullOrWhiteSpace(txtBrand.Text))
+            if (string.IsNullOrWhiteSpace(txtBrand.Text) || !Regex.IsMatch(txtBrand.Text, PatternValidation.namePattern))
             {
-                lblBrandError.Text = "Please enter the brand name.";
+                lblBrandError.Text = "Please enter a valid brand name.";
                 lblBrandError.Visible = true;
                 isValid = false;
             }
@@ -156,9 +178,9 @@ namespace ABC_Car_Traders
             }
 
             // Validate Model Name
-            if (string.IsNullOrWhiteSpace(txtModel.Text))
+            if (string.IsNullOrWhiteSpace(txtModel.Text) || !Regex.IsMatch(txtModel.Text, PatternValidation.namePattern))
             {
-                lblModelError.Text = "Please enter the model name.";
+                lblModelError.Text = "Please enter a valid model name.";
                 lblModelError.Visible = true;
                 isValid = false;
             }
@@ -170,7 +192,7 @@ namespace ABC_Car_Traders
             // Validate Price
             if (!decimal.TryParse(txtPrice.Text, out decimal price) || price <= 0)
             {
-                lblPriceError.Text = "Please enter a valid price.";
+                lblPriceError.Text = "Please enter a valid valid price.";
                 lblPriceError.Visible = true;
                 isValid = false;
             }
@@ -194,7 +216,7 @@ namespace ABC_Car_Traders
             // Validate Description
             if (string.IsNullOrWhiteSpace(txtDescription.Text))
             {
-                lblDescriptionError.Text = "Please enter the description.";
+                lblDescriptionError.Text = "Please enter a valid description.";
                 lblDescriptionError.Visible = true;
                 isValid = false;
             }
@@ -206,7 +228,7 @@ namespace ABC_Car_Traders
             // Validate Manufacturer
             if (string.IsNullOrWhiteSpace(txtManufacturer.Text))
             {
-                lblManufacturerError.Text = "Please select a transmission type.";
+                lblManufacturerError.Text = "Please enter a valid input for manufacturer.";
                 lblManufacturerError.Visible = true;
                 isValid = false;
             }
@@ -219,7 +241,7 @@ namespace ABC_Car_Traders
             // Validate Warranty Period
             if (string.IsNullOrWhiteSpace(txtWarrantyPeriod.Text))
             {
-                lblWarrantyError.Text = "Please select a warranty period.";
+                lblWarrantyError.Text = "Please enter a valid warranty period.";
                 lblWarrantyError.Visible = true;
                 isValid = false;
             }

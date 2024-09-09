@@ -26,8 +26,6 @@ namespace ABC_Car_Traders
             LoadRoleUsers();
         }
 
-
-
         public static string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -120,6 +118,11 @@ namespace ABC_Car_Traders
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
         {
 
         }

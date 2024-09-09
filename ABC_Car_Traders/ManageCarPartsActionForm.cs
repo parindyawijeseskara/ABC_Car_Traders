@@ -17,6 +17,7 @@ namespace ABC_Car_Traders
         private readonly CarPartsController _carPartsController;
         private readonly int _carPartId;
         private CarParts carParts;
+        private byte[] _updatedCarImage; // Store the updated image
 
         public ManageCarPartsActionForm(CarPartsController carPartsController, int carPartId)
         {
@@ -37,14 +38,14 @@ namespace ABC_Car_Traders
                 return;
             }
             txtCarPartName.Text = carParts.carPartName;
-            txtBrand.Text = carParts.Model.Brand.brandName;
-            txtModel.Text = carParts.Model.modelName.ToString();
+            //txtBrand.Text = carParts.Model.Brand.brandName;
+            //txtModel.Text = carParts.Model.modelName.ToString();
             txtPrice.Text = carParts.price.ToString();
             txtQuantity.Text = carParts.quantity.ToString();
             txtDescription.Text = carParts.description;
             txtManufacturer.Text = carParts.manufacturer;
             txtWarrantyPeriod.Text = carParts.warrantyPeriod;
-            
+
 
             if (carParts.image != null && carParts.image.Length > 0)
             {
@@ -66,13 +67,19 @@ namespace ABC_Car_Traders
             try
             {
                 carParts.carPartName = txtCarPartName.Text;
-                carParts.Model.Brand.brandName = txtBrand.Text;
-                carParts.Model.modelName = txtModel.Text;
+                //carParts.Model.Brand.brandName = txtBrand.Text;
+               // carParts.Model.modelName = txtModel.Text;
                 carParts.price = decimal.Parse(txtPrice.Text);
                 carParts.quantity = int.Parse(txtQuantity.Text);
                 carParts.description = txtDescription.Text;
                 carParts.manufacturer = txtManufacturer.Text;
                 carParts.warrantyPeriod = txtWarrantyPeriod.Text;
+
+                if (_updatedCarImage != null)
+                {
+                    carParts.image = _updatedCarImage;  // Update the image if a new one has been uploaded
+                }
+
                 _carPartsController.UpdateCarParts(carParts);
                 this.Close();
                 MessageBox.Show("Car Parts updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -92,12 +99,59 @@ namespace ABC_Car_Traders
                 _carPartsController.DeleteCarPart(_carPartId);
                 this.Close();
                 MessageBox.Show("Car Part Deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show($"An error occured:{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
         }
+
+        private void UpdateUploadImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+
+                    // Load the original image
+                    Image originalImage = Image.FromFile(filePath);
+
+                    // Resize the image (using the ResizeImage method from your save code)
+                    _updatedCarImage = ResizeImage(originalImage, 502, 246);
+
+                    // Display the resized image in the PictureBox
+                    using (var ms = new MemoryStream(_updatedCarImage))
+                    {
+                        pictureBoxImage.Image = Image.FromStream(ms); 
+                    }
+                }
+            }
+        }
+
+        private byte[] ResizeImage(Image originalImage, int width, int height)
+        {
+            var resizedImage = new Bitmap(width, height);
+            using (var graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.DrawImage(originalImage, 0, 0, width, height);
+            }
+
+            using (var ms = new MemoryStream())
+            {
+                resizedImage.Save(ms, originalImage.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
     }
 }

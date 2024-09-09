@@ -54,26 +54,18 @@ namespace ABC_Car_Traders
                         }
                     }
                 }
-                else if (e.ColumnIndex == dataGridViewCars.Columns["Column12"].Index)
-                {
-                    OpenForm2();
-                }
             }
 
         }
 
-        private void OpenForm2()
-        {
-            CustomerCarPlaceOrderForm form2 = new CustomerCarPlaceOrderForm();
-            form2.Show();
-        }
-
+        // Load car details in dataGridViewCars
         private void loadCarDetails()
         {
-            var cars = _carController.GetAllCars();
+            var cars = _carController.GetAllCarsInCustomerDashBoard();
             dataGridViewCars.DataSource = cars;
         }
 
+        // load all brands in cmbBrand combo box
         private void loadBrands()
         {
             var carBrands = _carController.GetAllBrands();
@@ -83,6 +75,7 @@ namespace ABC_Car_Traders
             cmbBrand.SelectedIndex = -1;
         }
 
+        // load all models in cmbModel combo box
         public void loadModels(int brandId)
         {
             var carModels = _carController.GetModelsByBrand(brandId);
@@ -100,7 +93,7 @@ namespace ABC_Car_Traders
             }
         }
 
-
+        // Function to search car details by brand and model
         private void btnSearchModel_Click(object sender, EventArgs e)
         {
             // Check if the brand and model are selected
@@ -129,7 +122,7 @@ namespace ABC_Car_Traders
             }
         }
 
-
+        // Function to search car details by year
         private void btnSearchYear_Click(object sender, EventArgs e)
         {
             string year = txtYear.Text;
@@ -145,6 +138,7 @@ namespace ABC_Car_Traders
 
         }
 
+        // Function to serach car details by price range
         private void btnSearchPriceRange_Click(object sender, EventArgs e)
         {
             string priceFromText = txtFromPriceRange.Text;
@@ -171,7 +165,7 @@ namespace ABC_Car_Traders
 
             }
         }
-
+        // Function reset feilds
         private void btnReset_Click(object sender, EventArgs e)
         {
             cmbModel.SelectedIndex = -1;
@@ -191,10 +185,6 @@ namespace ABC_Car_Traders
                 {
                     loadModels(selectedBrandId);
                 }
-                //else
-                //{
-                //    MessageBox.Show("Invalid brand selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
             }
         }
     }

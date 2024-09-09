@@ -76,8 +76,10 @@
             txtModel.BackColor = SystemColors.Window;
             txtModel.Location = new Point(183, 213);
             txtModel.Name = "txtModel";
+            txtModel.ReadOnly = true;
             txtModel.Size = new Size(200, 27);
             txtModel.TabIndex = 11;
+            txtModel.TextChanged += txtModel_TextChanged;
             // 
             // label3
             // 
@@ -93,6 +95,7 @@
             // 
             txtCarBrand.Location = new Point(183, 296);
             txtCarBrand.Name = "txtCarBrand";
+            txtCarBrand.ReadOnly = true;
             txtCarBrand.Size = new Size(200, 27);
             txtCarBrand.TabIndex = 13;
             // 
@@ -110,6 +113,7 @@
             // 
             txtYear.Location = new Point(183, 368);
             txtYear.Name = "txtYear";
+            txtYear.ReadOnly = true;
             txtYear.Size = new Size(200, 27);
             txtYear.TabIndex = 15;
             // 
@@ -127,6 +131,7 @@
             // 
             txtPrice.Location = new Point(183, 444);
             txtPrice.Name = "txtPrice";
+            txtPrice.ReadOnly = true;
             txtPrice.Size = new Size(200, 27);
             txtPrice.TabIndex = 17;
             // 
@@ -142,16 +147,18 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(640, 293);
+            txtDescription.Location = new Point(624, 282);
+            txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(200, 27);
+            txtDescription.ReadOnly = true;
+            txtDescription.Size = new Size(345, 80);
             txtDescription.TabIndex = 19;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label7.Location = new Point(500, 373);
+            label7.Location = new Point(500, 402);
             label7.Name = "label7";
             label7.Size = new Size(131, 23);
             label7.TabIndex = 20;
@@ -159,10 +166,12 @@
             // 
             // txtTransmission
             // 
-            txtTransmission.Location = new Point(640, 368);
+            txtTransmission.Location = new Point(637, 398);
             txtTransmission.Name = "txtTransmission";
+            txtTransmission.ReadOnly = true;
             txtTransmission.Size = new Size(200, 27);
             txtTransmission.TabIndex = 21;
+            txtTransmission.TextChanged += txtTransmission_TextChanged;
             // 
             // label8
             // 

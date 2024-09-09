@@ -27,15 +27,6 @@ namespace ABC_Car_Traders
             loadCustomerDetails();
         }
 
-        private void LoadRoles()
-        {
-            //var roles = _userController.GetAllRoles();
-            //cmbRole.DataSource = roles;
-            //cmbRole.DisplayMember = "role"; // Display the role description
-            //cmbRole.ValueMember = "roleId"; // The role ID is used as the value
-
-        }
-
         public void loadCustomerDetails()
         {
             _user = _userController.getUserById(_userId);
@@ -82,7 +73,7 @@ namespace ABC_Car_Traders
                 //_user.roleId = cmbRole.SelectedIndex;
                 _userController.updateUser(_user);
                 this.Close();
-                MessageBox.Show("User Updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Customer Updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -97,7 +88,7 @@ namespace ABC_Car_Traders
             {
                 _userController.deleteUser(_userId);
                 this.Close();
-                MessageBox.Show("User Deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Customer Deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

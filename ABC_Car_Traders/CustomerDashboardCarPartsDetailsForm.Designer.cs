@@ -47,9 +47,12 @@
             btnSearchByCartPartName = new Button();
             btnReset = new Button();
             dataGridViewCarParts = new DataGridView();
+            cmbBrand = new ComboBox();
+            label7 = new Label();
+            cmbModel = new ComboBox();
+            txtCarPartName = new TextBox();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column13 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
@@ -59,10 +62,6 @@
             Column9 = new DataGridViewTextBoxColumn();
             Column10 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewButtonColumn();
-            cmbBrand = new ComboBox();
-            label7 = new Label();
-            cmbModel = new ComboBox();
-            txtCarPartName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -235,7 +234,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewCarParts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCarParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCarParts.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column13, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
+            dataGridViewCarParts.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column4, Column13, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
             dataGridViewCarParts.EnableHeadersVisualStyles = false;
             dataGridViewCarParts.Location = new Point(76, 464);
             dataGridViewCarParts.Name = "dataGridViewCarParts";
@@ -255,6 +254,40 @@
             dataGridViewCarParts.TabIndex = 45;
             dataGridViewCarParts.CellClick += dataGridViewCarParts_CellClick;
             // 
+            // cmbBrand
+            // 
+            cmbBrand.FormattingEnabled = true;
+            cmbBrand.Location = new Point(270, 155);
+            cmbBrand.Name = "cmbBrand";
+            cmbBrand.Size = new Size(203, 28);
+            cmbBrand.TabIndex = 46;
+            cmbBrand.SelectedIndexChanged += cmbBrand_SelectedIndexChanged;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(76, 225);
+            label7.Name = "label7";
+            label7.Size = new Size(151, 23);
+            label7.TabIndex = 48;
+            label7.Text = "Search by Model";
+            // 
+            // cmbModel
+            // 
+            cmbModel.FormattingEnabled = true;
+            cmbModel.Location = new Point(270, 220);
+            cmbModel.Name = "cmbModel";
+            cmbModel.Size = new Size(203, 28);
+            cmbModel.TabIndex = 49;
+            // 
+            // txtCarPartName
+            // 
+            txtCarPartName.Location = new Point(313, 284);
+            txtCarPartName.Name = "txtCarPartName";
+            txtCarPartName.Size = new Size(160, 27);
+            txtCarPartName.TabIndex = 50;
+            // 
             // Column1
             // 
             Column1.DataPropertyName = "carPartId";
@@ -270,14 +303,6 @@
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
             Column2.Width = 150;
-            // 
-            // Column3
-            // 
-            Column3.DataPropertyName = "image";
-            Column3.HeaderText = "Image";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
             // 
             // Column4
             // 
@@ -350,40 +375,6 @@
             Column11.Name = "Column11";
             Column11.Width = 125;
             // 
-            // cmbBrand
-            // 
-            cmbBrand.FormattingEnabled = true;
-            cmbBrand.Location = new Point(270, 155);
-            cmbBrand.Name = "cmbBrand";
-            cmbBrand.Size = new Size(203, 28);
-            cmbBrand.TabIndex = 46;
-            cmbBrand.SelectedIndexChanged += cmbBrand_SelectedIndexChanged;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(76, 225);
-            label7.Name = "label7";
-            label7.Size = new Size(151, 23);
-            label7.TabIndex = 48;
-            label7.Text = "Search by Model";
-            // 
-            // cmbModel
-            // 
-            cmbModel.FormattingEnabled = true;
-            cmbModel.Location = new Point(270, 220);
-            cmbModel.Name = "cmbModel";
-            cmbModel.Size = new Size(203, 28);
-            cmbModel.TabIndex = 49;
-            // 
-            // txtCarPartName
-            // 
-            txtCarPartName.Location = new Point(313, 284);
-            txtCarPartName.Name = "txtCarPartName";
-            txtCarPartName.Size = new Size(160, 27);
-            txtCarPartName.TabIndex = 50;
-            // 
             // CustomerDashboardCarPartsDetailsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -443,7 +434,6 @@
         private TextBox txtCarPartName;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column13;
         private DataGridViewTextBoxColumn Column5;

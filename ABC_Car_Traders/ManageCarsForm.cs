@@ -38,34 +38,6 @@ namespace ABC_Car_Traders
 
         private void dataGridViewCars_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 9)
-            {
-
-                //int carId = (int)dataGridViewCars.Rows[e.RowIndex].Cells["Column1"].Value;
-                //Car car = _carController.getcarById(carId);
-
-
-                //if (car != null)
-                //{
-                //var carId = (int)dataGridViewCars.Rows[e.RowIndex].Cells["Column1"].Value;
-                //ManageCarActionForm actionForm = new ManageCarActionForm(_carController, carId);
-                //actionForm.Show();
-                //}
-                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-                {
-                    if (dataGridViewCars.Rows[e.RowIndex].Cells[1].Value != null)
-                    {
-                        int carId = (int)dataGridViewCars.Rows[e.RowIndex].Cells[1].Value;
-                        ManageCarActionForm actionForm = new ManageCarActionForm(_carController, carId);
-                        actionForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Selected car ID is null. Please select a valid car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
-            }
         }
 
 
@@ -117,10 +89,6 @@ namespace ABC_Car_Traders
                 {
                     loadModels(selectedBrandId);  // Load the relevant models based on the selected brand
                 }
-                //else
-                //{
-                //    MessageBox.Show("Invalid brand selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
             }
         }
 
@@ -182,26 +150,40 @@ namespace ABC_Car_Traders
 
         private void btnSearchStatus_Click(object sender, EventArgs e)
         {
-            //string status = cmbStatus.SelectedItem?.ToString();
 
-            //if (string.IsNullOrEmpty(status))
-            //{
-            //    MessageBox.Show("Please select a status to search.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-            //var filteredCars = _carController.GetCarsByStatus(status);
+        }
 
-            //if (filteredCars.Count > 0)
-            //{
-            //    // If cars are found, display a success message and load the data into the DataGridView
-            //    MessageBox.Show($"{filteredCars.Count} car(s) found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    dataGridViewCars.DataSource = filteredCars;  // Update the DataGridView with found cars
-            //}
-            //else
-            //{
-            //    // If no cars are found, display an informational message
-            //    MessageBox.Show("No cars found for the selected status.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+        private void dataGridViewCars_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Ensure the carId column exists and has a value
+                if (dataGridViewCars.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    try
+                    {
+                        // Convert the carId value to an integer
+                        int carId = Convert.ToInt32(dataGridViewCars.Rows[e.RowIndex].Cells[0].Value);
+
+                        // Show the ManageCarActionForm popup
+                        ManageCarActionForm actionForm = new ManageCarActionForm(_carController, carId);
+                        actionForm.Show();
+                    }
+                    catch (InvalidCastException ex)
+                    {
+                        MessageBox.Show($"Invalid Car ID. Expected an integer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error opening form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selected car ID is null. Please select a valid car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
     }
 }

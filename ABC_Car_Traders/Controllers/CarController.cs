@@ -21,12 +21,14 @@ namespace ABC_Car_Traders.Controllers
             _context = context;
         }
 
+        //Get all Cars
         public List<dynamic> GetAllCars()
         {
             return _context.Cars
                 //.Where(car => car.deletedAt == null)
                 .Select(car => new {
                 car.carId,
+                car.image,
                 car.Model.modelName,
                 car.Model.Brand.brandName,
                 car.regNo,
@@ -39,6 +41,26 @@ namespace ABC_Car_Traders.Controllers
             }).ToList<dynamic>();
         }
 
+        //Get all available cars 
+        public List<dynamic> GetAllCarsInCustomerDashBoard()
+        {
+            return _context.Cars
+                .Where(car => car.deletedAt == null)
+                .Select(car => new {
+                    car.carId,
+                    car.image,
+                    car.Model.modelName,
+                    car.Model.Brand.brandName,
+                    car.regNo,
+                    car.year,
+                    car.price,
+                    car.description,
+                    car.quantity,
+                    car.transmission,
+                    car.status
+                }).ToList<dynamic>();
+        }
+        //Get cars by carId
         public Car getcarById(int carId)
         {
             //return _context.Cars.Find(carId);
@@ -46,10 +68,9 @@ namespace ABC_Car_Traders.Controllers
                   .Include(c => c.Model)
                   .ThenInclude(m => m.Brand)
                   .FirstOrDefault(c => c.carId == carId);
-
-
         }
-
+        
+        //Get cars by RegNo
         public Car getcarByRegNo(String regNo)
         {
             //return _context.Cars.Find(carId);
@@ -57,8 +78,7 @@ namespace ABC_Car_Traders.Controllers
 
 
         }
-
-
+        //Add cars
         public void AddCar(Car car) 
         {
             car.createdAt = DateTime.Now;
@@ -67,18 +87,28 @@ namespace ABC_Car_Traders.Controllers
             _context.SaveChanges();
         }
 
+        public void AddCarImage(CarImages carImage)
+        {
+            // Add the image to the CarImages table in the database
+            _context.CarImages.Add(carImage);
+            _context.SaveChanges();
+        }
+
+        //Get car brand
         public void AddBrand(Brand brand)
         {
             _context.Brand.Add(brand);
             _context.SaveChanges();
         }
+
+        // Add car models
         public void AddModel(Models model)
         {
             _context.Model.Add(model);
             _context.SaveChanges();
         }
 
-
+        // Update cars
         public void UpdateCar(Car car)
         {
             car.updatedAt = DateTime.Now;
@@ -98,13 +128,14 @@ namespace ABC_Car_Traders.Controllers
             }
         }
 
+        //Deelete cars
         public void DeleteCar(int carId)
         {
             var car = _context.Cars.Find(carId);
             if (car != null)
             {
                 car.deletedAt = DateTime.Now;
-                car.status = "NOT AVAILABLE";
+                car.status = "Not Available";
                 // _context.Cars.Remove(car);
                 _context.SaveChanges();
             }
@@ -159,7 +190,8 @@ namespace ABC_Car_Traders.Controllers
             {
                 car.carId,
                 car.regNo,
-                car.Model,
+                car.Model.modelName,
+                car.Model.Brand.brandName,
                 car.year,
                 car.price,
                 car.description,
@@ -182,6 +214,7 @@ namespace ABC_Car_Traders.Controllers
             .ToList<dynamic>();
         }
 
+        //Get all car brands
         public List<dynamic> GetAllBrands()
         {
             return _context.Brand
@@ -206,6 +239,7 @@ namespace ABC_Car_Traders.Controllers
                 .ToList<dynamic>();
         }
 
+        //Get cars by brand and model
         public List<dynamic> SearchCarsByBrandAndModel(int brandId, int modelId)
         {
             return _context.Cars
@@ -226,24 +260,26 @@ namespace ABC_Car_Traders.Controllers
                 .ToList<dynamic>();
         }
 
+        //Get cars by brand Name
         public Brand GetBrandByName(string brand)
         {
             return _context.Brand.FirstOrDefault(b=>b.brandName == brand);
         }
 
+        //Get cars by model name
         public Models GetModelByName(string modelName, int brandId)
         {
             return _context.Model.FirstOrDefault(m => m.modelName == modelName && m.brandId == brandId);
         }
 
-        //get all cars by regNo
+        //Get cars by regNo
         public List<Car> GetCarsByRegNo(string regNo)
         {
             return _context.Cars
                 .Where(car => car.regNo.Contains(regNo))
                 .ToList();
         }
-
+        //Get caras by status
         public List<Car> GetCarsByStatus(string status)
         {
             return _context.Cars
@@ -251,6 +287,7 @@ namespace ABC_Car_Traders.Controllers
                 .ToList();
         }
 
+        // Get related Car or Car part details by regno or car part name
         public dynamic GetCarOrCarPartDetails(string input)
         {
             var car = _context.Cars
@@ -261,7 +298,8 @@ namespace ABC_Car_Traders.Controllers
                 Model = c.Model.modelName ?? string.Empty,        // Handle potential NULL for Model
                 ItemName = c.regNo ?? string.Empty,               // Handle potential NULL for regNo
                 Price = c.price,                             // Handle potential NULL for Price (assuming it's nullable)
-                Quantity = c.quantity,                       // Handle potential NULL for Quantity (assuming it's nullable)
+                Quantity = c.quantity, 
+                modelId = c.Model.modelId// Handle potential NULL for Quantity (assuming it's nullable)
             })
             .FirstOrDefault();
 
@@ -285,7 +323,7 @@ namespace ABC_Car_Traders.Controllers
             return carPart;
         }
 
-
+        // Get customer details for order by nic
         public dynamic GetCustomerDetailsForOrder(string input)
         {
             var userDeatils = _context.User
@@ -303,11 +341,13 @@ namespace ABC_Car_Traders.Controllers
             return userDeatils;
         }
 
+        // Get user by nic
         public User GetUserByNIC(String nic)
         {
             return _context.User.FirstOrDefault(b => b.nic == nic);
         }
 
+        // Get total no of cars
         public int GetTotalCars()
         {
             try
@@ -320,9 +360,7 @@ namespace ABC_Car_Traders.Controllers
             }
         }
 
-
-
-
+        // Function to generate car inventory report
         public void GenerateCarInventoryReport()
         {
             var carsInventory = GetAllCars();
@@ -417,6 +455,22 @@ namespace ABC_Car_Traders.Controllers
             MessageBox.Show($"Car Inventory Report generated successfully! Saved to: {filePath}");
         }
 
+        // Update Car Qty in Order
+        public void UpdateCarQty(int carId, int qty)
+        {
+            var existingCar = _context.Cars.Find(carId);
+            if (existingCar != null)
+            {
+                existingCar.updatedAt = DateTime.Now;
+                existingCar.quantity = (existingCar.quantity - qty);
+                _context.SaveChanges();
+            }
+        }
+
+        public Models GetModelById(int modelId)
+        {
+            return _context.Model.Find(modelId);
+        }
 
 
     }

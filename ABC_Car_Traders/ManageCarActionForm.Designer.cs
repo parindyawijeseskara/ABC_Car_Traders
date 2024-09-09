@@ -65,6 +65,7 @@
             lblQuantityError = new Label();
             lblpictureBoxImage = new Label();
             lblTransmissionError = new Label();
+            uploadImage = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -79,9 +80,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(164, 12);
+            pictureBox1.Location = new Point(329, -2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(476, 248);
+            pictureBox1.Size = new Size(539, 248);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -150,7 +151,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(359, 495);
+            label7.Location = new Point(359, 553);
             label7.Name = "label7";
             label7.Size = new Size(115, 22);
             label7.TabIndex = 10;
@@ -160,7 +161,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(359, 221);
+            label8.Location = new Point(359, 224);
             label8.Name = "label8";
             label8.Size = new Size(57, 22);
             label8.TabIndex = 11;
@@ -182,6 +183,7 @@
             txtBrand.Location = new Point(0, 0);
             txtBrand.Multiline = true;
             txtBrand.Name = "txtBrand";
+            txtBrand.ReadOnly = true;
             txtBrand.Size = new Size(231, 39);
             txtBrand.TabIndex = 32;
             // 
@@ -201,6 +203,7 @@
             txtModel.Location = new Point(0, 0);
             txtModel.Multiline = true;
             txtModel.Name = "txtModel";
+            txtModel.ReadOnly = true;
             txtModel.Size = new Size(231, 39);
             txtModel.TabIndex = 33;
             // 
@@ -284,7 +287,7 @@
             // 
             cmbTransmission.FormattingEnabled = true;
             cmbTransmission.Items.AddRange(new object[] { "Manual Transmission", "Automatic Transmission" });
-            cmbTransmission.Location = new Point(359, 520);
+            cmbTransmission.Location = new Point(359, 591);
             cmbTransmission.Name = "cmbTransmission";
             cmbTransmission.Size = new Size(231, 28);
             cmbTransmission.TabIndex = 18;
@@ -294,7 +297,7 @@
             btnDelete.BackColor = Color.FromArgb(35, 115, 144);
             btnDelete.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Location = new Point(449, 731);
+            btnDelete.Location = new Point(653, 731);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(178, 55);
             btnDelete.TabIndex = 26;
@@ -307,7 +310,7 @@
             btnUpdate.BackColor = Color.FromArgb(35, 115, 144);
             btnUpdate.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             btnUpdate.ForeColor = SystemColors.ControlLightLight;
-            btnUpdate.Location = new Point(252, 731);
+            btnUpdate.Location = new Point(447, 731);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(178, 55);
             btnUpdate.TabIndex = 25;
@@ -317,9 +320,9 @@
             // 
             // pictureBoxImage
             // 
-            pictureBoxImage.Location = new Point(329, 252);
+            pictureBoxImage.Location = new Point(329, 275);
             pictureBoxImage.Name = "pictureBoxImage";
-            pictureBoxImage.Size = new Size(311, 191);
+            pictureBoxImage.Size = new Size(502, 246);
             pictureBoxImage.TabIndex = 27;
             pictureBoxImage.TabStop = false;
             // 
@@ -442,19 +445,30 @@
             lblTransmissionError.AutoSize = true;
             lblTransmissionError.BackColor = SystemColors.Window;
             lblTransmissionError.ForeColor = Color.Red;
-            lblTransmissionError.Location = new Point(359, 555);
+            lblTransmissionError.Location = new Point(359, 622);
             lblTransmissionError.Name = "lblTransmissionError";
             lblTransmissionError.Size = new Size(50, 20);
             lblTransmissionError.TabIndex = 46;
             lblTransmissionError.Text = "label9";
             lblTransmissionError.Visible = false;
             // 
+            // uploadImage
+            // 
+            uploadImage.Location = new Point(716, 224);
+            uploadImage.Name = "uploadImage";
+            uploadImage.Size = new Size(94, 29);
+            uploadImage.TabIndex = 47;
+            uploadImage.Text = "button1";
+            uploadImage.UseVisualStyleBackColor = true;
+            uploadImage.Click += uploadImage_Click;
+            // 
             // ManageCarActionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(652, 822);
+            ClientSize = new Size(865, 822);
+            Controls.Add(uploadImage);
             Controls.Add(lblTransmissionError);
             Controls.Add(lblpictureBoxImage);
             Controls.Add(lblQuantityError);
@@ -545,5 +559,6 @@
         private Label lblQuantityError;
         private Label lblpictureBoxImage;
         private Label lblTransmissionError;
+        private Button uploadImage;
     }
 }

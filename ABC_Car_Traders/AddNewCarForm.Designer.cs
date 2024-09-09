@@ -52,7 +52,6 @@
             label10 = new Label();
             panel7 = new Panel();
             txtCarName = new TextBox();
-            pictureBoxCarImage = new PictureBox();
             btnUploadImage = new Button();
             panel1 = new Panel();
             txtBrand = new TextBox();
@@ -67,15 +66,16 @@
             lblQuantityError = new Label();
             lblTransmissionError = new Label();
             lblImageError = new Label();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxCarImage).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -312,14 +312,6 @@
             txtCarName.Size = new Size(233, 42);
             txtCarName.TabIndex = 23;
             // 
-            // pictureBoxCarImage
-            // 
-            pictureBoxCarImage.Location = new Point(422, 395);
-            pictureBoxCarImage.Name = "pictureBoxCarImage";
-            pictureBoxCarImage.Size = new Size(292, 196);
-            pictureBoxCarImage.TabIndex = 23;
-            pictureBoxCarImage.TabStop = false;
-            // 
             // btnUploadImage
             // 
             btnUploadImage.Location = new Point(607, 360);
@@ -458,12 +450,21 @@
             lblImageError.TabIndex = 35;
             lblImageError.Text = "label12";
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Location = new Point(407, 429);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(502, 246);
+            pictureBox2.TabIndex = 36;
+            pictureBox2.TabStop = false;
+            // 
             // AddNewCarForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(829, 918);
+            ClientSize = new Size(964, 918);
+            Controls.Add(pictureBox2);
             Controls.Add(lblImageError);
             Controls.Add(lblTransmissionError);
             Controls.Add(lblQuantityError);
@@ -476,7 +477,6 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(btnUploadImage);
-            Controls.Add(pictureBoxCarImage);
             Controls.Add(panel7);
             Controls.Add(label10);
             Controls.Add(btnSaveCar);
@@ -509,11 +509,11 @@
             panel6.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxCarImage).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -543,7 +543,6 @@
         private TextBox txtDescription;
         private TextBox txtQuantity;
         private TextBox txtCarName;
-        private PictureBox pictureBoxCarImage;
         private Button btnUploadImage;
         private Panel panel8;
         private Panel panel1;
@@ -559,5 +558,6 @@
         private Label lblQuantityError;
         private Label lblTransmissionError;
         private Label lblImageError;
+        private PictureBox pictureBox2;
     }
 }

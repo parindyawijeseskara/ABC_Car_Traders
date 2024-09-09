@@ -30,7 +30,6 @@ namespace ABC_Car_Traders
             _controller = registrationController;
             _userId = userId;
             _ordersController = ordersController;
-
         }
 
         public void loadForm(Form newForm)
@@ -43,8 +42,6 @@ namespace ABC_Car_Traders
 
             // Set the new form as the active form
             activeForm = newForm;
-
-            // Prepare the new form to be displayed in the panel
             newForm.TopLevel = false;
             newForm.Dock = DockStyle.Fill;
             this.customerDashboard_sidepanel3.Controls.Clear();
@@ -76,8 +73,6 @@ namespace ABC_Car_Traders
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Close();
-
-            // Show the LoginForm
             LoginForm loginForm = new LoginForm(_userController, _controller, _carController, _carPartsController, _ordersController);
             loginForm.Show();
         }
@@ -120,7 +115,6 @@ namespace ABC_Car_Traders
 
             try
             {
-                // Get totals
                 int totalCars = _carController.GetTotalCars();
                 int totalCarParts = _carPartsController.GetTotalCarParts();
                 int totalCarOrders = _ordersController.GetTotalCarOrders();
@@ -142,7 +136,8 @@ namespace ABC_Car_Traders
 
         private void timerDateTime_Tick(object sender, EventArgs e)
         {
-            labelDateTime.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy, HH:mm:ss");
+            //labelDateTime.Text = DateTime.Now.ToString("dddd, MMMM dd yyyy, HH:mm:ss");
+            labelDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
         }
 
 
@@ -162,6 +157,11 @@ namespace ABC_Car_Traders
         }
 
         private void customerDashboard_sidepanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelDateTime_Click(object sender, EventArgs e)
         {
 
         }

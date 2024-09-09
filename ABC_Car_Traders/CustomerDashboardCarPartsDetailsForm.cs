@@ -48,26 +48,10 @@ namespace ABC_Car_Traders
                         }
                     }
                 }
-                else if (e.ColumnIndex == dataGridViewCarParts.Columns["Column12"].Index)
-                {
-                    OpenForm2();
-                }
             }
         }
 
-        private void OpenForm1()
-        {
-            //CustomerCarPartsDetailViewForm form1 = new CustomerCarPartsDetailViewForm();
-            //form1.Show();
-
-        }
-
-        private void OpenForm2()
-        {
-            CustomerCarPartsPlaceOrderForm form2 = new CustomerCarPartsPlaceOrderForm();
-            form2.Show();
-        }
-
+        // load all car part details in dataGridViewCarParts
         private void loadCarPartDetails()
         {
             var carParts = _carPartsController.GetAllCarParts();
@@ -75,6 +59,7 @@ namespace ABC_Car_Traders
 
         }
 
+        // load all brands in combo box
         private void loadBrands()
         {
             var carBrands = _carPartsController.GetAllBrands();
@@ -84,6 +69,7 @@ namespace ABC_Car_Traders
             cmbBrand.SelectedIndex = -1;
         }
 
+        // load all models in combo box
         public void loadModels(int brandId)
         {
             var carModels = _carPartsController.GetModelsByBrand(brandId);
@@ -101,6 +87,7 @@ namespace ABC_Car_Traders
             }
         }
 
+        // Function to serach car part details by car part name
         private void btnSearchByCartPartName_Click(object sender, EventArgs e)
         {
             string partName = txtCarPartName.Text.Trim();
@@ -122,6 +109,7 @@ namespace ABC_Car_Traders
             }
         }
 
+        // Function to search car part details by brand and model
         private void txtSearchModel_Click(object sender, EventArgs e)
         {
             // Check if the brand and model are selected
@@ -160,13 +148,10 @@ namespace ABC_Car_Traders
                 {
                     loadModels(selectedBrandId);
                 }
-                //else
-                //{
-                //    MessageBox.Show("Invalid brand selection. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
             }
         }
 
+        // Function to search car parts by price range
         private void SearchByPriceRange_Click(object sender, EventArgs e)
         {
             string priceFromText = txtFromPrice.Text;
@@ -193,6 +178,7 @@ namespace ABC_Car_Traders
             }
         }
 
+        // Function to reset feilds
         private void btnReset_Click(object sender, EventArgs e)
         {
             cmbBrand.SelectedIndex = -1;

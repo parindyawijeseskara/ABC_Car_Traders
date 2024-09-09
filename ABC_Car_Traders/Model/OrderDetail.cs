@@ -26,5 +26,7 @@ namespace ABC_Car_Traders.Model
 
         public String? status { get; set; }
         public int? unitPrice { get; set; }
+        public Models? Model { get; set; }
+        public int? modelId { get; set; }
     }
 }

@@ -35,6 +35,7 @@ namespace ABC_Car_Traders
                 return;
             }
             txtModel.Text = _carParts.modelId.ToString();
+            //txtBrand.Text = _carParts.Model.Brand.brandId.ToString();
             txtCarPartName.Text = _carParts.carPartName;
             txtPrice.Text = _carParts.price.ToString();
             txtQuantity.Text = _carParts.quantity.ToString();
@@ -55,7 +56,7 @@ namespace ABC_Car_Traders
             }
             else
             {
-                pictureBoxImage.Image = null; // Or set a default image
+                pictureBoxImage.Image = null;
             }
         }
 
@@ -65,6 +66,16 @@ namespace ABC_Car_Traders
         }
 
         private void txtModel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCarPartName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStatus_TextChanged(object sender, EventArgs e)
         {
 
         }

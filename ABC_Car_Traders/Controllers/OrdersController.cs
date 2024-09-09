@@ -20,7 +20,7 @@ namespace ABC_Car_Traders.Controllers
 
         }
 
-        /*** --------------------Save Oreder ------------------------- ***/
+        // Save Order 
         public void SaveOrder(Order order)
         {
             _context.Order.Add(order);
@@ -28,7 +28,7 @@ namespace ABC_Car_Traders.Controllers
 
         }
 
-        /*** --------------------Save Oreder Details------------------------- ***/
+        // Save Order Details
         public void SaveOrderDetails(OrderDetail orderDetail)
         {
 
@@ -37,7 +37,7 @@ namespace ABC_Car_Traders.Controllers
 
         }
 
-        /*** --------------------Get All Orders by Id------------------------- ***/
+        // Get All Orders by Id
         public List<dynamic> GetAllOrdersById(int id)
         {
             return _context.OrderDetail
@@ -53,7 +53,7 @@ namespace ABC_Car_Traders.Controllers
                 .ToList<dynamic>();
         }
 
-        /*** --------------------Get All Orders------------------------- ***/
+        // Get All Orders
         public List<dynamic> GetAllOrders()
         {
             return _context.OrderDetail
@@ -71,11 +71,14 @@ namespace ABC_Car_Traders.Controllers
                     orderdetail.Order.User.firstName,
                     orderdetail.Car.Model.modelName,
                     orderdetail.status,
-                    orderdetail.Order.total
+                    orderdetail.Order.total,
+                    orderdetail.CarParts.carPartName,
+
                 })
                 .ToList<dynamic>();
         }
 
+        // Get the total no of car orders
         public int GetTotalCarOrders()
         {
             try
@@ -88,7 +91,7 @@ namespace ABC_Car_Traders.Controllers
                 throw new Exception($"An error occurred while retrieving total car orders: {ex.Message}");
             }
         }
-
+        // Get the total no of car part orders
         public int GetTotalCarPartOrders()
         {
             try
@@ -101,9 +104,61 @@ namespace ABC_Car_Traders.Controllers
                 throw new Exception($"An error occurred while retrieving total car part orders: {ex.Message}");
             }
         }
+        
+        // Get Orders by user first name
+        public List<Order> GetOrdersByUserFirstName(string firstName)
+        {
+            var orders = (from o in _context.Order
+                          join u in _context.User on o.userId equals u.userId
+                          where u.firstName == firstName
+                          select o
+                          ).ToList();
 
+            return orders;
+        }
 
-        /*** --------------------Email Send------------------------- ***/
+        // Get all order details by id
+        public List<dynamic> GetAllOrdersDetailsById(int id)
+        {
+            return _context.OrderDetail
+                .Where(orderdetail => orderdetail.orderId == id)
+                .Select(orderdetail => new
+                {
+                    orderdetail.qty,
+                    orderdetail.created_at,
+                    orderdetail.unitPrice,
+                    orderdetail.Model.modelName,
+                    orderdetail.Car.regNo,
+                    orderdetail.CarParts.carPartName,
+                    orderdetail.status
+                })
+                .ToList<dynamic>();
+        }
+
+        // update order status
+        public void UpdateOrderStatus(string status, int orderId)
+        {
+            var existingOrder = _context.Order.Find(orderId);
+            if (existingOrder != null)
+            {
+                existingOrder.status = status;
+                _context.SaveChanges();
+            }
+
+            var orderDetails = _context.OrderDetail
+                .Where(orderdetail => orderdetail.orderId == orderId).ToList();
+
+            if (orderDetails.Any())  // Check if any order details exist for the given orderId
+            {
+                foreach (var detail in orderDetails) // Iterate through each order detail
+                {
+                    detail.status = status; // Update the status
+                }
+                _context.SaveChanges(); // Save changes to the database
+            }
+        }
+
+        // Email Send
         public void btnSendEmail_Click()
         {
             try

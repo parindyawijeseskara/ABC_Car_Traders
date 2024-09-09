@@ -50,6 +50,7 @@ namespace ABC_Car_Traders
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             adminDashboard_panel2 = new Panel();
+            pictureBox14 = new PictureBox();
             labelDateTime = new Label();
             adminDashboard_panel3 = new Panel();
             panel4 = new Panel();
@@ -82,6 +83,7 @@ namespace ABC_Car_Traders
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             adminDashboard_panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             adminDashboard_panel3.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -341,6 +343,7 @@ namespace ABC_Car_Traders
             // adminDashboard_panel2
             // 
             adminDashboard_panel2.BackColor = Color.FromArgb(9, 29, 37);
+            adminDashboard_panel2.Controls.Add(pictureBox14);
             adminDashboard_panel2.Controls.Add(labelDateTime);
             adminDashboard_panel2.Controls.Add(adminDashboard_panel3);
             adminDashboard_panel2.Controls.Add(label2);
@@ -351,12 +354,21 @@ namespace ABC_Car_Traders
             adminDashboard_panel2.TabIndex = 1;
             adminDashboard_panel2.Paint += adminDashboard_panel2_Paint;
             // 
+            // pictureBox14
+            // 
+            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
+            pictureBox14.Location = new Point(1308, 22);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(36, 30);
+            pictureBox14.TabIndex = 4;
+            pictureBox14.TabStop = false;
+            // 
             // labelDateTime
             // 
             labelDateTime.AutoSize = true;
             labelDateTime.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelDateTime.ForeColor = SystemColors.ControlLightLight;
-            labelDateTime.Location = new Point(1156, 23);
+            labelDateTime.Location = new Point(1350, 22);
             labelDateTime.Name = "labelDateTime";
             labelDateTime.Size = new Size(114, 23);
             labelDateTime.TabIndex = 3;
@@ -598,6 +610,7 @@ namespace ABC_Car_Traders
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             adminDashboard_panel2.ResumeLayout(false);
             adminDashboard_panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             adminDashboard_panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
@@ -656,5 +669,6 @@ namespace ABC_Car_Traders
         private Label labelTotalCarParts;
         private Label labelTotalCars;
         private Label labeltotalCustomers;
+        private PictureBox pictureBox14;
     }
 }

@@ -76,7 +76,7 @@
             btnGenerateCarReports.BackColor = Color.FromArgb(35, 115, 144);
             btnGenerateCarReports.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold);
             btnGenerateCarReports.ForeColor = SystemColors.Control;
-            btnGenerateCarReports.Location = new Point(601, 137);
+            btnGenerateCarReports.Location = new Point(625, 135);
             btnGenerateCarReports.Name = "btnGenerateCarReports";
             btnGenerateCarReports.Size = new Size(262, 45);
             btnGenerateCarReports.TabIndex = 12;

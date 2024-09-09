@@ -48,9 +48,6 @@ namespace ABC_Car_Traders
                         MessageBox.Show("Selected car ID is null. Please select a valid car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
-
-
             }
         }
 
@@ -101,7 +98,7 @@ namespace ABC_Car_Traders
             {
                 string selectedStatus = cmbStatus.Text; // Get the selected status from the combo box
                 var filteredCustomers = _userController.GetCustomersByStatus(selectedStatus);
-                dataGridViewCustomers.DataSource = filteredCustomers; // Bind the filtered list to the data grid
+                dataGridViewCustomers.DataSource = filteredCustomers;
             }
             else
             {

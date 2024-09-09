@@ -29,13 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCustomerOrderForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            btnSearch = new Button();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             orderDetailsGird = new DataGridView();
@@ -46,38 +43,21 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column9 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewButtonColumn();
-            Column6 = new DataGridViewButtonColumn();
-            panel1 = new Panel();
-            textBox1 = new TextBox();
             panel2 = new Panel();
-            textBox2 = new TextBox();
-            button1 = new Button();
+            txtCustomerName = new TextBox();
+            btnSearchCustomer = new Button();
             dateTimePicker1 = new DateTimePicker();
             label5 = new Label();
             dateTimePicker2 = new DateTimePicker();
-            button3 = new Button();
-            button2 = new Button();
+            btnRefresh = new Button();
+            btnSearchByDateRange = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)orderDetailsGird).BeginInit();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnSearch
-            // 
-            btnSearch.BackColor = Color.FromArgb(35, 115, 144);
-            btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSearch.ForeColor = SystemColors.ControlLightLight;
-            btnSearch.Location = new Point(1086, 186);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(174, 42);
-            btnSearch.TabIndex = 11;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = false;
-            btnSearch.Click += btnSearch_Click;
             // 
             // label1
             // 
@@ -100,21 +80,11 @@
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(597, 205);
-            label2.Name = "label2";
-            label2.Size = new Size(172, 23);
-            label2.TabIndex = 13;
-            label2.Text = "Search by Order Id";
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(597, 269);
+            label3.Location = new Point(598, 269);
             label3.Name = "label3";
             label3.Size = new Size(234, 23);
             label3.TabIndex = 14;
@@ -132,16 +102,16 @@
             // 
             // orderDetailsGird
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(35, 115, 144);
-            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            orderDetailsGird.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(35, 115, 144);
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            orderDetailsGird.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             orderDetailsGird.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            orderDetailsGird.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column10, Column8, Column3, Column4, Column9, Column7, Column5, Column6 });
+            orderDetailsGird.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column10, Column8, Column3, Column4, Column9, Column6, Column7, Column5 });
             orderDetailsGird.EnableHeadersVisualStyles = false;
             orderDetailsGird.Location = new Point(93, 491);
             orderDetailsGird.Name = "orderDetailsGird";
@@ -206,6 +176,14 @@
             Column9.Name = "Column9";
             Column9.Width = 125;
             // 
+            // Column6
+            // 
+            Column6.DataPropertyName = "orderDate";
+            Column6.HeaderText = "Order Date";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
+            Column6.Width = 125;
+            // 
             // Column7
             // 
             Column7.DataPropertyName = "status";
@@ -216,77 +194,47 @@
             // 
             // Column5
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Teal;
-            Column5.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.Teal;
+            Column5.DefaultCellStyle = dataGridViewCellStyle4;
             Column5.HeaderText = "View";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
             Column5.Text = "View";
             Column5.Width = 150;
             // 
-            // Column6
-            // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.Teal;
-            Column6.DefaultCellStyle = dataGridViewCellStyle3;
-            Column6.HeaderText = "Actions";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Text = "Actions";
-            Column6.Width = 145;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(35, 115, 144);
-            panel1.Controls.Add(textBox1);
-            panel1.Location = new Point(838, 182);
-            panel1.Name = "panel1";
-            panel1.Padding = new Padding(0, 0, 0, 3);
-            panel1.Size = new Size(215, 46);
-            panel1.TabIndex = 18;
-            // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(0, 0);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(215, 43);
-            textBox1.TabIndex = 0;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(35, 115, 144);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(txtCustomerName);
             panel2.Location = new Point(838, 246);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(0, 0, 0, 3);
             panel2.Size = new Size(215, 46);
             panel2.TabIndex = 19;
             // 
-            // textBox2
+            // txtCustomerName
             // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(0, 0);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(215, 43);
-            textBox2.TabIndex = 1;
+            txtCustomerName.Dock = DockStyle.Fill;
+            txtCustomerName.Location = new Point(0, 0);
+            txtCustomerName.Multiline = true;
+            txtCustomerName.Name = "txtCustomerName";
+            txtCustomerName.Size = new Size(215, 43);
+            txtCustomerName.TabIndex = 1;
             // 
-            // button1
+            // btnSearchCustomer
             // 
-            button1.BackColor = Color.FromArgb(35, 115, 144);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(1086, 250);
-            button1.Name = "button1";
-            button1.Size = new Size(174, 42);
-            button1.TabIndex = 20;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnSearchCustomer.BackColor = Color.FromArgb(35, 115, 144);
+            btnSearchCustomer.FlatAppearance.BorderSize = 0;
+            btnSearchCustomer.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchCustomer.ForeColor = SystemColors.ControlLightLight;
+            btnSearchCustomer.Location = new Point(1086, 250);
+            btnSearchCustomer.Name = "btnSearchCustomer";
+            btnSearchCustomer.Size = new Size(174, 42);
+            btnSearchCustomer.TabIndex = 20;
+            btnSearchCustomer.Text = "Search";
+            btnSearchCustomer.UseVisualStyleBackColor = false;
+            btnSearchCustomer.Click += button1_Click;
             // 
             // dateTimePicker1
             // 
@@ -312,31 +260,32 @@
             dateTimePicker2.Size = new Size(215, 27);
             dateTimePicker2.TabIndex = 23;
             // 
-            // button3
+            // btnRefresh
             // 
-            button3.BackColor = Color.FromArgb(35, 115, 144);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = SystemColors.ControlLightLight;
-            button3.Location = new Point(1086, 376);
-            button3.Name = "button3";
-            button3.Size = new Size(174, 42);
-            button3.TabIndex = 25;
-            button3.Text = "Refresh";
-            button3.UseVisualStyleBackColor = false;
+            btnRefresh.BackColor = Color.FromArgb(35, 115, 144);
+            btnRefresh.FlatAppearance.BorderSize = 0;
+            btnRefresh.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRefresh.ForeColor = SystemColors.ControlLightLight;
+            btnRefresh.Location = new Point(1086, 376);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(174, 42);
+            btnRefresh.TabIndex = 25;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += button3_Click;
             // 
-            // button2
+            // btnSearchByDateRange
             // 
-            button2.BackColor = Color.FromArgb(35, 115, 144);
-            button2.FlatAppearance.BorderSize = 0;
-            button2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(894, 376);
-            button2.Name = "button2";
-            button2.Size = new Size(174, 42);
-            button2.TabIndex = 26;
-            button2.Text = "Search";
-            button2.UseVisualStyleBackColor = false;
+            btnSearchByDateRange.BackColor = Color.FromArgb(35, 115, 144);
+            btnSearchByDateRange.FlatAppearance.BorderSize = 0;
+            btnSearchByDateRange.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearchByDateRange.ForeColor = SystemColors.ControlLightLight;
+            btnSearchByDateRange.Location = new Point(894, 376);
+            btnSearchByDateRange.Name = "btnSearchByDateRange";
+            btnSearchByDateRange.Size = new Size(174, 42);
+            btnSearchByDateRange.TabIndex = 26;
+            btnSearchByDateRange.Text = "Search";
+            btnSearchByDateRange.UseVisualStyleBackColor = false;
             // 
             // ManageCustomerOrderForm
             // 
@@ -344,28 +293,23 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1375, 783);
-            Controls.Add(button2);
-            Controls.Add(button3);
+            Controls.Add(btnSearchByDateRange);
+            Controls.Add(btnRefresh);
             Controls.Add(dateTimePicker2);
             Controls.Add(label5);
             Controls.Add(dateTimePicker1);
-            Controls.Add(button1);
+            Controls.Add(btnSearchCustomer);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             Controls.Add(orderDetailsGird);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(pictureBox1);
-            Controls.Add(btnSearch);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ManageCustomerOrderForm";
             Text = "ManageCustomerOrderForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)orderDetailsGird).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -373,24 +317,19 @@
         }
 
         #endregion
-
-        private Button btnSearch;
         private Label label1;
         private PictureBox pictureBox1;
-        private Label label2;
         private Label label3;
         private Label label4;
         private DataGridView orderDetailsGird;
-        private Panel panel1;
         private Panel panel2;
-        private Button button1;
+        private Button btnSearchCustomer;
         private DateTimePicker dateTimePicker1;
         private Label label5;
         private DateTimePicker dateTimePicker2;
-        private Button button3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Button button2;
+        private Button btnRefresh;
+        private TextBox txtCustomerName;
+        private Button btnSearchByDateRange;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column10;
@@ -398,8 +337,8 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewButtonColumn Column5;
-        private DataGridViewButtonColumn Column6;
     }
 }

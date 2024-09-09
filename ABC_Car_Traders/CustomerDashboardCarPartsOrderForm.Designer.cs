@@ -68,10 +68,9 @@
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewButtonColumn();
-            Column7 = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridPlaceOrder).BeginInit();
             SuspendLayout();
@@ -118,7 +117,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridPlaceOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridPlaceOrder.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridPlaceOrder.Columns.AddRange(new DataGridViewColumn[] { Column2, Column3, Column4, Column1, Column5, Column6, Column7 });
+            dataGridPlaceOrder.Columns.AddRange(new DataGridViewColumn[] { Column2, Column3, Column4, Column6, Column1, Column5 });
             dataGridPlaceOrder.EnableHeadersVisualStyles = false;
             dataGridPlaceOrder.Location = new Point(73, 497);
             dataGridPlaceOrder.Name = "dataGridPlaceOrder";
@@ -143,7 +142,7 @@
             cmbCarBrand.Name = "cmbCarBrand";
             cmbCarBrand.Size = new Size(171, 28);
             cmbCarBrand.TabIndex = 39;
-            cmbCarBrand.SelectedIndexChanged += cmbCarBrand_SelectedIndexChanged;
+            cmbCarBrand.SelectedValueChanged += cmbCarBrand_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -162,7 +161,7 @@
             cmbCarModel.Name = "cmbCarModel";
             cmbCarModel.Size = new Size(171, 28);
             cmbCarModel.TabIndex = 41;
-            cmbCarModel.SelectedIndexChanged += cmbCarModel_SelectedIndexChanged;
+            cmbCarModel.SelectedValueChanged += cmbCarModel_SelectedIndexChanged;
             // 
             // txtDate
             // 
@@ -377,7 +376,7 @@
             cmbCarPartName.Name = "cmbCarPartName";
             cmbCarPartName.Size = new Size(171, 28);
             cmbCarPartName.TabIndex = 65;
-            cmbCarPartName.SelectedIndexChanged += cmbCarPartName_SelectedIndexChanged;
+            cmbCarPartName.SelectedValueChanged += cmbCarPartName_SelectedIndexChanged;
             // 
             // btnSubmit
             // 
@@ -420,21 +419,29 @@
             Column3.HeaderText = "Order Date";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
-            Column3.Width = 150;
+            Column3.Width = 200;
             // 
             // Column4
             // 
             Column4.HeaderText = "Quantity";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
-            Column4.Width = 200;
+            Column4.Width = 165;
+            // 
+            // Column6
+            // 
+            Column6.DataPropertyName = "unitPrice";
+            Column6.HeaderText = "Unit Price";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
+            Column6.Width = 165;
             // 
             // Column1
             // 
             Column1.HeaderText = "Price";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
-            Column1.Width = 125;
+            Column1.Width = 200;
             // 
             // Column5
             // 
@@ -442,22 +449,6 @@
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
             Column5.Width = 200;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "View Details";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Resizable = DataGridViewTriState.True;
-            Column6.SortMode = DataGridViewColumnSortMode.Automatic;
-            Column6.Width = 130;
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Cancel Order";
-            Column7.MinimumWidth = 6;
-            Column7.Name = "Column7";
-            Column7.Width = 130;
             // 
             // CustomerDashboardCarPartsOrderForm
             // 
@@ -549,9 +540,8 @@
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column5;
-        private DataGridViewButtonColumn Column6;
-        private DataGridViewButtonColumn Column7;
     }
 }

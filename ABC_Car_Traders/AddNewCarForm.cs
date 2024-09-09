@@ -21,6 +21,7 @@ namespace ABC_Car_Traders
         private readonly CarController _carController;
         private byte[] _carImage;
         private string _carImageFileName;
+        private List<byte[]> _carImages = new List<byte[]>();
 
         public AddNewCarForm(CarController carController)
         {
@@ -42,6 +43,18 @@ namespace ABC_Car_Traders
         {
             try
             {
+                // Check if any fields are empty in the form
+                if (string.IsNullOrWhiteSpace(txtCarName.Text) ||
+                    string.IsNullOrWhiteSpace(txtModel.Text) ||
+                    string.IsNullOrWhiteSpace(txtYear.Text) ||
+                    string.IsNullOrWhiteSpace(txtPrice.Text) ||
+                    string.IsNullOrWhiteSpace(txtDescription.Text) ||
+                    string.IsNullOrWhiteSpace(txtQuantity.Text) ||
+                    string.IsNullOrWhiteSpace(cmbTransmission.Text))
+                {
+                    MessageBox.Show("Please fill in all the required fields.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 // Validate the form
                 if (!IsFormValid())
                 {
@@ -81,6 +94,7 @@ namespace ABC_Car_Traders
                     status = "AVAILABLE"
                 };
                 _carController.AddCar(car);
+
                 //Show successfull saved message
                 MessageBox.Show("Car saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -128,17 +142,18 @@ namespace ABC_Car_Traders
                     Image originalImage = Image.FromFile(filePath);
 
                     // Resize the image
-                    _carImage = ResizeImage(originalImage, 200, 200);
+                    _carImage = ResizeImage(originalImage, 502, 246);
 
                     // Display the resized image in a PictureBox
                     using (var ms = new MemoryStream(_carImage))
                     {
-                        pictureBoxCarImage.Image = Image.FromStream(ms);
+                        pictureBox2.Image = Image.FromStream(ms);
                     }
                 }
             }
-        }
 
+        }
+        // Validate form feilds
         private bool IsFormValid()
         {
             bool isValid = true;
@@ -165,18 +180,6 @@ namespace ABC_Car_Traders
             else
             {
                 lblBrandError.Visible = false;
-            }
-
-            // Validate Model Name
-            if (string.IsNullOrWhiteSpace(txtModel.Text) || !Regex.IsMatch(txtModel.Text, PatternValidation.namePattern))
-            {
-                lblModelError.Text = "Please enter a valid model name.";
-                lblModelError.Visible = true;
-                isValid = false;
-            }
-            else
-            {
-                lblModelError.Visible = false;
             }
 
             // Validate Year
@@ -227,22 +230,12 @@ namespace ABC_Car_Traders
                 lblTransmissionError.Visible = false;
             }
 
-            // Validate Image
-            if (string.IsNullOrWhiteSpace(_carImageFileName) || !Regex.IsMatch(_carImageFileName, PatternValidation.imagePattern, RegexOptions.IgnoreCase))
-            {
-                lblImageError.Text = "Please upload a valid image file (jpg, jpeg, png, gif).";
-                lblImageError.Visible = true;
-                isValid = false;
-            }
-            else
-            {
-                lblImageError.Visible = false;
-            }
-
             return isValid;
         }
 
+        private void pictureBoxCarImage_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

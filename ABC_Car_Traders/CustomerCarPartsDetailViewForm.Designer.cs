@@ -39,7 +39,6 @@
             label3 = new Label();
             txtQuantity = new TextBox();
             label4 = new Label();
-            txtDescription = new TextBox();
             label5 = new Label();
             txtStatus = new TextBox();
             label6 = new Label();
@@ -49,6 +48,7 @@
             label10 = new Label();
             txtWarrantyPeriod = new TextBox();
             pictureBoxImage = new PictureBox();
+            txtDescription = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
             SuspendLayout();
@@ -76,8 +76,9 @@
             // 
             // txtModel
             // 
-            txtModel.Location = new Point(162, 141);
+            txtModel.Location = new Point(205, 217);
             txtModel.Name = "txtModel";
+            txtModel.ReadOnly = true;
             txtModel.Size = new Size(200, 27);
             txtModel.TabIndex = 25;
             txtModel.TextChanged += txtModel_TextChanged;
@@ -86,7 +87,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label2.Location = new Point(49, 146);
+            label2.Location = new Point(49, 221);
             label2.Name = "label2";
             label2.Size = new Size(112, 23);
             label2.TabIndex = 24;
@@ -94,16 +95,18 @@
             // 
             // txtCarPartName
             // 
-            txtCarPartName.Location = new Point(205, 214);
+            txtCarPartName.Location = new Point(205, 145);
             txtCarPartName.Name = "txtCarPartName";
+            txtCarPartName.ReadOnly = true;
             txtCarPartName.Size = new Size(200, 27);
             txtCarPartName.TabIndex = 28;
+            txtCarPartName.TextChanged += txtCarPartName_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label1.Location = new Point(49, 218);
+            label1.Location = new Point(49, 146);
             label1.Name = "label1";
             label1.Size = new Size(150, 23);
             label1.TabIndex = 27;
@@ -111,8 +114,9 @@
             // 
             // txtPrice
             // 
-            txtPrice.Location = new Point(121, 290);
+            txtPrice.Location = new Point(205, 302);
             txtPrice.Name = "txtPrice";
+            txtPrice.ReadOnly = true;
             txtPrice.Size = new Size(200, 27);
             txtPrice.TabIndex = 30;
             // 
@@ -120,7 +124,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label3.Location = new Point(49, 294);
+            label3.Location = new Point(49, 306);
             label3.Name = "label3";
             label3.Size = new Size(66, 23);
             label3.TabIndex = 29;
@@ -128,8 +132,9 @@
             // 
             // txtQuantity
             // 
-            txtQuantity.Location = new Point(150, 371);
+            txtQuantity.Location = new Point(205, 378);
             txtQuantity.Name = "txtQuantity";
+            txtQuantity.ReadOnly = true;
             txtQuantity.Size = new Size(200, 27);
             txtQuantity.TabIndex = 32;
             // 
@@ -137,24 +142,17 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label4.Location = new Point(49, 376);
+            label4.Location = new Point(49, 382);
             label4.Name = "label4";
             label4.Size = new Size(97, 23);
             label4.TabIndex = 31;
             label4.Text = "Quantity :";
             // 
-            // txtDescription
-            // 
-            txtDescription.Location = new Point(621, 289);
-            txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(200, 27);
-            txtDescription.TabIndex = 34;
-            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label5.Location = new Point(501, 294);
+            label5.Location = new Point(501, 306);
             label5.Name = "label5";
             label5.Size = new Size(118, 23);
             label5.TabIndex = 33;
@@ -162,16 +160,18 @@
             // 
             // txtStatus
             // 
-            txtStatus.Location = new Point(575, 462);
+            txtStatus.Location = new Point(646, 461);
             txtStatus.Name = "txtStatus";
+            txtStatus.ReadOnly = true;
             txtStatus.Size = new Size(200, 27);
             txtStatus.TabIndex = 36;
+            txtStatus.TextChanged += txtStatus_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label6.Location = new Point(501, 467);
+            label6.Location = new Point(501, 465);
             label6.Name = "label6";
             label6.Size = new Size(75, 23);
             label6.TabIndex = 35;
@@ -191,7 +191,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label8.Location = new Point(501, 376);
+            label8.Location = new Point(501, 399);
             label8.Name = "label8";
             label8.Size = new Size(139, 23);
             label8.TabIndex = 38;
@@ -199,8 +199,9 @@
             // 
             // txtManufacturer
             // 
-            txtManufacturer.Location = new Point(646, 371);
+            txtManufacturer.Location = new Point(646, 395);
             txtManufacturer.Name = "txtManufacturer";
+            txtManufacturer.ReadOnly = true;
             txtManufacturer.Size = new Size(200, 27);
             txtManufacturer.TabIndex = 39;
             // 
@@ -208,7 +209,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label10.Location = new Point(49, 467);
+            label10.Location = new Point(59, 465);
             label10.Name = "label10";
             label10.Size = new Size(163, 23);
             label10.TabIndex = 40;
@@ -216,8 +217,9 @@
             // 
             // txtWarrantyPeriod
             // 
-            txtWarrantyPeriod.Location = new Point(218, 463);
+            txtWarrantyPeriod.Location = new Point(238, 461);
             txtWarrantyPeriod.Name = "txtWarrantyPeriod";
+            txtWarrantyPeriod.ReadOnly = true;
             txtWarrantyPeriod.Size = new Size(200, 27);
             txtWarrantyPeriod.TabIndex = 41;
             // 
@@ -230,12 +232,22 @@
             pictureBoxImage.TabStop = false;
             pictureBoxImage.Click += pictureBoxImage_Click;
             // 
+            // txtDescription
+            // 
+            txtDescription.Location = new Point(646, 276);
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.ReadOnly = true;
+            txtDescription.Size = new Size(345, 80);
+            txtDescription.TabIndex = 43;
+            // 
             // CustomerCarPartsDetailViewForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1018, 856);
+            Controls.Add(txtDescription);
             Controls.Add(pictureBoxImage);
             Controls.Add(txtWarrantyPeriod);
             Controls.Add(label10);
@@ -244,7 +256,6 @@
             Controls.Add(label7);
             Controls.Add(txtStatus);
             Controls.Add(label6);
-            Controls.Add(txtDescription);
             Controls.Add(label5);
             Controls.Add(txtQuantity);
             Controls.Add(label4);
@@ -277,7 +288,6 @@
         private Label label3;
         private TextBox txtQuantity;
         private Label label4;
-        private TextBox txtDescription;
         private Label label5;
         private TextBox txtStatus;
         private Label label6;
@@ -287,5 +297,6 @@
         private Label label10;
         private TextBox txtWarrantyPeriod;
         private PictureBox pictureBoxImage;
+        private TextBox txtDescription;
     }
 }

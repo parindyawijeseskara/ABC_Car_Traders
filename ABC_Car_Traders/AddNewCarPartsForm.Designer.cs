@@ -102,9 +102,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(285, 12);
+            pictureBox1.Location = new Point(288, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(405, 315);
+            pictureBox1.Size = new Size(624, 315);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -173,7 +173,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(393, 305);
+            label10.Location = new Point(393, 333);
             label10.Name = "label10";
             label10.Size = new Size(120, 22);
             label10.TabIndex = 14;
@@ -318,7 +318,7 @@
             btnSaveCarParts.FlatAppearance.BorderSize = 0;
             btnSaveCarParts.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             btnSaveCarParts.ForeColor = SystemColors.ControlLightLight;
-            btnSaveCarParts.Location = new Point(423, 778);
+            btnSaveCarParts.Location = new Point(672, 778);
             btnSaveCarParts.Name = "btnSaveCarParts";
             btnSaveCarParts.Size = new Size(196, 56);
             btnSaveCarParts.TabIndex = 23;
@@ -330,13 +330,13 @@
             // 
             pictureBoxCarPartsImage.Location = new Point(366, 376);
             pictureBoxCarPartsImage.Name = "pictureBoxCarPartsImage";
-            pictureBoxCarPartsImage.Size = new Size(288, 262);
+            pictureBoxCarPartsImage.Size = new Size(502, 246);
             pictureBoxCarPartsImage.TabIndex = 24;
             pictureBoxCarPartsImage.TabStop = false;
             // 
             // btnUploadImage
             // 
-            btnUploadImage.Location = new Point(560, 333);
+            btnUploadImage.Location = new Point(774, 333);
             btnUploadImage.Name = "btnUploadImage";
             btnUploadImage.Size = new Size(94, 29);
             btnUploadImage.TabIndex = 25;
@@ -445,7 +445,7 @@
             // 
             lblImageError.AutoSize = true;
             lblImageError.ForeColor = Color.Red;
-            lblImageError.Location = new Point(393, 330);
+            lblImageError.Location = new Point(393, 376);
             lblImageError.Name = "lblImageError";
             lblImageError.Size = new Size(58, 20);
             lblImageError.TabIndex = 36;
@@ -456,7 +456,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(689, 869);
+            ClientSize = new Size(924, 869);
             Controls.Add(lblImageError);
             Controls.Add(lblWarrantyError);
             Controls.Add(lblManufacturerError);
